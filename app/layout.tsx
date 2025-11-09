@@ -1,19 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/lib/site-config";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 const siteTitle = "Play Cowboy Safari Now – Zero Ad Fan Hub";
 const siteDescription =
@@ -61,9 +50,9 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-    maxSnippet: 220,
-    maxImagePreview: "large",
-    maxVideoPreview: -1,
+    "max-snippet": 220,
+    "max-image-preview": "large",
+    "max-video-preview": -1,
   },
 };
 
@@ -77,9 +66,7 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://azgames.io" />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#fff8ef] text-[#1f140c]`}
-      >
+      <body className="antialiased bg-[#fff8ef] text-[#1f140c]">
         <a href="#main" className="skip-link">
           Skip to content
         </a>
