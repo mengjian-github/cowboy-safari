@@ -65,6 +65,35 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="preconnect" href="https://azgames.io" />
+        {/* Google tag (gtag.js) */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-5CRLBF7NXD"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'G-5CRLBF7NXD');
+            `.trim(),
+          }}
+        />
+        {/* Microsoft Clarity */}
+        <script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(c,l,a,r,i,t,y){
+                  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+              })(window, document, "clarity", "script", "u3xek0f2jv");
+            `.trim(),
+          }}
+        />
       </head>
       <body className="antialiased bg-[#fff8ef] text-[#1f140c]">
         <a href="#main" className="skip-link">
