@@ -3,6 +3,7 @@ import Script from "next/script";
 import { RecommendationCard } from "@/components/recommendation-card";
 import { relatedGames } from "@/data/recommendations";
 import { siteConfig } from "@/lib/site-config";
+import { buildPageMetadata } from "@/lib/seo";
 
 const pageDescription =
   "Cowboy Safari guides for animal capture, resource loops, and score pushes with printable frameworks plus parent-friendly safety insights updated weekly.";
@@ -147,18 +148,11 @@ const guidesSchema = {
   ],
 };
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Cowboy Safari Strategy Playbook – Guides Hub",
   description: pageDescription,
-  alternates: {
-    canonical: `${siteConfig.baseUrl}/guides`,
-  },
-  openGraph: {
-    title: "Cowboy Safari Strategy Playbook – Guides Hub",
-    description: pageDescription,
-    url: `${siteConfig.baseUrl}/guides`,
-  },
-};
+  path: "/guides",
+});
 
 export default function GuidesPage() {
   return (

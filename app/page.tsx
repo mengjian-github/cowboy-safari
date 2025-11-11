@@ -4,6 +4,7 @@ import { HeroPlayPanel } from "@/components/hero-play-panel";
 import { RecommendationCard } from "@/components/recommendation-card";
 import { relatedGames } from "@/data/recommendations";
 import { siteConfig } from "@/lib/site-config";
+import { buildPageMetadata } from "@/lib/seo";
 
 const homeDescription =
   "Independent Cowboy Safari fan hub offering zero-ad instant play, telemetry-backed uptime alerts, spoiler-safe mastery guides, and parent-ready support.";
@@ -200,18 +201,11 @@ const homeLdJson = {
   ],
 };
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Instant Cowboy Safari Play · Telemetry Tested",
   description: homeDescription,
-  alternates: {
-    canonical: `${siteConfig.baseUrl}/`,
-  },
-  openGraph: {
-    title: "Instant Cowboy Safari Play · Telemetry Tested",
-    description: homeDescription,
-    url: siteConfig.baseUrl,
-  },
-};
+  path: "/",
+});
 
 export default function Home() {
   return (

@@ -3,6 +3,7 @@ import Script from "next/script";
 import { RecommendationCard } from "@/components/recommendation-card";
 import { relatedGames } from "@/data/recommendations";
 import { siteConfig } from "@/lib/site-config";
+import { buildPageMetadata } from "@/lib/seo";
 
 const pageDescription =
   "Cowboy Safari support desk covering parent FAQs, privacy promises, uptime alerts, and direct escalation paths with same-day email replies.";
@@ -98,18 +99,11 @@ const faqSchema = {
   ],
 };
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Cowboy Safari Support Desk – Parent Center",
   description: pageDescription,
-  alternates: {
-    canonical: `${siteConfig.baseUrl}/support`,
-  },
-  openGraph: {
-    title: "Cowboy Safari Support Desk – Parent Center",
-    description: pageDescription,
-    url: `${siteConfig.baseUrl}/support`,
-  },
-};
+  path: "/support",
+});
 
 export default function SupportPage() {
   return (
