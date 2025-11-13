@@ -152,6 +152,7 @@ export const metadata: Metadata = buildPageMetadata({
   title: "Cowboy Safari Strategy Playbook – Guides Hub",
   description: pageDescription,
   path: "/guides",
+  ogType: "article",
 });
 
 export default function GuidesPage() {

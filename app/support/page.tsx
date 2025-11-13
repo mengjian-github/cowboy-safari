@@ -103,6 +103,7 @@ export const metadata: Metadata = buildPageMetadata({
   title: "Cowboy Safari Support Desk – Parent Center",
   description: pageDescription,
   path: "/support",
+  ogType: "article",
 });
 
 export default function SupportPage() {

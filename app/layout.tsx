@@ -62,9 +62,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" prefix="og: http://ogp.me/ns#">
       <head>
         <link rel="preconnect" href="https://azgames.io" />
+        <link rel="image_src" href={`${siteConfig.baseUrl}/og-image.png`} />
         {/* Google tag (gtag.js) */}
         <script
           async
