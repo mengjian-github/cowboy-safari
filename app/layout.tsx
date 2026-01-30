@@ -95,6 +95,13 @@ export default function RootLayout({
             `.trim(),
           }}
         />
+        {/* Plausible (self-hosted) */}
+        <script async src="https://plausible.shipsolo.io/js/pa-vvI-E6zQdne8Vju31ptkG.js"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}}; plausible.init()`
+          }}
+        />
       </head>
       <body className="antialiased bg-[#fff8ef] text-[#1f140c]">
         <a href="#main" className="skip-link">
