@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { siteConfig } from "@/lib/site-config";
+import { trackEvent } from "@/lib/analytics";
 
 declare global {
   interface Window {
@@ -98,6 +99,10 @@ export function HeroPlayPanel() {
         event: "cta_click",
         cta: "fullscreen",
       });
+      trackEvent("tool_start_click", {
+        page: "home",
+        location: "fullscreen",
+      });
     } else {
       setToast("Your browser blocked fullscreen. Try manual controls (F11).");
     }
@@ -121,6 +126,11 @@ export function HeroPlayPanel() {
       }
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({ event: "cta_click", cta: "share" });
+      trackEvent("outbound_click", {
+        page: "home",
+        location: "share_session",
+        destination: siteConfig.baseUrl,
+      });
     } catch {
       setToast("Sharing was canceled.");
     }
@@ -184,25 +194,34 @@ export function HeroPlayPanel() {
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
             <button
-              onClick={() => setControlsOpen((prev) => !prev)}
+              onClick={() => {
+                trackEvent("tool_entry_click", {
+                  page: "home",
+                  location: controlsOpen ? "close_controls" : "open_controls",
+                });
+                setControlsOpen((prev) => !prev);
+              }}
               className="rounded-2xl border border-[#1f140c]/15 px-4 py-3 text-sm font-semibold text-[#1f140c] transition hover:border-[#b3471b] hover:text-[#b3471b]"
             >
               Toggle Controls Panel
             </button>
             <a
               href="/guides"
+              onClick={() => trackEvent("tool_entry_click", { page: "home", location: "hero_guides" })}
               className="rounded-2xl border border-transparent bg-[#1f140c] px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-black"
             >
               Browse Guides
             </a>
             <a
               href={`mailto:${siteConfig.contactEmail}`}
+              onClick={() => trackEvent("outbound_click", { page: "home", location: "hero_email_support", destination: "support_email" })}
               className="rounded-2xl border border-[#1f140c]/15 px-4 py-3 text-center text-sm font-semibold text-[#1f140c] transition hover:border-[#b3471b] hover:text-[#b3471b]"
             >
               Email Support
             </a>
             <a
               href="/support"
+              onClick={() => trackEvent("tool_entry_click", { page: "home", location: "hero_uptime_feed" })}
               className="rounded-2xl border border-[#1f140c]/15 px-4 py-3 text-center text-sm font-semibold text-[#1f140c] transition hover:border-[#b3471b] hover:text-[#b3471b]"
             >
               Check Uptime Feed
@@ -214,7 +233,10 @@ export function HeroPlayPanel() {
                 <p className="text-sm font-semibold text-[#1f140c]">Controller & keyboard layout</p>
                 <button
                   className="text-xs font-semibold uppercase tracking-wide text-[#b3471b]"
-                  onClick={() => setControlsOpen(false)}
+                  onClick={() => {
+                    trackEvent("tool_entry_click", { page: "home", location: "close_controls_panel" });
+                    setControlsOpen(false);
+                  }}
                 >
                   Close
                 </button>
@@ -237,6 +259,7 @@ export function HeroPlayPanel() {
                 href={card.url}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent("outbound_click", { page: "home", location: "download_card", destination: card.url, label: card.platform })}
                 className="group rounded-3xl border border-[#1f140c]/10 bg-white/90 p-4 text-left shadow-sm"
               >
                 <div
@@ -275,6 +298,7 @@ export function HeroPlayPanel() {
                 {pill.href ? (
                   <a
                     href={pill.href}
+                    onClick={() => trackEvent("outbound_click", { page: "home", location: `info_${pill.label.toLowerCase().replace(/[^a-z0-9]+/g, "_")}`, destination: pill.href })}
                     className="mt-1 inline-flex font-semibold text-[#b3471b] underline-offset-4 hover:underline"
                   >
                     {pill.value}
@@ -287,7 +311,11 @@ export function HeroPlayPanel() {
           </div>
           <p className="text-sm text-[#1f140c]/80">
             Cowboy Safari Fan Hub is operated by players, not the official studio. The iframe stays untouched so you can rely on the same inputs, saves, and achievements you expect on azgames.io. Contact {" "}
-            <a href={`mailto:${siteConfig.contactEmail}`} className="font-semibold text-[#b3471b]">
+            <a
+              href={`mailto:${siteConfig.contactEmail}`}
+              onClick={() => trackEvent("outbound_click", { page: "home", location: "footer_support_copy", destination: "support_email" })}
+              className="font-semibold text-[#b3471b]"
+            >
               {siteConfig.contactEmail}
             </a>{" "}
             for takedowns or latency reports.

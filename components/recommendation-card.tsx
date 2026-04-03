@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import type { RelatedGame } from "@/data/recommendations";
+import { trackEvent } from "@/lib/analytics";
 
 export function RecommendationCard({ game }: { game: RelatedGame }) {
   return (
@@ -30,6 +33,7 @@ export function RecommendationCard({ game }: { game: RelatedGame }) {
           href={game.playUrl}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackEvent("outbound_click", { page: "home", location: "recommended_game", destination: game.playUrl, label: game.name })}
           className="inline-flex items-center gap-1 text-[#b3471b] underline-offset-4 transition hover:underline"
         >
           Play

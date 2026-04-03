@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
+import { trackEvent } from "@/lib/analytics";
 
 const footerLinks = [
   { label: "Guides", href: "/guides" },
@@ -29,7 +32,11 @@ export function SiteFooter() {
             <p className="mt-2 text-sm text-[#1f140c]/70 max-w-prose pr-4">
               Fan-built, non-commercial and transparent about the azgames.io iframe source. Reach us
               at{" "}
-              <a href={`mailto:${siteConfig.contactEmail}`} className="font-semibold text-[#b3471b]">
+              <a
+                href={`mailto:${siteConfig.contactEmail}`}
+                className="font-semibold text-[#b3471b]"
+                onClick={() => trackEvent("outbound_click", { page: "global_footer", destination: "support_email" })}
+              >
                 {siteConfig.contactEmail}
               </a>
               .
@@ -53,6 +60,7 @@ export function SiteFooter() {
               <a
                 key={item.href}
                 href={item.href}
+                onClick={() => trackEvent("outbound_click", { page: "global_footer", destination: item.href, label: item.label })}
                 className="block font-medium text-[#1f140c] transition hover:text-[#b3471b]"
               >
                 {item.label}
