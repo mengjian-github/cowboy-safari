@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
-import { trackEvent } from "@/lib/analytics";
+import { trackEvent, trackGA4Event } from "@/lib/analytics";
 
 const footerLinks = [
   { label: "Guides", href: "/guides" },
@@ -35,7 +35,10 @@ export function SiteFooter() {
               <a
                 href={`mailto:${siteConfig.contactEmail}`}
                 className="font-semibold text-[#b3471b]"
-                onClick={() => trackEvent("outbound_click", { page: "global_footer", destination: "support_email" })}
+                onClick={() => {
+                  trackEvent("outbound_click", { page: "global_footer", destination: "support_email" });
+                  trackGA4Event("support_email", { page: "global_footer", location: "footer_copy", destination: siteConfig.contactEmail });
+                }}
               >
                 {siteConfig.contactEmail}
               </a>

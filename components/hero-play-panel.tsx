@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { siteConfig } from "@/lib/site-config";
-import { trackEvent } from "@/lib/analytics";
+import { trackEvent, trackGA4Event } from "@/lib/analytics";
 
 declare global {
   interface Window {
@@ -103,6 +103,7 @@ export function HeroPlayPanel() {
         page: "home",
         location: "fullscreen",
       });
+      trackGA4Event("fullscreen", { page: "home", location: "hero_iframe_overlay", game: siteConfig.shortName });
     } else {
       setToast("Your browser blocked fullscreen. Try manual controls (F11).");
     }
@@ -131,6 +132,7 @@ export function HeroPlayPanel() {
         location: "share_session",
         destination: siteConfig.baseUrl,
       });
+      trackGA4Event("share", { page: "home", location: "hero_iframe_overlay", method: "share" in navigator ? "native" : "clipboard" });
     } catch {
       setToast("Sharing was canceled.");
     }
@@ -149,6 +151,9 @@ export function HeroPlayPanel() {
               src={siteConfig.iframeSrc}
               loading="lazy"
               allowFullScreen
+              onLoad={() => {
+                trackGA4Event("iframe_play_success", { game: siteConfig.shortName, source: "azgames.io" });
+              }}
               className="h-[680px] w-full rounded-[24px] border-0 bg-black"
             />
             <div className="absolute bottom-6 right-6 flex flex-col items-center gap-3">
@@ -214,7 +219,10 @@ export function HeroPlayPanel() {
             </a>
             <a
               href={`mailto:${siteConfig.contactEmail}`}
-              onClick={() => trackEvent("outbound_click", { page: "home", location: "hero_email_support", destination: "support_email" })}
+              onClick={() => {
+                trackEvent("outbound_click", { page: "home", location: "hero_email_support", destination: "support_email" });
+                trackGA4Event("support_email", { page: "home", location: "hero_email_support", destination: siteConfig.contactEmail });
+              }}
               className="rounded-2xl border border-[#1f140c]/15 px-4 py-3 text-center text-sm font-semibold text-[#1f140c] transition hover:border-[#b3471b] hover:text-[#b3471b]"
             >
               Email Support
@@ -259,7 +267,10 @@ export function HeroPlayPanel() {
                 href={card.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => trackEvent("outbound_click", { page: "home", location: "download_card", destination: card.url, label: card.platform })}
+                onClick={() => {
+                  trackEvent("outbound_click", { page: "home", location: "download_card", destination: card.url, label: card.platform });
+                  trackGA4Event("outbound_app_store", { page: "home", location: "download_card", platform: card.platform, destination: card.url });
+                }}
                 className="group rounded-3xl border border-[#1f140c]/10 bg-white/90 p-4 text-left shadow-sm"
               >
                 <div
@@ -298,7 +309,12 @@ export function HeroPlayPanel() {
                 {pill.href ? (
                   <a
                     href={pill.href}
-                    onClick={() => trackEvent("outbound_click", { page: "home", location: `info_${pill.label.toLowerCase().replace(/[^a-z0-9]+/g, "_")}`, destination: pill.href })}
+                    onClick={() => {
+                      trackEvent("outbound_click", { page: "home", location: `info_${pill.label.toLowerCase().replace(/[^a-z0-9]+/g, "_")}`, destination: pill.href });
+                      if (pill.label === "Contact") {
+                        trackGA4Event("support_email", { page: "home", location: "info_pill_contact", destination: siteConfig.contactEmail });
+                      }
+                    }}
                     className="mt-1 inline-flex font-semibold text-[#b3471b] underline-offset-4 hover:underline"
                   >
                     {pill.value}
@@ -313,7 +329,10 @@ export function HeroPlayPanel() {
             Cowboy Safari Fan Hub is operated by players, not the official studio. The iframe stays untouched so you can rely on the same inputs, saves, and achievements you expect on azgames.io. Contact {" "}
             <a
               href={`mailto:${siteConfig.contactEmail}`}
-              onClick={() => trackEvent("outbound_click", { page: "home", location: "footer_support_copy", destination: "support_email" })}
+              onClick={() => {
+                trackEvent("outbound_click", { page: "home", location: "footer_support_copy", destination: "support_email" });
+                trackGA4Event("support_email", { page: "home", location: "footer_support_copy", destination: siteConfig.contactEmail });
+              }}
               className="font-semibold text-[#b3471b]"
             >
               {siteConfig.contactEmail}

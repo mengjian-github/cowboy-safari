@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { RecommendationCard } from "@/components/recommendation-card";
+import { TrackedEmailLink } from "@/components/tracked-email-link";
 import { relatedGames } from "@/data/recommendations";
 import { siteConfig } from "@/lib/site-config";
 import { buildPageMetadata } from "@/lib/seo";
@@ -160,9 +161,13 @@ export default function SupportPage() {
             </h2>
             <p className="mt-3 text-base text-[#1f140c]/80">
               Skip forms—just email {" "}
-              <a href={`mailto:${siteConfig.contactEmail}`} className="font-semibold text-[#b3471b]">
+              <TrackedEmailLink
+                page="support"
+                location="email_first_support_copy"
+                className="font-semibold text-[#b3471b]"
+              >
                 {siteConfig.contactEmail}
-              </a>{" "}
+              </TrackedEmailLink>{" "}
               with your name, device, time of issue, and (optional) session ID. That inbox routes directly to the same volunteers who monitor uptime and community safety.
             </p>
             <div className="mt-6 space-y-4 text-sm text-[#1f140c]/85">
@@ -179,21 +184,26 @@ export default function SupportPage() {
                 <p className="mt-2 text-sm">Cowboy Safari outages and safety flags receive replies in ≤2 hours. All other notes receive a thoughtful response within 12 hours.</p>
               </div>
             </div>
-            <a
-              href={`mailto:${siteConfig.contactEmail}`}
+            <TrackedEmailLink
+              page="support"
+              location="compose_email_cta"
               className="mt-6 inline-flex items-center justify-center rounded-2xl bg-[#b3471b] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[#b3471b]/30 transition hover:-translate-y-0.5"
             >
               Compose Email
-            </a>
+            </TrackedEmailLink>
           </div>
           <div className="space-y-6 text-sm text-[#1f140c]/80">
             <div className="rounded-3xl border border-[#1f140c]/10 bg-white p-6">
               <h3 className="text-lg font-semibold text-[#1f140c]">Need live help?</h3>
               <p className="mt-2">
                 Call the hotline listed above or message {" "}
-                <a href={`mailto:${siteConfig.contactEmail}`} className="font-semibold text-[#b3471b]">
+                <TrackedEmailLink
+                  page="support"
+                  location="need_live_help_copy"
+                  className="font-semibold text-[#b3471b]"
+                >
                   {siteConfig.contactEmail}
-                </a>
+                </TrackedEmailLink>
                 . Mention &ldquo;Cowboy Safari&rdquo; in the subject so our filters prioritize it.
               </p>
               <ul className="mt-4 space-y-2">
@@ -258,9 +268,13 @@ export default function SupportPage() {
             </div>
             <p className="rounded-3xl border border-[#1f140c]/10 bg-[#fff8ef] p-6 text-sm text-[#1f140c]/80 lg:max-w-md">
               Share your own Cowboy Safari downtime rituals with {" "}
-              <a href={`mailto:${siteConfig.contactEmail}`} className="font-semibold text-[#b3471b]">
+              <TrackedEmailLink
+                page="support"
+                location="downtime_rituals_copy"
+                className="font-semibold text-[#b3471b]"
+              >
                 {siteConfig.contactEmail}
-              </a>
+              </TrackedEmailLink>
               . We rotate the advice monthly and credit contributors (first name + city) when permission is granted.
             </p>
           </div>

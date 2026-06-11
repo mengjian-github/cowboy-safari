@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
-import { trackEvent } from "@/lib/analytics";
+import { trackEvent, trackGA4Event } from "@/lib/analytics";
 
 export function SiteHeader() {
   return (
@@ -43,7 +43,10 @@ export function SiteHeader() {
           <a
             className="hidden rounded-full border border-[#1f140c]/15 px-4 py-2 text-sm font-semibold text-[#1f140c]/80 transition hover:border-[#b3471b] hover:text-[#b3471b] lg:inline-flex"
             href={`mailto:${siteConfig.contactEmail}`}
-            onClick={() => trackEvent("outbound_click", { page: "global_header", location: "contact_cta", destination: "support_email" })}
+            onClick={() => {
+              trackEvent("outbound_click", { page: "global_header", location: "contact_cta", destination: "support_email" });
+              trackGA4Event("support_email", { page: "global_header", location: "contact_cta", destination: siteConfig.contactEmail });
+            }}
           >
             Contact
           </a>

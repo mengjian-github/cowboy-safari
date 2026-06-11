@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { RecommendationCard } from "@/components/recommendation-card";
+import { TrackedEmailLink } from "@/components/tracked-email-link";
 import { relatedGames } from "@/data/recommendations";
 import { siteConfig } from "@/lib/site-config";
 import { buildPageMetadata } from "@/lib/seo";
@@ -229,12 +230,13 @@ export default function GuidesPage() {
             </div>
             <p className="rounded-3xl border border-[#1f140c]/10 bg-[#fff8ef] p-6 text-sm text-[#1f140c]/80 lg:max-w-md">
               Feedback welcome. If you want a specific Cowboy Safari mechanic covered, email {" "}
-              <a
-                href={`mailto:${siteConfig.contactEmail}`}
+              <TrackedEmailLink
+                page="guides"
+                location="feedback_copy"
                 className="font-semibold text-[#b3471b]"
               >
                 {siteConfig.contactEmail}
-              </a>
+              </TrackedEmailLink>
               , and we will prioritize it in the next editorial sprint.
             </p>
           </div>
