@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
-import { trackEvent, trackGA4Event } from "@/lib/analytics";
+import { trackGA4Event } from "@/lib/analytics";
 
 export function SiteHeader() {
   return (
@@ -32,7 +32,7 @@ export function SiteHeader() {
             <Link
               key={item.href}
               href={item.href}
-              onClick={() => trackEvent("navigation_click", { page: "global_header", destination: item.href, label: item.label })}
+              onClick={() => trackGA4Event("navigation_click", { page: "global_header", destination: item.href, label: item.label })}
               className="transition hover:text-[#b3471b]"
             >
               {item.label}
@@ -44,7 +44,6 @@ export function SiteHeader() {
             className="hidden rounded-full border border-[#1f140c]/15 px-4 py-2 text-sm font-semibold text-[#1f140c]/80 transition hover:border-[#b3471b] hover:text-[#b3471b] lg:inline-flex"
             href={`mailto:${siteConfig.contactEmail}`}
             onClick={() => {
-              trackEvent("outbound_click", { page: "global_header", location: "contact_cta", destination: "support_email" });
               trackGA4Event("support_email", { page: "global_header", location: "contact_cta", destination: siteConfig.contactEmail });
             }}
           >
@@ -52,7 +51,7 @@ export function SiteHeader() {
           </a>
           <Link
             href="/#play"
-            onClick={() => trackEvent("tool_entry_click", { page: "home", location: "header_launch_game" })}
+            onClick={() => trackGA4Event("iframe_play", { page: "home", location: "header_launch_game", trigger: "cta_click" })}
             className="rounded-full bg-[#b3471b] px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-[#b3471b]/30 transition hover:-translate-y-0.5"
           >
             Launch Game

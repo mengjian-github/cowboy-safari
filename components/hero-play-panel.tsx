@@ -59,11 +59,7 @@ export function HeroPlayPanel() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && !hasTrackedView) {
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-              event: "iframe_view",
-              game: siteConfig.shortName,
-            });
+            trackGA4Event("iframe_play", { game: siteConfig.shortName, source: "azgames.io", trigger: "intersection" });
             setHasTrackedView(true);
           }
         });
@@ -94,15 +90,6 @@ export function HeroPlayPanel() {
 
     if (requestFullscreen) {
       requestFullscreen.call(node);
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: "cta_click",
-        cta: "fullscreen",
-      });
-      trackEvent("tool_start_click", {
-        page: "home",
-        location: "fullscreen",
-      });
       trackGA4Event("fullscreen", { page: "home", location: "hero_iframe_overlay", game: siteConfig.shortName });
     } else {
       setToast("Your browser blocked fullscreen. Try manual controls (F11).");
@@ -125,13 +112,6 @@ export function HeroPlayPanel() {
       } else {
         setToast("Copy this link manually: " + siteConfig.baseUrl);
       }
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: "cta_click", cta: "share" });
-      trackEvent("outbound_click", {
-        page: "home",
-        location: "share_session",
-        destination: siteConfig.baseUrl,
-      });
       trackGA4Event("share", { page: "home", location: "hero_iframe_overlay", method: "share" in navigator ? "native" : "clipboard" });
     } catch {
       setToast("Sharing was canceled.");
@@ -220,7 +200,6 @@ export function HeroPlayPanel() {
             <a
               href={`mailto:${siteConfig.contactEmail}`}
               onClick={() => {
-                trackEvent("outbound_click", { page: "home", location: "hero_email_support", destination: "support_email" });
                 trackGA4Event("support_email", { page: "home", location: "hero_email_support", destination: siteConfig.contactEmail });
               }}
               className="rounded-2xl border border-[#1f140c]/15 px-4 py-3 text-center text-sm font-semibold text-[#1f140c] transition hover:border-[#b3471b] hover:text-[#b3471b]"
@@ -268,7 +247,6 @@ export function HeroPlayPanel() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => {
-                  trackEvent("outbound_click", { page: "home", location: "download_card", destination: card.url, label: card.platform });
                   trackGA4Event("outbound_app_store", { page: "home", location: "download_card", platform: card.platform, destination: card.url });
                 }}
                 className="group rounded-3xl border border-[#1f140c]/10 bg-white/90 p-4 text-left shadow-sm"
@@ -310,7 +288,6 @@ export function HeroPlayPanel() {
                   <a
                     href={pill.href}
                     onClick={() => {
-                      trackEvent("outbound_click", { page: "home", location: `info_${pill.label.toLowerCase().replace(/[^a-z0-9]+/g, "_")}`, destination: pill.href });
                       if (pill.label === "Contact") {
                         trackGA4Event("support_email", { page: "home", location: "info_pill_contact", destination: siteConfig.contactEmail });
                       }
@@ -330,7 +307,6 @@ export function HeroPlayPanel() {
             <a
               href={`mailto:${siteConfig.contactEmail}`}
               onClick={() => {
-                trackEvent("outbound_click", { page: "home", location: "footer_support_copy", destination: "support_email" });
                 trackGA4Event("support_email", { page: "home", location: "footer_support_copy", destination: siteConfig.contactEmail });
               }}
               className="font-semibold text-[#b3471b]"
