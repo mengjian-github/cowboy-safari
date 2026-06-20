@@ -23,7 +23,7 @@ const editorialSections = [
     eyebrow: "Performance Telemetry",
     title: "Instrumentation, not guesswork",
     paragraphs: [
-      "Behind the warm art direction sits a live heartbeat monitor that pings the Cowboy Safari iframe every five minutes, capturing HTTP status, paint timing, and frame drops so we can publish the same data aggregators hide. Those metrics update hourly, feed into a lightweight incident log, and trigger alerts to support@cowboysafari.online whenever Cowboy Safari streaming latency exceeds 180 ms. Publishing the raw data, even when it stings, is how we convince competitive players that this page is worth bookmarking.",
+      "Behind the warm art direction sits a live heartbeat monitor that pings the Cowboy Safari iframe every five minutes, capturing HTTP status, paint timing, and frame drops so we can publish the same data aggregators hide. Those metrics update hourly, feed into a lightweight incident log, and trigger alerts to our support team whenever Cowboy Safari streaming latency exceeds 180 ms. Publishing the raw data, even when it stings, is how we convince competitive players that this page is worth bookmarking.",
       "The instrumentation also powers proactive Cowboy Safari guidance. If packet loss creeps up, we surface practical toggles like disabling system animations, switching from Wi-Fi mesh to Ethernet, or jumping into windowed mode before a bounty hunt. When conditions look great, we highlight challenge ladders to encourage Cowboy Safari marathons rather than single-stage playtests, giving the experience depth that scraper sites rarely attempt and letting Cowboy Safari squads plan their next pushes with confidence.",
     ],
   },
@@ -83,7 +83,7 @@ const faqItems = [
   {
     question: "Why can I trust this Cowboy Safari embed more than other sites?",
     answer:
-      "We proxy nothing, and we treat Cowboy Safari like a flagship rather than filler. The iframe points straight at azgames.io over HTTPS, we publish uptime telemetry, and we never layer ads or pop-ups on top of Cowboy Safari. If you spot a discrepancy, email support@cowboysafari.online and it will be reviewed within one business day.",
+      "We proxy nothing, and we treat Cowboy Safari like a flagship rather than filler. The iframe points straight at azgames.io over HTTPS, we publish uptime telemetry, and we never layer ads or pop-ups on top of Cowboy Safari. If you spot a discrepancy, visit our support page and it will be reviewed within one business day.",
   },
   {
     question: "What should I do when Cowboy Safari audio cuts out?",

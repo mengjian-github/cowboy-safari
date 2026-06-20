@@ -235,7 +235,7 @@ export default function GuidesPage() {
                 location="feedback_copy"
                 className="font-semibold text-[#b3471b]"
               >
-                {siteConfig.contactEmail}
+                Contact Support
               </TrackedEmailLink>
               , and we will prioritize it in the next editorial sprint.
             </p>

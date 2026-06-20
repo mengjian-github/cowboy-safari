@@ -1,7 +1,6 @@
 "use client";
 
 import { trackGA4Event } from "@/lib/analytics";
-import { siteConfig } from "@/lib/site-config";
 
 export function TrackedEmailLink({
   location,
@@ -16,13 +15,12 @@ export function TrackedEmailLink({
 }) {
   return (
     <a
-      href={`mailto:${siteConfig.contactEmail}`}
+      href="/support"
       className={className}
       onClick={() =>
-        trackGA4Event("support_email", {
+        trackGA4Event("support_page_nav", {
           page,
           location,
-          destination: siteConfig.contactEmail,
         })
       }
     >

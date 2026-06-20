@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import type { RelatedGame } from "@/data/recommendations";
 import { trackEvent, trackGA4Event } from "@/lib/analytics";
@@ -9,7 +8,7 @@ export function RecommendationCard({ game }: { game: RelatedGame }) {
   return (
     <div className="relative flex flex-col gap-4 rounded-3xl border border-[#1f140c]/10 bg-white/90 p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
       <div className="overflow-hidden rounded-2xl">
-        <Image
+        <img
           src={game.image}
           alt={game.imageAlt}
           width={640}

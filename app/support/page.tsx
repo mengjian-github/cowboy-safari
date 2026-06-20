@@ -21,7 +21,7 @@ const commitments = [
   {
     title: "Privacy & data hygiene",
     paragraphs: [
-      "Cowboy Safari itself stores progress on Azgames servers, but this fan hub limits data collection to first-party analytics. We do not run ads, we do not fingerprint browsers, and we purge access logs every seven days. The only persistent record is the email you send to support@cowboysafari.online, and even that thread lives in an encrypted mailbox with MFA enabled.",
+      "Cowboy Safari itself stores progress on Azgames servers, but this fan hub limits data collection to first-party analytics. We do not run ads, we do not fingerprint browsers, and we purge access logs every seven days. The only persistent record is messages submitted through our support page, and even those threads live in an encrypted mailbox with MFA enabled.",
       "When you submit a form we tag it with an internal ID so parents can cite it later. That ID never leaves the Cowboy Safari support tracker, and we delete attachments automatically after fourteen days. It is a lightweight process inspired by newsroom source handling rather than growth marketing dashboards.",
       "If you ever need a full export, reply to any thread with the words “Cowboy Safari privacy export” and you will receive a ZIP file listing timestamps, response notes, and the exact volunteers who touched the case. We believe fans deserve the same level of transparency they expect from the official studio.",
     ],
@@ -40,7 +40,7 @@ const supportFaq = [
   {
     question: "How do I request an urgent Cowboy Safari takedown?",
     answer:
-      "Email support@cowboysafari.online with the subject “Cowboy Safari takedown” and include the offending URL plus screenshots. We pause the embed locally within minutes, investigate whether the issue originates from azgames.io, and follow up with a detailed log so you can share it with guardians or teachers.",
+      "Visit our support page and include the subject “Cowboy Safari takedown” along with the offending URL plus screenshots. We pause the embed locally within minutes, investigate whether the issue originates from azgames.io, and follow up with a detailed log so you can share it with guardians or teachers.",
   },
   {
     question: "What personal data does this Cowboy Safari site retain?",
@@ -166,7 +166,7 @@ export default function SupportPage() {
                 location="email_first_support_copy"
                 className="font-semibold text-[#b3471b]"
               >
-                {siteConfig.contactEmail}
+                Contact Support
               </TrackedEmailLink>{" "}
               with your name, device, time of issue, and (optional) session ID. That inbox routes directly to the same volunteers who monitor uptime and community safety.
             </p>
@@ -202,7 +202,7 @@ export default function SupportPage() {
                   location="need_live_help_copy"
                   className="font-semibold text-[#b3471b]"
                 >
-                  {siteConfig.contactEmail}
+                  Contact Support
                 </TrackedEmailLink>
                 . Mention &ldquo;Cowboy Safari&rdquo; in the subject so our filters prioritize it.
               </p>
@@ -273,7 +273,7 @@ export default function SupportPage() {
                 location="downtime_rituals_copy"
                 className="font-semibold text-[#b3471b]"
               >
-                {siteConfig.contactEmail}
+                Contact Support
               </TrackedEmailLink>
               . We rotate the advice monthly and credit contributors (first name + city) when permission is granted.
             </p>

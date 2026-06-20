@@ -11,9 +11,8 @@ export const siteConfig = {
   version: "1.12.0",
   lastUpdatedISO: "2025-11-08T00:00:00.000Z",
   downloads: {
-    ios: "https://apps.apple.com/app/rodeo-stampede-sky-zoo-safari/id993090096",
-    android:
-      "https://play.google.com/store/apps/details?id=com.integerltd.west.cowboy.rodeo.rider.safari",
+    ios: "",
+    android: "",
   },
   nav: [
     { label: "Play", href: "/" },

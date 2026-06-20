@@ -21,27 +21,17 @@ const infoPills = [
   { label: "Build", value: siteConfig.version },
   { label: "Last Updated (UTC)", value: new Date(siteConfig.lastUpdatedISO).toUTCString() },
   { label: "Iframe Source", value: "azgames.io" },
-  { label: "Contact", value: siteConfig.contactEmail, href: `mailto:${siteConfig.contactEmail}` },
+  { label: "Contact", value: "Support page", href: "/support" },
 ];
 
-const downloadCards = [
-  {
-    platform: "Android",
-    name: "West Cowboy Rodeo Rider Safari",
-    url: siteConfig.downloads.android,
-    summary: "Play as a western cowboy rodeo and lasso exotic animals while the challenge ramps up each stage.",
-    meta: "Google Play · 3.8★ · 400+ reviews",
-    gradient: "linear-gradient(135deg, #fbd8b4, #f38a5d)",
-  },
-  {
-    platform: "iOS",
-    name: "Rodeo Stampede: Sky Zoo Safari",
-    url: siteConfig.downloads.ios,
-    summary: "Ride buffalo, elephants, and sky beasts to chase high scores in a polished Apple Arcade-friendly classic.",
-    meta: "App Store · 4.7★ · Editor’s Choice",
-    gradient: "linear-gradient(135deg, #f9f1d2, #f0c56d)",
-  },
-];
+const downloadCards: Array<{
+  platform: string;
+  name: string;
+  url: string;
+  summary: string;
+  meta: string;
+  gradient: string;
+}> = [];
 
 export function HeroPlayPanel() {
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
@@ -198,13 +188,13 @@ export function HeroPlayPanel() {
               Browse Guides
             </a>
             <a
-              href={`mailto:${siteConfig.contactEmail}`}
+              href="/support"
               onClick={() => {
-                trackGA4Event("support_email", { page: "home", location: "hero_email_support", destination: siteConfig.contactEmail });
+                trackGA4Event("support_page_nav", { page: "home", location: "hero_email_support" });
               }}
               className="rounded-2xl border border-[#1f140c]/15 px-4 py-3 text-center text-sm font-semibold text-[#1f140c] transition hover:border-[#b3471b] hover:text-[#b3471b]"
             >
-              Email Support
+              Contact Support
             </a>
             <a
               href="/support"
@@ -289,7 +279,7 @@ export function HeroPlayPanel() {
                     href={pill.href}
                     onClick={() => {
                       if (pill.label === "Contact") {
-                        trackGA4Event("support_email", { page: "home", location: "info_pill_contact", destination: siteConfig.contactEmail });
+                        trackGA4Event("support_page_nav", { page: "home", location: "info_pill_contact" });
                       }
                     }}
                     className="mt-1 inline-flex font-semibold text-[#b3471b] underline-offset-4 hover:underline"
@@ -303,15 +293,15 @@ export function HeroPlayPanel() {
             ))}
           </div>
           <p className="text-sm text-[#1f140c]/80">
-            Cowboy Safari Fan Hub is operated by players, not the official studio. The iframe stays untouched so you can rely on the same inputs, saves, and achievements you expect on azgames.io. Contact {" "}
+            Cowboy Safari Fan Hub is operated by players, not the official studio. The iframe stays untouched so you can rely on the same inputs, saves, and achievements you expect on azgames.io. Visit our{" "}
             <a
-              href={`mailto:${siteConfig.contactEmail}`}
+              href="/support"
               onClick={() => {
-                trackGA4Event("support_email", { page: "home", location: "footer_support_copy", destination: siteConfig.contactEmail });
+                trackGA4Event("support_page_nav", { page: "home", location: "footer_support_copy" });
               }}
               className="font-semibold text-[#b3471b]"
             >
-              {siteConfig.contactEmail}
+              Support page
             </a>{" "}
             for takedowns or latency reports.
           </p>

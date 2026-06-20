@@ -31,15 +31,15 @@ export function SiteFooter() {
             </p>
             <p className="mt-2 text-sm text-[#1f140c]/70 max-w-prose pr-4">
               Fan-built, non-commercial and transparent about the azgames.io iframe source. Reach us
-              at{" "}
+              on the{" "}
               <a
-                href={`mailto:${siteConfig.contactEmail}`}
+                href="/support"
                 className="font-semibold text-[#b3471b]"
                 onClick={() => {
-                  trackGA4Event("support_email", { page: "global_footer", location: "footer_copy", destination: siteConfig.contactEmail });
+                  trackGA4Event("support_page_nav", { page: "global_footer", location: "footer_copy" });
                 }}
               >
-                {siteConfig.contactEmail}
+                Support page
               </a>
               .
             </p>
