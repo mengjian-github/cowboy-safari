@@ -10,7 +10,7 @@ export function SiteHeader() {
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-8 px-4 py-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-3" aria-label="Cowboy Safari Fan Hub home">
           <img
-            src="/logo.png"
+            src="/logo.webp"
             alt="Cowboy Safari badge"
             width={56}
             height={56}
