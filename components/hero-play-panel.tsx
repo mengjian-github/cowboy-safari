@@ -11,10 +11,12 @@ declare global {
 }
 
 const controlMappings = [
-  { action: "Move / Strafe", input: "WASD or Left Stick", note: "Hold Shift for gallop" },
-  { action: "Primary Lasso", input: "Mouse Click / RT", note: "Tap to tag, hold to chain" },
-  { action: "Dodge Roll", input: "Space or B", note: "i-frames 0.8s" },
-  { action: "Gadget Wheel", input: "Q or LB", note: "Rebind in pause menu" },
+  { action: "Move / Steer", input: "WASD or Arrow Keys / Left Stick", note: "Desktop & controller" },
+  { action: "Jump / Dismount", input: "Space / A Button", note: "Swipe up on mobile" },
+  { action: "Lasso Throw", input: "Mouse Click / RT / Tap-and-hold", note: "Hold longer for big animals" },
+  { action: "Aim Lasso", input: "Mouse move / Right Stick / Drag", note: "Lead moving targets slightly" },
+  { action: "Chain Ride", input: "Jump + aim toward next mount", note: "Mid-air lasso for combos" },
+  { action: "Fullscreen", input: "F11 / Browser menu", note: "Or click the overlay button" },
 ];
 
 const infoPills = [
@@ -154,17 +156,17 @@ export function HeroPlayPanel() {
               </button>
             </div>
             <p className="mt-3 text-xs text-[#1f140c]/60">
-              The Cowboy Safari desktop build streams directly from azgames.io via secure HTTPS. No overlays, no intrusive ads—just the pure game feed.
+              The Cowboy Safari game streams directly from azgames.io via secure HTTPS. No overlays, no intrusive ads—just the pure game feed.
             </p>
           </div>
         </div>
         <div className="flex flex-col gap-6 rounded-[28px] border border-[#1f140c]/10 bg-white/80 p-6 shadow-xl">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#b3471b]/80">
-              Zero-Delay Lobby
+              Free Online Game
             </p>
             <h1 className="mt-2 text-3xl font-semibold leading-tight text-[#1f140c]">
-              Cowboy Safari instant play with fullscreen, control tips, and trustworthy uptime data.
+              Play Cowboy Safari Online — free fullscreen game with controls guide, animals list, and Sky Zoo upgrades.
             </h1>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
@@ -178,7 +180,7 @@ export function HeroPlayPanel() {
               }}
               className="rounded-2xl border border-[#1f140c]/15 px-4 py-3 text-sm font-semibold text-[#1f140c] transition hover:border-[#b3471b] hover:text-[#b3471b]"
             >
-              Toggle Controls Panel
+              {controlsOpen ? "Hide Controls" : "Show Controls"}
             </button>
             <a
               href="/guides"
@@ -197,38 +199,36 @@ export function HeroPlayPanel() {
               Contact Support
             </a>
             <a
-              href="/support"
-              onClick={() => trackEvent("tool_entry_click", { page: "home", location: "hero_uptime_feed" })}
+              href="/guides#animals-mounts"
+              onClick={() => trackEvent("tool_entry_click", { page: "home", location: "hero_animals_guide" })}
               className="rounded-2xl border border-[#1f140c]/15 px-4 py-3 text-center text-sm font-semibold text-[#1f140c] transition hover:border-[#b3471b] hover:text-[#b3471b]"
             >
-              Check Uptime Feed
+              Animals & Zoo
             </a>
           </div>
-          {controlsOpen && (
-            <div className="rounded-2xl border border-[#1f140c]/10 bg-[#fff8ef] p-4">
-              <div className="flex items-center justify-between">
-                <p className="text-sm font-semibold text-[#1f140c]">Controller & keyboard layout</p>
-                <button
-                  className="text-xs font-semibold uppercase tracking-wide text-[#b3471b]"
-                  onClick={() => {
-                    trackEvent("tool_entry_click", { page: "home", location: "close_controls_panel" });
-                    setControlsOpen(false);
-                  }}
-                >
-                  Close
-                </button>
-              </div>
-              <ul className="mt-3 space-y-2 text-sm text-[#1f140c]/80">
-                {controlMappings.map((mapping) => (
-                  <li key={mapping.action} className="rounded-xl bg-white/70 px-3 py-2">
-                    <div className="font-semibold text-[#1f140c]">{mapping.action}</div>
-                    <p>{mapping.input}</p>
-                    <p className="text-xs uppercase tracking-wide text-[#b3471b]">{mapping.note}</p>
-                  </li>
-                ))}
-              </ul>
+          <div className="rounded-2xl border border-[#1f140c]/10 bg-[#fff8ef] p-4">
+            <div className="flex items-center justify-between">
+              <p className="text-sm font-semibold text-[#1f140c]">Controls & keyboard layout</p>
+              <button
+                className="text-xs font-semibold uppercase tracking-wide text-[#b3471b] md:hidden"
+                onClick={() => {
+                  trackEvent("tool_entry_click", { page: "home", location: "close_controls_panel" });
+                  setControlsOpen(false);
+                }}
+              >
+                Close
+              </button>
             </div>
-          )}
+            <ul className="mt-3 space-y-2 text-sm text-[#1f140c]/80">
+              {controlMappings.map((mapping) => (
+                <li key={mapping.action} className="rounded-xl bg-white/70 px-3 py-2">
+                  <div className="font-semibold text-[#1f140c]">{mapping.action}</div>
+                  <p>{mapping.input}</p>
+                  <p className="text-xs uppercase tracking-wide text-[#b3471b]">{mapping.note}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
           <div className="grid gap-4 sm:grid-cols-2">
             {downloadCards.map((card) => (
               <a
@@ -292,8 +292,14 @@ export function HeroPlayPanel() {
               </div>
             ))}
           </div>
+          <div className="rounded-2xl border border-[#1f140c]/10 bg-[#fffaf2] px-4 py-3 text-sm">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#b3471b]/80">Trust</p>
+            <p className="mt-1 text-[#1f140c]/80">
+              No ads, no signup, no downloads. Secure HTTPS iframe from azgames.io. Works on desktop, tablet, and mobile.
+            </p>
+          </div>
           <p className="text-sm text-[#1f140c]/80">
-            Cowboy Safari Fan Hub is operated by players, not the official studio. The iframe stays untouched so you can rely on the same inputs, saves, and achievements you expect on azgames.io. Visit our{" "}
+            Play Cowboy Safari free in your browser. The iframe stays untouched so you can rely on the same inputs, saves, and achievements you expect on azgames.io. Visit our{" "}
             <a
               href="/support"
               onClick={() => {
@@ -302,8 +308,8 @@ export function HeroPlayPanel() {
               className="font-semibold text-[#b3471b]"
             >
               Support page
-            </a>{" "}
-            for takedowns or latency reports.
+            </a>
+            {" "}for takedowns or latency reports.
           </p>
         </div>
       </div>

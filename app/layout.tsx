@@ -4,9 +4,10 @@ import { siteConfig } from "@/lib/site-config";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
-const siteTitle = "Play Cowboy Safari Now – Zero Ad Fan Hub";
+const siteTitle = "Play Cowboy Safari Online – Free Fullscreen Game, Controls & Sky Zoo Guide";
 const siteDescription =
-  "Launch Cowboy Safari instantly with fullscreen support, telemetry-verified uptime, spoiler-light mastery guides, and parent-safe help—no ads, no clutter.";
+  "Play Cowboy Safari online free in fullscreen. Learn controls, animals, mounts, Sky Zoo upgrades, missions, and beginner routes. No ads, no signup.";
+
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.baseUrl),
@@ -17,10 +18,16 @@ export const metadata: Metadata = {
   description: siteDescription,
   keywords: [
     "Cowboy Safari",
-    "Cowboy Safari fan site",
     "play Cowboy Safari online",
-    "Cowboy Safari guides",
-    "Cowboy Safari walkthrough",
+    "Cowboy Safari game",
+    "Cowboy Safari controls",
+    "Cowboy Safari animals",
+    "Cowboy Safari Sky Zoo",
+    "Cowboy Safari upgrades",
+    "Cowboy Safari missions",
+    "free online games",
+    "lasso game",
+    "zoo building game",
   ],
   alternates: {
     canonical: siteConfig.baseUrl,

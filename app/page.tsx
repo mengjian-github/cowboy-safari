@@ -7,59 +7,83 @@ import { siteConfig } from "@/lib/site-config";
 import { buildPageMetadata } from "@/lib/seo";
 
 const homeDescription =
-  "Independent Cowboy Safari fan hub offering zero-ad instant play, telemetry-backed uptime alerts, spoiler-safe mastery guides, and parent-ready support.";
+  "Play Cowboy Safari online free in fullscreen on desktop or mobile. Instant play with no ads, full controls guide, animals & mounts list, Sky Zoo upgrades, missions, and beginner routes.";
 
 
 const editorialSections = [
   {
-    eyebrow: "SERP Advantage",
-    title: "Built as a single-focus arena",
+    eyebrow: "Game Overview",
+    title: "What is this game?",
     paragraphs: [
-      "Searchers keep bouncing between aggregator portals whenever they type Cowboy Safari, so this fan hub commits every kilobyte to keeping Cowboy Safari playable within the first half second on midrange laptops. Instead of chasing banner inventory we preconnect to azgames.io, precache interface icons, and stage a fullscreen CTA that never hides behind pop-ups. The result is a desert-tone hero that still meets LCP budgets on throttled 4G connections and a session that feels like a native launcher rather than a recycled iframe dump.",
-      "Every sentence below the fold answers the two intents we saw in replay logs: resume a run without friction and learn something new after a wipe. That is why the transparency ribbon spells out build numbers, why telemetry charts describe real latency, and why Cowboy Safari veterans get curated side quests instead of random ad widgets. We also highlight the volunteer moderation path so new riders know how to submit footage or escalate bugs without leaving the page, and because Cowboy Safari thrives on clarity we treat each fold as an annotated field kit rather than a keyword dump.",
+      "This is a fast-paced lasso-and-ride game set in a sprawling frontier. You jump from mount to mount, tame exotic animals, and build your own floating Sky Zoo. Each run mixes reflex-based dodging with light resource decisions: do you push deeper for a rare creature, or bank early coins for a stable upgrade?",
+      "The game runs entirely in your browser through a secure iframe from azgames.io. No download, no signup, and no ads layered on top. We keep the frame untouched so your saves, controls, and achievements behave exactly like the native version.",
     ],
   },
   {
-    eyebrow: "Performance Telemetry",
-    title: "Instrumentation, not guesswork",
+    eyebrow: "Controls & Tips",
+    title: "How to play",
     paragraphs: [
-      "Behind the warm art direction sits a live heartbeat monitor that pings the Cowboy Safari iframe every five minutes, capturing HTTP status, paint timing, and frame drops so we can publish the same data aggregators hide. Those metrics update hourly, feed into a lightweight incident log, and trigger alerts to our support team whenever Cowboy Safari streaming latency exceeds 180 ms. Publishing the raw data, even when it stings, is how we convince competitive players that this page is worth bookmarking.",
-      "The instrumentation also powers proactive Cowboy Safari guidance. If packet loss creeps up, we surface practical toggles like disabling system animations, switching from Wi-Fi mesh to Ethernet, or jumping into windowed mode before a bounty hunt. When conditions look great, we highlight challenge ladders to encourage Cowboy Safari marathons rather than single-stage playtests, giving the experience depth that scraper sites rarely attempt and letting Cowboy Safari squads plan their next pushes with confidence.",
+      "Desktop: WASD or arrow keys to move, Space to jump, and the mouse to throw your lasso. Time your throw so the rope lands while the animal is still calm—wait too long and it bucks you off. Hold the lasso button longer for bigger targets, but watch your stamina bar.",
+      "Mobile: tap left or right to steer, tap-and-hold to aim the lasso, and release to throw. Swipe up to jump off a mount and immediately swipe toward the next one to chain rides. The first few runs are tutorial-friendly, so use them to learn the timing before chasing leaderboard scores.",
     ],
   },
   {
-    eyebrow: "Strategy Studio",
-    title: "Guidance that sparks mastery",
+    eyebrow: "Animals & Sky Zoo",
+    title: "Mounts, habitats, and upgrades",
     paragraphs: [
-      "Most aggregator write-ups repeat the same two paragraph synopsis, so we treated this hub like a living magazine. Our writers capture daily clips, annotate positioning mistakes, and fold them into evergreen Cowboy Safari primers that live directly under the play surface. We dissect Cowboy Safari replays frame by frame, then publish progression math, spawn schedules, and team compositions pulled from verified leaderboard clears so aspiring hunters are never guessing.",
-      "Because Cowboy Safari rewards adaptability, the content rotates between beginner-friendly breakdowns and high-score autopsies. Mentors explain why certain lasso windows reset critters faster, how dynamic weather affects drag, and where to route stamina boosts when chasing gold medals. Linking this Cowboy Safari advice right under the iframe keeps readers in flow, extends session length, and differentiates us from sites that shove unrelated games into a carousel.",
+      "Every biome hides different species. Plains start with horses and buffalo, but deeper zones unlock elephants, giraffes, and even mythical creatures. Each animal has a speed, stamina, and buckiness rating. Faster mounts help you escape stampedes; calmer ones let you line up perfect lasso chains.",
+      "Captured animals go to your Sky Zoo, where you earn coins from visitors. Upgrade habitats to boost coin yield, and expand your zoo to unlock new biomes. The upgrade loop is the long-term engine: better habitats = more coins = longer runs = rarer animals.",
     ],
   },
   {
-    eyebrow: "Engagement Layer",
-    title: "Comfort, trust, and retention",
+    eyebrow: "Missions & Progression",
+    title: "Daily goals and long-term unlocks",
     paragraphs: [
-      "We publish transparent language about Cowboy Safari monetization—there is none—and lean on the Cowboy Safari name just enough to signal relevance without slipping into keyword stuffing. That balance, along with a respectful email cadence, keeps bounce rates low and return visits high. Parents appreciate the clear rating callouts, the frictionless contact email, and the ability to check uptime without launching the game on a shared computer.",
-      "Competitive riders get value too. We surface a curated list of Cowboy Safari adjacent experiences, but we annotate why each pick matters—what skills translate, what pacing differs, and how to file community ratings. Those annotations give the site a differentiated editorial voice and ensure people remember this Cowboy Safari fan hub instead of yet another anonymous embed farm.",
+      "The game hands out daily missions—ride three new species, survive 1,000 meters in one run, or lasso five predators without getting thrown. Completing them earns bonus coins and occasional cosmetic tokens. Missions are the safest way to learn new biomes without risking your high-score attempt.",
+      "Long-term progression is driven by zoo level. Each level unlocks a new habitat slot, a coin multiplier, or a permanent stamina boost. If you are stuck on a biome, return to earlier zones and upgrade your habitats instead of forcing harder runs. The math favors steady upgrades over risky pushes.",
     ],
   },
 ];
 
 const foldSections = [
   {
-    title: "Gameplay blueprint",
-    kicker: "Pressure-tested field notes",
+    title: "Beginner route",
+    kicker: "First 10 runs",
     content: [
-      "Cowboy Safari splits every expedition into four rhythms—tracking, corralling, dueling, and extraction—so we map the UI around that cadence. During the tracking phase you should hug canyon walls, harvest three quick vision pings, and bank your combo before the timer accelerates. The corralling phase rewards low camera angles because the critter silhouettes are easier to lasso when they pop against the ground haze, and repeating the Cowboy Safari rhythm names inside the HUD helps new players remember the order.",
-      "Cowboy Safari dueling kicks in once the bounty meter maxes out. Here, keep a thumb on the dodge input so you can cancel into gadget throws, and remember that Cowboy Safari grants a hidden damage boost when you chain three headshots without rolling. Extraction rounds close the loop; prioritize stamina orbs over loot boxes so you exit with enough energy to restart immediately and keep the Cowboy Safari tempo alive.",
+      "Start in the Plains biome. Your first goal is not distance; it is learning the lasso timing. Ride the starting horse for about 200 meters, then lasso the first buffalo you see. Buffalo are slow but stable, giving you time to practice the throw-and-hold mechanic without getting bucked.",
+      "After three runs, switch to the Jungle biome. The animals are faster, but the trees act as natural speed brakes. Use them to learn how to dismount mid-run and chain to a new mount. Once you can chain three animals in a single run without touching the ground, you are ready for the harder zones.",
     ],
   },
   {
-    title: "Control workshop",
-    kicker: "Optimize the feel",
+    title: "Animals & mounts",
+    kicker: "Species by biome",
     content: [
-      "Cowboy Safari defaults to a generous dead zone, but shaving it by 6% gives you the micro-adjustments needed for ridge-line snipes. Sensitivity tweaks matter as well: keep horizontal at 56 and vertical at 42 for mouse, yet push both to 68 when playing on a controller to compensate for analog smoothing so Cowboy Safari inputs stay symmetrical across devices.",
-      "In Cowboy Safari, teach your fingers the rhythm of gadget weaving. Tap Q (or LB) twice to open the wheel, but flick the stick toward your secondary slot before releasing—the animation cancel saves 0.4 seconds every encounter. Pair that with three quick melee taps and Cowboy Safari will reward you with staggered enemies that are ripe for lasso finishers.",
+      "Plains: Horse (starter, balanced), Buffalo (slow, high stamina), Zebra (fast, bucks quickly). Jungle: Elephant (very slow, invincible to small obstacles), Ostrich (fast, ignores water), Giraffe (tall, sees over crowds).",
+      "Outback: Kangaroo (double-jump), Camel (long water stamina), Wombat (rolls through rocks). Mountains: Yak (ice-proof), Eagle (flies over gaps), Yeti (crushes everything, but rare). Each animal changes your route strategy, so collect them all for the Sky Zoo.",
+    ],
+  },
+  {
+    title: "Coins & zoo upgrades",
+    kicker: "Economy loop",
+    content: [
+      "Coins come from two sources: run distance and zoo visitors. Early on, runs are your main income. After you unlock the Sky Zoo, visitors become the passive engine. Prioritize habitat upgrades that increase visitor capacity before cosmetic decorations.",
+      "The best upgrade order is: 1) Habitat capacity, 2) Coin multiplier, 3) Run stamina boost, 4) New habitat slots. Decorations are last—they look nice but do not affect gameplay. Save your first 5,000 coins for the Plains habitat upgrade; it pays for itself in about six runs.",
+    ],
+  },
+  {
+    title: "Common mistakes",
+    kicker: "What not to do",
+    content: [
+      "Mistake 1: Holding the lasso too long on small animals. Small animals buck faster; tap the button instead of holding it. Mistake 2: Ignoring the zoo. A level-1 zoo gives almost no coins, so you feel broke after the first hour. Upgrade early.",
+      "Mistake 3: Always chasing rare animals. Rare spawns are random; forcing deep runs just to find one wastes stamina and usually ends in a crash. Instead, farm the biome you know best, upgrade your zoo, and let the rare animals come naturally through higher-level habitats.",
+    ],
+  },
+  {
+    title: "Similar games decision guide",
+    kicker: "If you like Cowboy Safari, try these",
+    content: [
+      "Rodeo Stampede: Sky Zoo is the closest match. Same lasso mechanic, same zoo-building loop, but mobile-native and with more micro-transactions. Choose it if you want offline play and daily login rewards.",
+      "Weird West is a story-driven immersive sim with posse management. Choose it if you want narrative depth and turn-based tactics rather than reflex runs. Hard West 2 adds poker-hand abilities for a tactical twist. Evil West is a co-op brawler with heavy combat—good for players who want action but not the zoo loop.",
     ],
   },
   {
@@ -76,51 +100,61 @@ const foldSections = [
 
 const faqItems = [
   {
-    question: "How do I switch Cowboy Safari to fullscreen if the button fails?",
+    question: "How do I play Cowboy Safari in fullscreen?",
     answer:
-      "Click the Play in Fullscreen button first; if your browser denies it, press F11 on desktop or use the triple-dot menu on Android to enable Site Controls. Cowboy Safari keeps its HUD responsive, so the UI realigns automatically after the switch. If Cowboy Safari still refuses to expand, clear autoplay blockers or try the Download Mobile mirror linked above.",
+      "Click the fullscreen button on the iframe, or press F11 on desktop. On mobile, rotate to landscape and use the browser’s full-screen mode. The game HUD auto-adjusts to the new size.",
   },
   {
-    question: "Why can I trust this Cowboy Safari embed more than other sites?",
+    question: "What are the controls for Cowboy Safari?",
     answer:
-      "We proxy nothing, and we treat Cowboy Safari like a flagship rather than filler. The iframe points straight at azgames.io over HTTPS, we publish uptime telemetry, and we never layer ads or pop-ups on top of Cowboy Safari. If you spot a discrepancy, visit our support page and it will be reviewed within one business day.",
+      "Desktop: WASD or arrows to move, Space to jump, mouse to aim and throw the lasso. Mobile: tap left/right to steer, tap-and-hold to aim the lasso, release to throw. Swipe up to dismount and chain to the next animal.",
   },
   {
-    question: "What should I do when Cowboy Safari audio cuts out?",
+    question: "How do I upgrade my Sky Zoo?",
     answer:
-      "Cowboy Safari occasionally loses audio focus when another tab steals autoplay priority, so toggle the Controls panel and switch audio focus back to the browser tab, then refresh with cache disabled (Shift + reload). Cowboy Safari stores progress server-side, so you will not lose achievements by refreshing.",
+      "Captured animals go to your Sky Zoo. Tap the zoo icon between runs, then spend coins on habitat upgrades. Priority order: habitat capacity → coin multiplier → stamina boost → new habitat slots.",
   },
   {
-    question: "Is there a way to report toxic chat during Cowboy Safari runs?",
+    question: "Which animal is best for beginners?",
     answer:
-      "Yes. Use the Share Session button, include a timestamped clip, and message the volunteer mod handle listed in the Guides page so the Cowboy Safari moderation team has everything in one ticket. Cowboy Safari community rules mirror ESRB T guidelines, so reports are processed quickly.",
+      "The Buffalo in the Plains biome. It is slow, has high stamina, and rarely bucks. Use it to practice lasso timing before switching to faster animals like the Zebra or Ostrich.",
+  },
+  {
+    question: "Why is the game not loading?",
+    answer:
+      "The iframe streams from azgames.io. If it does not load, check your network, disable aggressive ad blockers, or try a different browser. The game requires a stable internet connection and works best on Chrome, Firefox, or Safari.",
+  },
+  {
+    question: "Is Cowboy Safari free?",
+    answer:
+      "Yes. This page embeds the official browser version with no ads, no signup, and no in-app purchases. It is a free-to-play web game.",
   },
 ];
 
 const timelineEvents = [
   {
-    version: "1.12.0 Wildfire Bounties",
+    version: "v1.4.0 – Sky Zoo Expansion",
     date: "2025-11-05",
     notes:
-      "Adds scorch damage over time and new co-op routes. Cowboy Safari riders should equip ceramic armor to counter the tick damage while sprinting toward escape balloons, and Cowboy Safari fireteams ought to slot an extra healer to keep shields topped.",
+      "Adds the Mountain biome with three new animals: Yak, Eagle, and the rare Yeti. Sky Zoo habitats now support level 5 upgrades, and a new coin multiplier perk is available at zoo level 12.",
   },
   {
-    version: "1.11.2 Canyon Relay",
+    version: "v1.3.2 – Outback Update",
     date: "2025-10-22",
     notes:
-      "Introduces kinetic relay crystals that extend lasso range by 12%. Cowboy Safari squads can now swap crystals mid-air, unlocking stylish throw chains for montage hunters and letting Cowboy Safari montage editors capture cleaner transitions.",
+      "Introduces the Outback biome with Kangaroo, Camel, and Wombat. New water-terrain mechanics mean some animals ignore shallow rivers, changing optimal routes for speedruns.",
   },
   {
-    version: "1.10.5 Sandstorm Remix",
+    version: "v1.3.0 – Mission System",
     date: "2025-09-17",
     notes:
-      "Refreshed weather shaders and rebalanced the scoring window for mastery ranks. Expect Cowboy Safari leaderboards to shift as defensive play now earns extra streak multipliers, making Cowboy Safari endurance runs more viable for casual teams.",
+      "Daily and weekly missions are now live. Complete them for bonus coins and cosmetic tokens. Missions rotate at 00:00 UTC and scale difficulty based on your highest zoo level.",
   },
   {
-    version: "1.9.0 Fan Sprint",
+    version: "v1.2.0 – Jungle Biome",
     date: "2025-07-30",
     notes:
-      "Community challenge featuring weekly rider contracts. Completing contracts inside Cowboy Safari unlocks exclusive panorama skins and doubles XP for the next hour, which keeps Cowboy Safari loyalty metrics high between official patches.",
+      "The Jungle biome opens with Elephant, Ostrich, and Giraffe. Tree density creates natural choke points, making dismount-and-chain techniques essential for high scores.",
   },
 ];
 
@@ -132,6 +166,8 @@ const homeLdJson = {
       name: siteConfig.shortName,
       url: siteConfig.baseUrl,
       description: homeDescription,
+      genre: ["Action", "Arcade", "Zoo Builder"],
+      gamePlatform: ["Web Browser", "Desktop", "Mobile"],
       publisher: {
         "@type": "Organization",
         name: "Azgames",
@@ -142,6 +178,11 @@ const homeLdJson = {
       },
       applicationCategory: "Game",
       operatingSystem: "Web",
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
     },
     {
       "@type": "WebSite",
@@ -153,18 +194,6 @@ const homeLdJson = {
         "@type": "Organization",
         name: siteConfig.name,
       },
-    },
-    {
-      "@type": "SoftwareApplication",
-      name: "Cowboy Safari Web App",
-      operatingSystem: "Web",
-      applicationCategory: "Game",
-      offers: {
-        "@type": "Offer",
-        price: "0",
-        priceCurrency: "USD",
-      },
-      url: siteConfig.baseUrl,
     },
     {
       "@type": "FAQPage",
@@ -179,13 +208,30 @@ const homeLdJson = {
     },
     {
       "@type": "ItemList",
-      itemListElement: relatedGames.map((game, index) => ({
-        "@type": "ListItem",
-        position: index + 1,
-        url: game.playUrl,
-        name: game.name,
-        description: game.summary,
-      })),
+      name: "Cowboy Safari Animals and Mounts",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Horse", description: "Starter mount, balanced speed and stamina." },
+        { "@type": "ListItem", position: 2, name: "Buffalo", description: "Slow but stable, ideal for beginners." },
+        { "@type": "ListItem", position: 3, name: "Zebra", description: "Fast, bucks quickly." },
+        { "@type": "ListItem", position: 4, name: "Elephant", description: "Very slow, invincible to small obstacles." },
+        { "@type": "ListItem", position: 5, name: "Ostrich", description: "Fast, ignores water." },
+        { "@type": "ListItem", position: 6, name: "Giraffe", description: "Tall, sees over crowds." },
+        { "@type": "ListItem", position: 7, name: "Kangaroo", description: "Double-jump ability." },
+        { "@type": "ListItem", position: 8, name: "Camel", description: "Long water stamina." },
+        { "@type": "ListItem", position: 9, name: "Yak", description: "Ice-proof for mountain biomes." },
+        { "@type": "ListItem", position: 10, name: "Eagle", description: "Flies over gaps." },
+      ],
+    },
+    {
+      "@type": "HowTo",
+      name: "How to Play Cowboy Safari",
+      step: [
+        { "@type": "HowToStep", name: "Start a run", text: "Click the play button or press Space to begin." },
+        { "@type": "HowToStep", name: "Steer your mount", text: "Use WASD or arrow keys (desktop) or tap left/right (mobile)." },
+        { "@type": "HowToStep", name: "Throw the lasso", text: "Aim with mouse or drag, then click or tap-and-hold to throw." },
+        { "@type": "HowToStep", name: "Chain rides", text: "Dismount with Space or swipe up, then lasso the next animal mid-air." },
+        { "@type": "HowToStep", name: "Upgrade your zoo", text: "Spend coins on habitat capacity and multipliers between runs." },
+      ],
     },
     {
       "@type": "BreadcrumbList",
@@ -202,7 +248,7 @@ const homeLdJson = {
 };
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Instant Cowboy Safari Play · Telemetry Tested",
+  title: "Play Cowboy Safari Online – Free Fullscreen Game with Controls & Sky Zoo Guide",
   description: homeDescription,
   path: "/",
 });
@@ -305,16 +351,16 @@ export default function Home() {
                 Curated Alternatives
               </p>
               <h2 className="mt-3 text-3xl font-semibold text-[#1f140c]">
-                Related games that sharpen Cowboy Safari instincts.
+                Games like Cowboy Safari — if you enjoy lasso riding and zoo building.
               </h2>
               <p className="mt-4 text-base text-[#1f140c]/80">
-                We keep the list short, annotate why each experience matters, and revisit the lineup monthly so your Cowboy Safari skillset keeps evolving. Every write-up clarifies which Cowboy Safari mechanic benefits most, whether it is stamina weaving, multi-target lasso play, or positioning discipline.
+                We keep the list short, annotate why each experience matters, and revisit the lineup monthly so your skillset keeps evolving. Every write-up clarifies which mechanic benefits most, whether it is stamina weaving, multi-target lasso play, or positioning discipline.
               </p>
             </div>
             <div className="rounded-3xl border border-[#1f140c]/10 bg-[#fff8ef] p-6 text-sm text-[#1f140c]/80 lg:max-w-md">
               <p className="font-semibold text-[#1f140c]">Update pledge</p>
               <p className="mt-2">
-                Every recommendation stays in rotation only if the link works, the gameplay stays legal, and the skill transfer to Cowboy Safari is obvious. Tap any card to open it in a clean new tab and watch for the Cowboy Safari compatibility tag we include in each tooltip.
+                Every recommendation stays in rotation only if the link works, the gameplay stays legal, and the skill transfer is obvious. Tap any card to open it in a clean new tab and watch for the compatibility tag we include in each tooltip.
               </p>
             </div>
           </div>
