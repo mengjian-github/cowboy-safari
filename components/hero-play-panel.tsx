@@ -172,7 +172,11 @@ export function HeroPlayPanel() {
           <div className="grid gap-3 sm:grid-cols-2">
             <button
               onClick={() => {
-                trackEvent("tool_entry_click", {
+                trackEvent("controls_open", {
+                  page: "home",
+                  location: controlsOpen ? "close_controls" : "open_controls",
+                });
+                trackGA4Event("controls_open", {
                   page: "home",
                   location: controlsOpen ? "close_controls" : "open_controls",
                 });
@@ -212,7 +216,8 @@ export function HeroPlayPanel() {
               <button
                 className="text-xs font-semibold uppercase tracking-wide text-[#b3471b] md:hidden"
                 onClick={() => {
-                  trackEvent("tool_entry_click", { page: "home", location: "close_controls_panel" });
+                  trackEvent("controls_close", { page: "home", location: "close_controls_panel" });
+                  trackGA4Event("controls_close", { page: "home", location: "close_controls_panel" });
                   setControlsOpen(false);
                 }}
               >
@@ -220,14 +225,29 @@ export function HeroPlayPanel() {
               </button>
             </div>
             <ul className="mt-3 space-y-2 text-sm text-[#1f140c]/80">
-              {controlMappings.map((mapping) => (
-                <li key={mapping.action} className="rounded-xl bg-white/70 px-3 py-2">
-                  <div className="font-semibold text-[#1f140c]">{mapping.action}</div>
-                  <p>{mapping.input}</p>
-                  <p className="text-xs uppercase tracking-wide text-[#b3471b]">{mapping.note}</p>
-                </li>
-              ))}
+            {controlMappings.map((mapping) => (
+              <li key={mapping.action} className="rounded-xl bg-white/70 px-3 py-2">
+                <div className="font-semibold text-[#1f140c]">{mapping.action}</div>
+                <p>{mapping.input}</p>
+                <p className="text-xs uppercase tracking-wide text-[#b3471b]">{mapping.note}</p>
+              </li>
+            ))}
             </ul>
+            <button
+              onClick={() => {
+                const text = controlMappings.map((m) => `${m.action}: ${m.input} (${m.note})`).join("\n");
+                if (navigator.clipboard) {
+                  navigator.clipboard.writeText(text).then(() => setToast("Controls copied."));
+                } else {
+                  setToast("Copy manually from the list above.");
+                }
+                trackEvent("controls_copy", { page: "home", location: "controls_panel" });
+                trackGA4Event("controls_copy", { page: "home", location: "controls_panel" });
+              }}
+              className="mt-3 w-full rounded-xl border border-[#1f140c]/15 px-3 py-2 text-sm font-semibold text-[#1f140c] transition hover:border-[#b3471b] hover:text-[#b3471b]"
+            >
+              Copy all controls
+            </button>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             {downloadCards.map((card) => (
