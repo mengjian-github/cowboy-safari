@@ -7,7 +7,7 @@ import { trackGA4Event } from "@/lib/analytics";
 const footerLinks = [
   { label: "Guides", href: "/guides" },
   { label: "Support", href: "/support" },
-  { label: "Privacy", href: "/support#privacy" },
+  { label: "Privacy", href: "/privacy" },
 ];
 
 const friendLinks = [
