@@ -116,9 +116,9 @@ export function HeroPlayPanel() {
         <div className="space-y-4">
           <div className="rounded-[28px] border border-[#1f140c]/10 bg-[#fffaf2]/95 p-4 shadow-sm lg:hidden">
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#b3471b]/80">Play now</p>
-            <h1 className="mt-2 text-2xl font-semibold leading-tight text-[#1f140c]">
+            <h2 className="mt-2 text-2xl font-semibold leading-tight text-[#1f140c]">
               Play Cowboy Safari online free — instant iframe, controls, animals, and Sky Zoo routes.
-            </h1>
+            </h2>
             <p className="mt-3 text-sm leading-6 text-[#1f140c]/80">
               Start in the browser with no signup, no downloads, and no ad layer added by this fan hub. The secure azgames.io iframe stays visible above the fold, with fullscreen, share, controls, and support links one tap away.
             </p>

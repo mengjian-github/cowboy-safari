@@ -6,7 +6,9 @@ import { siteConfig } from "@/lib/site-config";
 import { buildPageMetadata } from "@/lib/seo";
 
 const pageDescription =
-  "Cowboy Safari support center for fan-hub site issues, privacy requests, embed troubleshooting, and clear source-provider boundaries.";
+  "Get Cowboy Safari support for site access, privacy requests, embed troubleshooting, takedown notices, safety boundaries, and source-provider issues.";
+
+const supportEmailText = "support [at] cowboysafari.online";
 
 const commitments = [
   {
@@ -39,7 +41,7 @@ const supportFaq = [
   {
     question: "How do I request an urgent Cowboy Safari takedown?",
     answer:
-      "Email support@cowboysafari.online with the subject “Cowboy Safari takedown” plus the URL and screenshots. We can review pages on this fan hub; for source-game or platform content, contact the provider that hosts it.",
+      `Email ${supportEmailText} with the subject “Cowboy Safari takedown” plus the URL and screenshots. We can review pages on this fan hub; for source-game or platform content, contact the provider that hosts it.`,
   },
   {
     question: "What personal data does this Cowboy Safari site retain?",

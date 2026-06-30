@@ -14,7 +14,46 @@ const animals = [
   { name: "Yak", biome: "Mountains", role: "Ice route anchor", tip: "Best saved for later biomes after you understand buck timing." },
 ];
 
-const pageDescription = "Cowboy Safari animals list with biome, role, and practical mount tips for beginners chasing Sky Zoo upgrades.";
+const pageDescription =
+  "Explore the Cowboy Safari animals list by biome, mount role, beginner priority, Sky Zoo value, and practical tips for safer lasso chains and upgrades.";
+
+const animalGuides = [
+  {
+    title: "Fast answer: which Cowboy Safari animal should beginners chase first?",
+    paragraphs: [
+      "Start with the Buffalo, not the fastest mount. Buffalo gives beginners the most control time because it is stable, slow enough to read the next lane, and forgiving when the lasso throw is late. A fast Zebra looks exciting, but speed creates more decisions per second. If you are still learning dismount timing, a stable mount usually produces longer runs and steadier coin income.",
+      "Use Horse for basic movement, Buffalo for safe practice, and Zebra only when you can already chain two mounts without touching the ground. That order teaches the actual Cowboy Safari loop: survive, read traffic, catch a better animal, then bring the captured animals back into your Sky Zoo economy.",
+    ],
+  },
+  {
+    title: "Plains animals: the training biome",
+    paragraphs: [
+      "The Plains biome is where most players should build confidence. Horse is balanced and makes route reading simple. Buffalo has the best beginner safety profile because it gives you time to charge the lasso and recover from a bad line. Zebra is the first real speed test. It can carry a run farther, but only if you stop overcorrecting and trust small steering inputs.",
+      "Do not leave Plains just because you unlocked another biome. Plains animals fund the early Sky Zoo loop. A few clean Plains captures often produce more progress than a messy Jungle attempt where you crash before banking anything useful. Treat Plains as a repeatable practice route until your lasso release feels automatic.",
+    ],
+  },
+  {
+    title: "Jungle animals: crowd control and speed discipline",
+    paragraphs: [
+      "Jungle mounts ask for better spacing. Elephant is slow but helps you survive crowded routes, so use it when obstacles make small animals feel too twitchy. Ostrich is a speed route mount; it is strong when you can already read ahead. Giraffe gives a useful visual rhythm because its tall profile makes the next target easier to track during chaotic chains.",
+      "The main Jungle mistake is treating every animal as a score push. If you catch an Elephant, use the stability to set up the next chain instead of forcing maximum distance. If you catch an Ostrich, stop making wide turns. Fast mounts punish dramatic steering. A short, clean adjustment usually beats a full correction after you have already drifted off line.",
+    ],
+  },
+  {
+    title: "Outback and Mountain animals: when to move up",
+    paragraphs: [
+      "Kangaroo and Camel are useful once you understand why route spacing matters. Kangaroo supports jump chaining and helps when gaps appear between safe targets. Camel is better for patient long-route play, especially after your Sky Zoo income can absorb a few failed attempts. Yak belongs later because ice or mountain-style routes punish players who are still unsure about buck timing.",
+      "Move into these biomes when you can answer three questions during a run: what animal am I riding, what animal am I catching next, and where will I land if the throw misses? If any answer is unclear, return to Plains or Jungle. Cowboy Safari progression is less about rushing into the rarest zone and more about building repeatable routes that turn captured animals into upgrades.",
+    ],
+  },
+  {
+    title: "How animals connect to Sky Zoo upgrades",
+    paragraphs: [
+      "Captured animals matter because the Sky Zoo is the long-term income engine. Early on, capture variety is helpful, but stable repeat captures are more valuable than reckless rare hunting. A route that brings back common animals consistently can unlock habitat capacity and coin multipliers faster than a route that fails while chasing a rare mount.",
+      "Use the animal list as a spending guide. If your captures are mostly Plains animals, upgrade Plains capacity before opening too many new slots. If you are regularly surviving Jungle chains, start preparing stamina and multiplier upgrades. If rare animals appear but you crash before banking them, the problem is not the animal list; it is usually control timing or route discipline.",
+    ],
+  },
+];
 
 const animalsJsonLd = {
   "@context": "https://schema.org",
@@ -57,6 +96,28 @@ export default function AnimalsPage() {
           <div className="mt-10 flex flex-wrap gap-3">
             <Link href="/controls" className="rounded-full border border-[#1f140c]/15 px-5 py-3 text-sm font-semibold text-[#1f140c]">Read controls</Link>
             <Link href="/sky-zoo" className="rounded-full bg-[#b3471b] px-5 py-3 text-sm font-semibold text-white">Plan Sky Zoo upgrades</Link>
+          </div>
+
+          <div className="mt-12 space-y-6">
+            {animalGuides.map((guide) => (
+              <article key={guide.title} className="rounded-3xl border border-[#1f140c]/10 bg-white p-6 shadow-sm">
+                <h2 className="text-2xl font-semibold text-[#1f140c]">{guide.title}</h2>
+                <div className="mt-4 space-y-4 text-sm leading-7 text-[#1f140c]/85">
+                  {guide.paragraphs.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-10 rounded-3xl border border-[#1f140c]/10 bg-white p-6 shadow-sm">
+            <h2 className="text-2xl font-semibold text-[#1f140c]">Browse the full Cowboy Safari route plan</h2>
+            <div className="mt-5 grid gap-3 sm:grid-cols-3">
+              <Link href="/controls" className="rounded-2xl border border-[#1f140c]/10 bg-[#fff8ef] p-4 text-sm font-semibold text-[#1f140c]">Master lasso controls</Link>
+              <Link href="/sky-zoo" className="rounded-2xl border border-[#1f140c]/10 bg-[#fff8ef] p-4 text-sm font-semibold text-[#1f140c]">Use animals for upgrades</Link>
+              <Link href="/guides" className="rounded-2xl border border-[#1f140c]/10 bg-[#fff8ef] p-4 text-sm font-semibold text-[#1f140c]">Read strategy guides</Link>
+            </div>
           </div>
         </div>
       </section>
