@@ -18,7 +18,21 @@ export function trackEvent(eventName: string, properties?: Record<string, string
 
 /** GA4-only tracker for mission-critical custom events. Avoids inflating Plausible with iframe/playback noise. */
 export function trackGA4Event(
-  eventName: "iframe_play" | "iframe_play_success" | "fullscreen" | "share" | "support_email" | "support_page_nav" | "outbound_app_store" | "outbound_click" | "navigation_click" | "controls_open" | "controls_close" | "controls_copy" | "guide_expand",
+  eventName:
+    | "hero_iframe_visible"
+    | "iframe_loaded"
+    | "fullscreen_click"
+    | "controls_open"
+    | "controls_close"
+    | "controls_copy"
+    | "share_click"
+    | "guide_click"
+    | "support_click"
+    | "support_email"
+    | "outbound_app_store"
+    | "outbound_click"
+    | "navigation_click"
+    | "guide_expand",
   properties?: Record<string, string | number>
 ) {
   if (typeof window !== "undefined" && window.gtag) {

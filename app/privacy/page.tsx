@@ -73,8 +73,8 @@ export default function PrivacyPage() {
               </p>
               <ul className="list-disc space-y-1 pl-5">
                 <li>Retention: support threads are kept for 90 days, then deleted.</li>
-                <li>Storage: encrypted mailbox with multi-factor authentication.</li>
-                <li>Access: only the volunteer support team can read these messages.</li>
+                <li>Storage: managed mailbox access controlled by the site operator.</li>
+                <li>Access: limited to people maintaining this fan hub.</li>
                 <li>We do not add your email to marketing lists or share it with third parties.</li>
               </ul>
             </div>
@@ -115,7 +115,7 @@ export default function PrivacyPage() {
                   <strong>Support emails</strong> — deleted after 90 days.
                 </li>
                 <li>
-                  <strong>Export</strong> — email us with the subject “Cowboy Safari privacy export” and we will send a ZIP file listing timestamps, response notes, and volunteers who touched your case.
+                  <strong>Export</strong> — email us with the subject “Cowboy Safari privacy export” and we will confirm what site-support records exist for your email address.
                 </li>
                 <li>
                   <strong>Deletion</strong> — email us with the subject “Cowboy Safari data deletion” and we will confirm removal within 30 days.

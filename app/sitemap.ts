@@ -3,7 +3,7 @@ export const dynamic = "force-static";
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site-config";
 
-const routes = ["/", "/guides", "/support"];
+const routes = ["/", "/controls", "/animals", "/sky-zoo", "/guides", "/support"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((path) => ({

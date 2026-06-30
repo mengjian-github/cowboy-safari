@@ -5,6 +5,9 @@ import { siteConfig } from "@/lib/site-config";
 import { trackGA4Event } from "@/lib/analytics";
 
 const footerLinks = [
+  { label: "Controls", href: "/controls" },
+  { label: "Animals", href: "/animals" },
+  { label: "Sky Zoo", href: "/sky-zoo" },
   { label: "Guides", href: "/guides" },
   { label: "Support", href: "/support" },
   { label: "Privacy", href: "/privacy" },
@@ -36,7 +39,7 @@ export function SiteFooter() {
                 href="/support"
                 className="font-semibold text-[#b3471b]"
                 onClick={() => {
-                  trackGA4Event("support_page_nav", { page: "global_footer", location: "footer_copy" });
+                  trackGA4Event("support_click", { page: "global_footer", location: "footer_copy" });
                 }}
               >
                 Support page

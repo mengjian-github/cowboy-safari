@@ -51,7 +51,7 @@ export function HeroPlayPanel() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && !hasTrackedView) {
-            trackGA4Event("iframe_play", { game: siteConfig.shortName, source: "azgames.io", trigger: "intersection" });
+            trackGA4Event("hero_iframe_visible", { game: siteConfig.shortName, source: "azgames.io", trigger: "intersection" });
             setHasTrackedView(true);
           }
         });
@@ -82,7 +82,7 @@ export function HeroPlayPanel() {
 
     if (requestFullscreen) {
       requestFullscreen.call(node);
-      trackGA4Event("fullscreen", { page: "home", location: "hero_iframe_overlay", game: siteConfig.shortName });
+      trackGA4Event("fullscreen_click", { page: "home", location: "hero_iframe_overlay", game: siteConfig.shortName });
     } else {
       setToast("Your browser blocked fullscreen. Try manual controls (F11).");
     }
@@ -104,7 +104,7 @@ export function HeroPlayPanel() {
       } else {
         setToast("Copy this link manually: " + siteConfig.baseUrl);
       }
-      trackGA4Event("share", { page: "home", location: "hero_iframe_overlay", method: "share" in navigator ? "native" : "clipboard" });
+      trackGA4Event("share_click", { page: "home", location: "hero_iframe_overlay", method: "share" in navigator ? "native" : "clipboard" });
     } catch {
       setToast("Sharing was canceled.");
     }
@@ -112,9 +112,28 @@ export function HeroPlayPanel() {
 
   return (
     <section id="play" className="relative overflow-hidden bg-transparent lg:min-h-[100vh]">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-10 sm:px-6 lg:grid-cols-[minmax(0,1fr),320px] lg:px-8">
+      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-8 sm:px-6 lg:grid-cols-[minmax(0,1fr),340px] lg:px-8">
         <div className="space-y-4">
+          <div className="rounded-[28px] border border-[#1f140c]/10 bg-[#fffaf2]/95 p-4 shadow-sm lg:hidden">
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#b3471b]/80">Play now</p>
+            <h1 className="mt-2 text-2xl font-semibold leading-tight text-[#1f140c]">
+              Play Cowboy Safari online free — instant iframe, controls, animals, and Sky Zoo routes.
+            </h1>
+            <p className="mt-3 text-sm leading-6 text-[#1f140c]/80">
+              Start in the browser with no signup, no downloads, and no ad layer added by this fan hub. The secure azgames.io iframe stays visible above the fold, with fullscreen, share, controls, and support links one tap away.
+            </p>
+            <div className="mt-3 flex flex-wrap gap-2 text-xs font-semibold text-[#1f140c]/75">
+              <span className="rounded-full bg-white px-3 py-1">Free</span>
+              <span className="rounded-full bg-white px-3 py-1">No signup</span>
+              <span className="rounded-full bg-white px-3 py-1">No in-page ads</span>
+              <span className="rounded-full bg-white px-3 py-1">Source: azgames.io</span>
+            </div>
+          </div>
           <div className="relative rounded-[32px] border border-[#1f140c]/15 bg-white/90 p-4 shadow-2xl backdrop-blur" aria-live="polite">
+            <div className="mb-3 flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-[#fff8ef] px-4 py-3 text-sm text-[#1f140c]/80">
+              <span className="font-semibold text-[#1f140c]">Play Now: iframe is loaded from azgames.io.</span>
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#b3471b]">Free · No signup · No ads added</span>
+            </div>
             <div className="pointer-events-none absolute inset-0 rounded-[32px] border border-white/10" aria-hidden="true" />
             <iframe
               ref={iframeRef}
@@ -124,9 +143,9 @@ export function HeroPlayPanel() {
               loading="lazy"
               allowFullScreen
               onLoad={() => {
-                trackGA4Event("iframe_play_success", { game: siteConfig.shortName, source: "azgames.io" });
+                trackGA4Event("iframe_loaded", { game: siteConfig.shortName, source: "azgames.io" });
               }}
-              className="h-[680px] w-full rounded-[24px] border-0 bg-black"
+              className="h-[560px] w-full rounded-[24px] border-0 bg-black sm:h-[640px] lg:h-[680px]"
             />
             <div className="absolute bottom-6 right-6 flex flex-col items-center gap-3">
               <button
@@ -156,7 +175,7 @@ export function HeroPlayPanel() {
               </button>
             </div>
             <p className="mt-3 text-xs text-[#1f140c]/60">
-              The Cowboy Safari game streams directly from azgames.io via secure HTTPS. No overlays, no intrusive ads—just the pure game feed.
+              The Cowboy Safari game streams directly from azgames.io via secure HTTPS. No overlays or ad units are added by this page.
             </p>
           </div>
         </div>
@@ -166,8 +185,11 @@ export function HeroPlayPanel() {
               Free Online Game
             </p>
             <h1 className="mt-2 text-3xl font-semibold leading-tight text-[#1f140c]">
-              Play Cowboy Safari Online — free fullscreen game with controls guide, animals list, and Sky Zoo upgrades.
+              Play Cowboy Safari online free — instant iframe, controls guide, animals list, and Sky Zoo upgrades.
             </h1>
+            <p className="mt-3 text-sm leading-6 text-[#1f140c]/80">
+              Start in your browser with no signup, no downloads, and no extra ad layer from this fan hub. The secure azgames.io iframe, fullscreen button, share action, controls panel, and support route are all visible in the first screen.
+            </p>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
             <button
@@ -188,7 +210,7 @@ export function HeroPlayPanel() {
             </button>
             <a
               href="/guides"
-              onClick={() => trackEvent("tool_entry_click", { page: "home", location: "hero_guides" })}
+              onClick={() => trackGA4Event("guide_click", { page: "home", location: "hero_guides", destination: "/guides" })}
               className="rounded-2xl border border-transparent bg-[#1f140c] px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-black"
             >
               Browse Guides
@@ -196,7 +218,7 @@ export function HeroPlayPanel() {
             <a
               href="/support"
               onClick={() => {
-                trackGA4Event("support_page_nav", { page: "home", location: "hero_email_support" });
+                trackGA4Event("support_click", { page: "home", location: "hero_email_support" });
               }}
               className="rounded-2xl border border-[#1f140c]/15 px-4 py-3 text-center text-sm font-semibold text-[#1f140c] transition hover:border-[#b3471b] hover:text-[#b3471b]"
             >
@@ -204,7 +226,7 @@ export function HeroPlayPanel() {
             </a>
             <a
               href="/guides#animals-mounts"
-              onClick={() => trackEvent("tool_entry_click", { page: "home", location: "hero_animals_guide" })}
+              onClick={() => trackGA4Event("guide_click", { page: "home", location: "hero_animals_guide", destination: "/guides#animals-mounts" })}
               className="rounded-2xl border border-[#1f140c]/15 px-4 py-3 text-center text-sm font-semibold text-[#1f140c] transition hover:border-[#b3471b] hover:text-[#b3471b]"
             >
               Animals & Zoo
@@ -299,7 +321,7 @@ export function HeroPlayPanel() {
                     href={pill.href}
                     onClick={() => {
                       if (pill.label === "Contact") {
-                        trackGA4Event("support_page_nav", { page: "home", location: "info_pill_contact" });
+                        trackGA4Event("support_click", { page: "home", location: "info_pill_contact" });
                       }
                     }}
                     className="mt-1 inline-flex font-semibold text-[#b3471b] underline-offset-4 hover:underline"
@@ -315,15 +337,15 @@ export function HeroPlayPanel() {
           <div className="rounded-2xl border border-[#1f140c]/10 bg-[#fffaf2] px-4 py-3 text-sm">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#b3471b]/80">Trust</p>
             <p className="mt-1 text-[#1f140c]/80">
-              No ads, no signup, no downloads. Secure HTTPS iframe from azgames.io. Works on desktop, tablet, and mobile.
+              Free to play, no signup, no downloads, and no in-page ad units from this hub. Secure HTTPS iframe from azgames.io. Works on desktop, tablet, and mobile.
             </p>
           </div>
           <p className="text-sm text-[#1f140c]/80">
-            Play Cowboy Safari free in your browser. The iframe stays untouched so you can rely on the same inputs, saves, and achievements you expect on azgames.io. Visit our{" "}
+            Play Cowboy Safari free in your browser. The iframe stays untouched so controls and game state remain with the source provider. Visit our{" "}
             <a
               href="/support"
               onClick={() => {
-                trackGA4Event("support_page_nav", { page: "home", location: "footer_support_copy" });
+                trackGA4Event("support_click", { page: "home", location: "footer_support_copy" });
               }}
               className="font-semibold text-[#b3471b]"
             >

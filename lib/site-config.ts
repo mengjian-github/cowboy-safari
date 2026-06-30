@@ -16,6 +16,8 @@ export const siteConfig = {
   },
   nav: [
     { label: "Play", href: "/" },
+    { label: "Controls", href: "/controls" },
+    { label: "Animals", href: "/animals" },
     { label: "Guides", href: "/guides" },
     { label: "Support", href: "/support" },
   ],

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { HeroPlayPanel } from "@/components/hero-play-panel";
 import { RecommendationCard } from "@/components/recommendation-card";
 import { relatedGames } from "@/data/recommendations";
@@ -7,7 +6,7 @@ import { siteConfig } from "@/lib/site-config";
 import { buildPageMetadata } from "@/lib/seo";
 
 const homeDescription =
-  "Play Cowboy Safari online free in fullscreen on desktop or mobile. Instant play with no ads, full controls guide, animals & mounts list, Sky Zoo upgrades, missions, and beginner routes.";
+  "Play Cowboy Safari online free on desktop or mobile. Instant iframe play with controls, animals, Sky Zoo upgrades, missions, and beginner routes.";
 
 
 const editorialSections = [
@@ -16,7 +15,7 @@ const editorialSections = [
     title: "What is this game?",
     paragraphs: [
       "This is a fast-paced lasso-and-ride game set in a sprawling frontier. You jump from mount to mount, tame exotic animals, and build your own floating Sky Zoo. Each run mixes reflex-based dodging with light resource decisions: do you push deeper for a rare creature, or bank early coins for a stable upgrade?",
-      "The game runs entirely in your browser through a secure iframe from azgames.io. No download, no signup, and no ads layered on top. We keep the frame untouched so your saves, controls, and achievements behave exactly like the native version.",
+      "The game runs in your browser through a secure iframe from azgames.io. No download, no signup, and no ad units are added by this hub. We keep the frame untouched so input and game state remain with the source provider.",
     ],
   },
   {
@@ -122,12 +121,12 @@ const faqItems = [
   {
     question: "Why is the game not loading?",
     answer:
-      "The iframe streams from azgames.io. If it does not load, check your network, disable aggressive ad blockers, or try a different browser. The game requires a stable internet connection and works best on Chrome, Firefox, or Safari.",
+      "The iframe streams from azgames.io. If it does not load, check your network, disable aggressive content blockers, or try a different browser. The game requires a stable internet connection and works best on Chrome, Firefox, or Safari.",
   },
   {
     question: "Is Cowboy Safari free?",
     answer:
-      "Yes. This page embeds the official browser version with no ads, no signup, and no in-app purchases. It is a free-to-play web game.",
+      "Yes. This page embeds the free browser game with no signup and no in-page ad units added by this hub. Game availability and progress remain with the source provider.",
   },
 ];
 
@@ -170,11 +169,11 @@ const homeLdJson = {
       gamePlatform: ["Web Browser", "Desktop", "Mobile"],
       publisher: {
         "@type": "Organization",
-        name: "Azgames",
+        name: "Source game provider",
       },
       developer: {
         "@type": "Organization",
-        name: "Azgames",
+        name: "Source game provider",
       },
       applicationCategory: "Game",
       operatingSystem: "Web",
@@ -248,7 +247,7 @@ const homeLdJson = {
 };
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Play Cowboy Safari Online – Free Fullscreen Game with Controls & Sky Zoo Guide",
+  title: "Play Cowboy Safari Online Free | Controls & Sky Zoo",
   description: homeDescription,
   path: "/",
 });
@@ -372,9 +371,11 @@ export default function Home() {
         </div>
       </section>
 
-      <Script id="home-structured-data" type="application/ld+json" strategy="afterInteractive">
-        {JSON.stringify(homeLdJson)}
-      </Script>
+      <script
+        id="home-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeLdJson) }}
+      />
     </>
   );
 }

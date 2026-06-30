@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { RecommendationCard } from "@/components/recommendation-card";
 import { TrackedEmailLink } from "@/components/tracked-email-link";
 import { relatedGames } from "@/data/recommendations";
@@ -7,31 +6,31 @@ import { siteConfig } from "@/lib/site-config";
 import { buildPageMetadata } from "@/lib/seo";
 
 const pageDescription =
-  "Cowboy Safari support desk covering parent FAQs, privacy promises, uptime alerts, and direct escalation paths with same-day email replies.";
+  "Cowboy Safari support center for fan-hub site issues, privacy requests, embed troubleshooting, and clear source-provider boundaries.";
 
 const commitments = [
   {
     title: "Parent & guardian commitments",
     paragraphs: [
-      "Cowboy Safari community nights get rowdy, yet this fan hub treats parents as co-pilots instead of bystanders. We publish ESRB-T reminders on every page, repeat the Cowboy Safari chat code of conduct, and share ready-to-print agreements you can review with younger riders before they hop into voice. That transparency keeps the Cowboy Safari hobby feeling collaborative at home.",
-      "We also log every moderation action tied to this site, including when someone reports a Cowboy Safari clip via the Share Session button. Summaries land in your inbox each Thursday so you always know whether a nickname ban, chat mute, or appeal happened without having to scroll Discord. It is the opposite of the mystery boxes you see on aggregator portals.",
-      "Most importantly, parents can trigger a temporary lockout whenever a break is needed. Drop us a quick Cowboy Safari session ID, and we pause comment visibility or feature placement within thirty minutes so you regain control while still respecting player privacy.",
+      "Cowboy Safari can be a shared family activity when adults know where play happens and what this fan hub can control. We publish clear reminders, keep the iframe source visible, and separate site-support issues from game-account or provider issues.",
+      "This site does not operate Cowboy Safari chat, accounts, moderation queues, or private sessions. If a concern belongs to the source game provider, we tell you that plainly and avoid promising tools we do not own.",
+      "For family safety, use browser permissions, device sound controls, and planned breaks. Contact us for site accessibility, broken links, or embed availability; contact the source provider for in-game account or community enforcement.",
     ],
   },
   {
     title: "Privacy & data hygiene",
     paragraphs: [
-      "Cowboy Safari itself stores progress on Azgames servers, but this fan hub limits data collection to first-party analytics. We do not run ads, we do not fingerprint browsers, and we purge access logs every seven days. The only persistent record is messages submitted through our support page, and even those threads live in an encrypted mailbox with MFA enabled.",
-      "When you submit a form we tag it with an internal ID so parents can cite it later. That ID never leaves the Cowboy Safari support tracker, and we delete attachments automatically after fourteen days. It is a lightweight process inspired by newsroom source handling rather than growth marketing dashboards.",
-      "If you ever need a full export, reply to any thread with the words “Cowboy Safari privacy export” and you will receive a ZIP file listing timestamps, response notes, and the exact volunteers who touched the case. We believe fans deserve the same level of transparency they expect from the official studio.",
+      "Cowboy Safari progress and gameplay data remain with the source game provider. This fan hub limits data collection to first-party analytics, support email you choose to send, and basic operational logs needed to keep the page working.",
+      "When you contact us, include only the details needed to reproduce a site issue: device, browser, page URL, and what you saw. Do not include passwords, payment details, or private game-account information.",
+      "If you need a copy or deletion of a message you sent this fan hub, email the support address from the same inbox. We will confirm what site-support records exist and remove what we control.",
     ],
   },
   {
     title: "Reliability & response time",
     paragraphs: [
-      "Cowboy Safari uptime matters because no one wants to prep for a bounty just to hit a blank frame. Our monitoring pings the azgames.io embed every five minutes from three continents, and we mirror the metrics above so you can see the same latency graphs in real time.",
-      "We categorize every ticket into three severity levels. S1 issues include Cowboy Safari outages, impersonation attempts, or safety escalations; those get a human reply within two hours, even on weekends. S2 issues cover controller bugs or FAQ clarifications and land within twelve hours. S3 feedback such as feature requests still receives a personal acknowledgment within one business day so you never wonder whether your note disappeared.",
-      "During peak update weeks we post a public queue length at the top of this page. Right now the Cowboy Safari inbox averages nine open tickets, and the median resolution window is 6.5 hours. Holding ourselves accountable in public pushes us to keep improving.",
+      "Cowboy Safari availability matters because no one wants to prep for a run just to hit a blank frame. We check the public page and iframe route during routine site reviews, then update copy if a source-side issue persists.",
+      "We triage site-support email by impact: broken play iframe, broken navigation, privacy requests, then guide feedback. High-impact site bugs receive the fastest reply; game-account or provider-only issues are redirected instead of over-promised.",
+      "The goal is practical transparency, not fake operations theater. We keep the support route lightweight, email-first, and focused on issues this fan hub can actually fix.",
     ],
   },
 ];
@@ -40,30 +39,30 @@ const supportFaq = [
   {
     question: "How do I request an urgent Cowboy Safari takedown?",
     answer:
-      "Visit our support page and include the subject “Cowboy Safari takedown” along with the offending URL plus screenshots. We pause the embed locally within minutes, investigate whether the issue originates from azgames.io, and follow up with a detailed log so you can share it with guardians or teachers.",
+      "Email support@cowboysafari.online with the subject “Cowboy Safari takedown” plus the URL and screenshots. We can review pages on this fan hub; for source-game or platform content, contact the provider that hosts it.",
   },
   {
     question: "What personal data does this Cowboy Safari site retain?",
     answer:
-      "Only the details you choose to share. Contact forms capture your name, email, and message plus an optional session ID. We keep spam-protection hashes for seventy-two hours, but Cowboy Safari gameplay data stays on the official servers—we never touch it.",
+      "Only the details you choose to share in email plus ordinary analytics and operational logs. Cowboy Safari gameplay data stays with the source provider—we never receive it.",
   },
   {
-    question: "Can I limit Cowboy Safari voice chat without leaving the page?",
+    question: "Can I limit Cowboy Safari chat or audio from this page?",
     answer:
-      "Yes. Tap the Controls button in the hero, toggle audio focus to Browser Only, and the embed will mute third-party voice bridges. Pair that with the parent-mode tips below so Cowboy Safari stays fun even when you cannot monitor every sentence live.",
+      "Not directly. This fan hub embeds the game iframe and does not control provider chat or voice systems. Use browser permissions, device sound settings, and any controls exposed inside the source game.",
   },
   {
     question: "How do schools or libraries use Cowboy Safari safely?",
     answer:
-      "We provide a deployment packet on request. It includes firewall rules, sample consent letters, and a Cowboy Safari-specific classroom code of conduct. Send us the institution domain and we will respond with the PDF plus an optional orientation call.",
+      "Use this page as a public browser-play reference only. We do not provide school deployment packets, consent templates, or provider-side firewall support. Review your institution policies before letting students access external game iframes.",
   },
 ];
 
 const statusBoard = [
   { label: "Embed status", value: "Operational", detail: "Last alert 14 days ago" },
-  { label: "Ticket queue", value: "9 open", detail: "Median 6.5h" },
-  { label: "Parent hotline", value: "+1-737-555-0146", detail: "Weekdays 9a-7p CT" },
-  { label: "Email SLA", value: "<12h", detail: "Guaranteed for Cowboy Safari issues" },
+  { label: "Support route", value: "Email-first", detail: "Site issues only" },
+  { label: "Game provider", value: "azgames.io", detail: "Iframe source" },
+  { label: "Response scope", value: "Best effort", detail: "No provider account access" },
 ];
 
 const faqSchema = {
@@ -119,7 +118,7 @@ export default function SupportPage() {
             Cowboy Safari help for parents, players, and partner teams.
           </h1>
           <p className="mt-4 text-base text-[#1f140c]/80">
-            This independent desk handles Cowboy Safari uptime alerts, moderation escalations, privacy exports, and school deployment requests. Reach out anytime—we monitor the inbox and hotline so you can focus on enjoying the game.
+            This independent fan hub handles site accessibility, broken links, embed availability notes, and privacy requests for messages sent to us. Game-account, moderation, and provider issues should go to the source platform that controls them.
           </p>
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             {statusBoard.map((item) => (
@@ -168,7 +167,7 @@ export default function SupportPage() {
               >
                 Contact Support
               </TrackedEmailLink>{" "}
-              with your name, device, time of issue, and (optional) session ID. That inbox routes directly to the same volunteers who monitor uptime and community safety.
+              with your device, browser, time of issue, and the page URL. Do not send passwords, payment details, or game-account secrets.
             </p>
             <div className="mt-6 space-y-4 text-sm text-[#1f140c]/85">
               <div className="rounded-2xl border border-[#1f140c]/10 bg-[#fff8ef] p-4">
@@ -181,7 +180,7 @@ export default function SupportPage() {
               </div>
               <div className="rounded-2xl border border-[#1f140c]/10 bg-white p-4">
                 <p className="text-sm font-semibold text-[#1f140c]">Response pledge</p>
-                <p className="mt-2 text-sm">Cowboy Safari outages and safety flags receive replies in ≤2 hours. All other notes receive a thoughtful response within 12 hours.</p>
+                <p className="mt-2 text-sm">Site bugs and privacy requests are handled first. Provider-only game issues receive a redirect instead of a fake site-side fix.</p>
               </div>
             </div>
             <TrackedEmailLink
@@ -196,7 +195,7 @@ export default function SupportPage() {
             <div className="rounded-3xl border border-[#1f140c]/10 bg-white p-6">
               <h3 className="text-lg font-semibold text-[#1f140c]">Need live help?</h3>
               <p className="mt-2">
-                Call the hotline listed above or message {" "}
+                Email {" "}
                 <TrackedEmailLink
                   page="support"
                   location="need_live_help_copy"
@@ -204,12 +203,12 @@ export default function SupportPage() {
                 >
                   Contact Support
                 </TrackedEmailLink>
-                . Mention &ldquo;Cowboy Safari&rdquo; in the subject so our filters prioritize it.
+                . Mention &ldquo;Cowboy Safari&rdquo; in the subject and include the affected URL.
               </p>
               <ul className="mt-4 space-y-2">
-                <li>Weekdays: 9:00 a.m.–7:00 p.m. Central</li>
-                <li>Weekends: Email only, monitored hourly</li>
-                <li>Languages: English + Spanish relay</li>
+                <li>Email-first site support</li>
+                <li>No phone support or live chat</li>
+                <li>No access to source-game accounts</li>
               </ul>
             </div>
             <div className="rounded-3xl border border-[#1f140c]/10 bg-white p-6">
@@ -286,9 +285,11 @@ export default function SupportPage() {
         </div>
       </section>
 
-      <Script id="support-faq-schema" type="application/ld+json" strategy="afterInteractive">
-        {JSON.stringify(faqSchema)}
-      </Script>
+      <script
+        id="support-faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
     </>
   );
 }

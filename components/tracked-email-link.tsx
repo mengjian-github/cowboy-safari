@@ -18,7 +18,7 @@ export function TrackedEmailLink({
       href="/support"
       className={className}
       onClick={() =>
-        trackGA4Event("support_page_nav", {
+        trackGA4Event("support_click", {
           page,
           location,
         })

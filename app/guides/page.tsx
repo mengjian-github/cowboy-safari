@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { RecommendationCard } from "@/components/recommendation-card";
 import { TrackedEmailLink } from "@/components/tracked-email-link";
 import { relatedGames } from "@/data/recommendations";
@@ -36,7 +35,7 @@ const guides = [
     readingTime: "7 min read",
     difficulty: "All skill levels",
     summary:
-      "Balance fuel, ammo, and gadget parts with a three-pouch rotation so you never stall during deep expeditions or co-op raids.",
+      "Balance fuel, ammo, and gadget parts with a three-pouch rotation so you never stall during deep expeditions or score pushes.",
     keyTakeaways: [
       "Follow the 50/35/15 pouch split for fuel, gadgets, and luxuries",
       "Recycle common pelts every third run to trigger vendor discounts",
@@ -45,7 +44,7 @@ const guides = [
     body: [
       "The most common Cowboy Safari mistake is hoarding every collectible until your inventory clogs. Adopt a 50/35/15 split across supplies: half your pouch stays devoted to fuel, thirty-five percent to gadgets, and the remainder to luxuries like vista filters. Whenever Cowboy Safari spawns a limited caravan vendor, dump your luxury stack for credits and reinvest those credits in capacity boosts instead of skins.",
       "Resource droughts usually signal that you are ignoring recycling kiosks. Cowboy Safari merchants refresh their discounts every third run, so sell three common pelts after hunt number two and again after hunt number five. Doing so unlocks turbine upgrades that refill stamina faster than any consumable, making long-score attempts possible without draining your wallet.",
-      "Finally, connect your crafting bench to the co-op depot. Cowboy Safari squads that share schematics cut their grind in half because duplicate blueprints auto-convert into alloy dust. Spend that alloy on wind-restored turbines or holster stabilizers before you even consider cosmetic gear; the stat boost shaves entire minutes off resource farming routes.",
+      "Finally, keep a simple notes sheet for duplicate blueprints and upgrade materials. Treat extra schematics as trade-in value rather than clutter. Spend those materials on wind-restored turbines or holster stabilizers before cosmetic gear; the stat boost shaves entire minutes off resource farming routes.",
     ],
   },
   {
@@ -74,16 +73,16 @@ const guides = [
     readingTime: "5 min read",
     difficulty: "Beginner",
     summary:
-      "Establish voice chat etiquette, configure reporting tools, and keep younger riders safe without muting the social fun that powers the fanbase.",
+      "Set browser-level safety expectations, explain this fan hub's support scope, and keep younger riders safe without promising provider tools we do not control.",
     keyTakeaways: [
-      "Enable session codes so only invited friends join",
-      "Mirror every voice room into the built-in text log",
-      "Bookmark the support form before handing over the keyboard",
+      "Use private play links only when the source provider offers them",
+      "Keep chat and audio safety in the browser or device controls",
+      "Bookmark the support route before handing over the keyboard",
     ],
     body: [
-      "Cowboy Safari co-op shines when communication is crisp, so start every lobby with session codes instead of open matchmaking. Share those codes privately, remind guests about ESRB-T expectations, and keep the social overlay visible. By anchoring Cowboy Safari etiquette upfront, you avoid awkward mid-run arguments and give younger players a script to reference if someone misbehaves.",
-      "Moderation becomes simpler once you mirror voice chat into text. Cowboy Safari features an auto-caption toggle buried in Accessibility. Turn it on and the game will transcribe key phrases, which helps parents scan for red flags even if they are not wearing headsets. Combine that with the Share Session workflow outlined on the Support page so every incident generates a clean, time-stamped packet.",
-      "Before you hand over the keyboard, open the contact drawer on this site and bookmark the support form. Cowboy Safari may be teen-rated, but giving kids a one-click report path keeps them confident. Pair that habit with screen-time break reminders and the game becomes a co-learning space instead of a solo grind.",
+      "Cowboy Safari sessions are easier to supervise when communication rules are set before the run. Keep public chat minimized, use device-level audio controls, and remind younger players to pause if a conversation turns uncomfortable. This fan hub does not provide private lobbies or moderation tools inside the iframe.",
+      "If the source provider exposes chat or audio settings, review them before play. Parents can also use browser permissions, OS-level sound settings, and screen-time reminders to keep the session predictable. Combine those controls with the support route below for site or embed availability issues.",
+      "Before you hand over the keyboard, bookmark this guide and the support page. Cowboy Safari is easier to enjoy when players know where controls, fullscreen, and troubleshooting live. Pair that habit with planned breaks so the game stays a shared activity rather than a solo grind.",
     ],
   },
 ];
@@ -248,9 +247,11 @@ export default function GuidesPage() {
         </div>
       </section>
 
-      <Script id="guides-schema" type="application/ld+json" strategy="afterInteractive">
-        {JSON.stringify(guidesSchema)}
-      </Script>
+      <script
+        id="guides-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(guidesSchema) }}
+      />
     </>
   );
 }
