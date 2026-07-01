@@ -20,6 +20,7 @@ export function trackEvent(eventName: string, properties?: Record<string, string
 export function trackGA4Event(
   eventName:
     | "hero_iframe_visible"
+    | "hero_cta_click"
     | "iframe_loaded"
     | "fullscreen_click"
     | "controls_open"

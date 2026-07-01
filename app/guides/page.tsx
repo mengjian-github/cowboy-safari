@@ -6,7 +6,7 @@ import { siteConfig } from "@/lib/site-config";
 import { buildPageMetadata } from "@/lib/seo";
 
 const pageDescription =
-  "Cowboy Safari guides for animal capture, resource loops, and score pushes with printable frameworks plus parent-friendly safety insights updated weekly.";
+  "Cowboy Safari guides for browser controls, animal-route planning, source-aware upgrade loops, and parent-friendly safety notes for this independent fan hub.";
 
 const guides = [
   {
@@ -16,16 +16,16 @@ const guides = [
     readingTime: "6 min read",
     difficulty: "Intermediate",
     summary:
-      "Prime your scanner, route stamina, and learn the exact chase windows that make herding legendary beasts consistent across biomes.",
+      "Use a simple observe-choose-chain framework to decide when to catch the next mount and when to bank a safer run.",
     keyTakeaways: [
-      "Use altitude pings every 12 seconds to refresh silhouettes",
-      "Save a gadget slot for insulated bolas during scorch weather",
-      "Chain calm whistles before tossing a lasso to avoid panic auras",
+      "Read the next safe target before dismounting",
+      "Prefer stable mounts until iframe input focus feels reliable",
+      "Treat names and stats here as planning labels, not official data",
     ],
     body: [
-      "Cowboy Safari begins each expedition with a wide-open plain, but the quickest hunters zoom their minimap to 40% scale so rare spoor glows brighter. Keep your thermal scanner pulsing every twelve seconds, because Cowboy Safari encodes fresh hoofprints with a faint cyan edge that fades in under twenty seconds. Add a low camera angle and you will visually separate the target herd from the background shimmer even when the sun blinds every other rider.",
-      "Once you tag a lead beast, do not sprint blindly. Cowboy Safari herds love to double back across their old scent trail, so rotate ninety degrees, ping again, and only then trigger your gallop. Use insulated bolas whenever the weather ticker announces Wildfire minutes because the dots apply scorch stacks, and those stacks make frantic animals drop stamina orbs you can convert into bonus route time.",
-      "As you enter the corral phase, glance at the aura meter that sits under the bounty timer. Cowboy Safari AI escalates panic when you spam the lasso, so chain two calm whistles first, strafe backward, then throw a single charged tether. That rhythm prevents red rage flares and keeps village NPCs happy enough to hand over route intel for your next capture loop.",
+      "Cowboy Safari is easiest when you separate observation from action. Before you jump, identify the next safe animal, the lane it is moving through, and the space where your current mount will land if the throw misses. That three-part scan matters more than memorizing an invented stat table.",
+      "Do not sprint blindly after the flashiest target. Stable mounts are useful because they slow the decision loop and help you keep iframe focus, lasso timing, and route reading under control. Move to faster animals only after your hands know where to go after a dismount.",
+      "This guide uses fan terminology such as Plains, Jungle, and Sky Zoo to organize advice. If the embedded source game changes names or unlock order, follow the current iframe and reuse the same principle: catch what you can bank, not what sounds rare.",
     ],
   },
   {
@@ -56,14 +56,14 @@ const guides = [
     summary:
       "Layer multiplier science, perfect dodge timing, and social boosts to sustain 4x combos across every stage of a bounty marathon.",
     keyTakeaways: [
-      "Treat the first ninety seconds as a combo bank, not a killfest",
-      "Stack social boosts right before the canyon gauntlet",
-      "Cut particle density to 70% so inputs stay stable at 120 FPS",
+      "Stabilize steering before chasing a high-score route",
+      "Use bonuses only when your current iframe build clearly exposes them",
+      "Reduce browser distractions if iframe inputs feel delayed",
     ],
     body: [
-      "High scores rarely come from raw aim; they come from pacing. Spend the opening ninety seconds of any Cowboy Safari marathon on setup: lasso a quick trio, slide between cover for the parkour bonus, and keep the multiplier above 2.4x before triggering any elite waves. Cowboy Safari hands out bonus XP when you perform two distinct traversal tricks within ten seconds, so memorize a wall-run into knee slide combo for every biome.",
-      "During the canyon gauntlet, pause before the second choke point and equip a community boost. Cowboy Safari lets you trigger alliance buffs even in solo runs, and those buffs stack with the built-in streak meter. If you maintain 120 FPS by dropping particle density to 70%, your dodge input registers faster, which keeps the chain from resetting when sandstorm darts fly in.",
-      "Finish the run by cashing out during extraction rather than earlier. Cowboy Safari multiplies your bonus by the number of rescued settlers and the amount of unused gadget energy left in your belt. That means you should hold one grappling hook and one audio decoy until the final thirty seconds, then deploy both while sprinting toward the balloon to push the payout past 4x.",
+      "Better scores usually come from pacing, not raw aim. Start with a short setup phase: stabilize steering, catch one safe animal, then decide whether the route is clean enough to continue. If the iframe or browser focus feels unstable, pause the score push and fix inputs first.",
+      "Use multipliers or bonuses only when your current build clearly exposes them. This fan hub does not claim official score formulas, and it avoids exact thresholds that could become stale. The reliable advice is to keep chains controlled and avoid late corrections that reset momentum.",
+      "Finish a push by banking progress earlier than your ego wants. A completed safe run teaches more than a collapsed rare hunt. If you need a harder route, review the controls page, lower browser distractions, and return when your lasso timing is repeatable.",
     ],
   },
   {
@@ -164,14 +164,14 @@ export default function GuidesPage() {
             Guides & Playbook
           </p>
           <h1 className="mt-4 text-4xl font-semibold text-[#1f140c]">
-            Cowboy Safari guides curated by real riders, refreshed every Thursday.
+            Cowboy Safari guides curated as source-aware fan notes, refreshed when evidence changes.
           </h1>
           <p className="mt-4 text-base text-[#1f140c]/80">
-            Each guide blends hands-on testing, leaderboard replay analysis, and parent-mode notes. Bookmark this hub whenever you need actionable Cowboy Safari advice without wading through cluttered aggregator feeds.
+            Each guide blends browser-iframe testing, beginner route planning, and parent-mode notes. Bookmark this hub whenever you need actionable Cowboy Safari advice without unsupported official-sounding claims.
           </p>
           <div className="mt-6 flex flex-wrap gap-4 text-sm text-[#1f140c]/70">
             <span className="rounded-full bg-white px-4 py-2 font-semibold">Updated {new Date(siteConfig.lastUpdatedISO).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
-            <span className="rounded-full bg-white px-4 py-2 font-semibold">4 evergreen routes</span>
+            <span className="rounded-full bg-white px-4 py-2 font-semibold">4 source-aware routes</span>
             <span className="rounded-full bg-white px-4 py-2 font-semibold">Zero ads policy</span>
           </div>
         </div>

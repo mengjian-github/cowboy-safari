@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
-import { trackGA4Event } from "@/lib/analytics";
+import { trackEvent, trackGA4Event } from "@/lib/analytics";
 
 export function SiteHeader() {
   return (
@@ -49,7 +49,10 @@ export function SiteHeader() {
           </a>
           <Link
             href="/#play"
-            onClick={() => trackGA4Event("hero_iframe_visible", { page: "home", location: "header_launch_game", trigger: "cta_click" })}
+            onClick={() => {
+              trackEvent("hero_cta_click", { page: "home", location: "header_launch_game", destination: "#play" });
+              trackGA4Event("hero_cta_click", { page: "home", location: "header_launch_game", destination: "#play" });
+            }}
             className="shrink-0 whitespace-nowrap rounded-full bg-[#b3471b] px-3 py-2 text-xs font-semibold text-white shadow-lg shadow-[#b3471b]/30 transition hover:-translate-y-0.5 sm:px-4 sm:text-sm"
           >
             Launch Game

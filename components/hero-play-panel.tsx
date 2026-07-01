@@ -210,7 +210,10 @@ export function HeroPlayPanel() {
             </button>
             <a
               href="/guides"
-              onClick={() => trackGA4Event("guide_click", { page: "home", location: "hero_guides", destination: "/guides" })}
+              onClick={() => {
+                trackEvent("hero_cta_click", { page: "home", location: "hero_guides", destination: "/guides" });
+                trackGA4Event("guide_click", { page: "home", location: "hero_guides", destination: "/guides" });
+              }}
               className="rounded-2xl border border-transparent bg-[#1f140c] px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-black"
             >
               Browse Guides
@@ -218,6 +221,7 @@ export function HeroPlayPanel() {
             <a
               href="/support"
               onClick={() => {
+                trackEvent("hero_cta_click", { page: "home", location: "hero_email_support", destination: "/support" });
                 trackGA4Event("support_click", { page: "home", location: "hero_email_support" });
               }}
               className="rounded-2xl border border-[#1f140c]/15 px-4 py-3 text-center text-sm font-semibold text-[#1f140c] transition hover:border-[#b3471b] hover:text-[#b3471b]"
@@ -226,7 +230,10 @@ export function HeroPlayPanel() {
             </a>
             <a
               href="/guides#animals-mounts"
-              onClick={() => trackGA4Event("guide_click", { page: "home", location: "hero_animals_guide", destination: "/guides#animals-mounts" })}
+              onClick={() => {
+                trackEvent("hero_cta_click", { page: "home", location: "hero_animals_guide", destination: "/guides#animals-mounts" });
+                trackGA4Event("guide_click", { page: "home", location: "hero_animals_guide", destination: "/guides#animals-mounts" });
+              }}
               className="rounded-2xl border border-[#1f140c]/15 px-4 py-3 text-center text-sm font-semibold text-[#1f140c] transition hover:border-[#b3471b] hover:text-[#b3471b]"
             >
               Animals & Zoo

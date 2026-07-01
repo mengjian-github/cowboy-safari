@@ -3,21 +3,21 @@ import Link from "next/link";
 import { buildPageMetadata } from "@/lib/seo";
 
 const upgrades = [
-  { stage: "1", title: "Habitat capacity", reason: "More animals create the first reliable coin loop.", action: "Upgrade Plains capacity before chasing rare spawns." },
-  { stage: "2", title: "Coin multiplier", reason: "Multiplier upgrades shorten the grind between runs.", action: "Buy multiplier boosts once capacity starts paying back." },
-  { stage: "3", title: "Run stamina", reason: "Longer runs unlock better animal chains and route learning.", action: "Add stamina after you can chain three mounts consistently." },
-  { stage: "4", title: "New habitat slots", reason: "Slots expand the zoo only after base income is stable.", action: "Open new habitats when earlier zones already fund upgrades." },
+  { stage: "1", title: "Stable captures", reason: "Reliable animals create the first repeatable loop.", action: "Practice safer routes before chasing rare or late-run targets." },
+  { stage: "2", title: "Capacity-style upgrades", reason: "Capacity turns routine captures into useful progress.", action: "Prioritize whatever your current build uses to hold or reward more animals." },
+  { stage: "3", title: "Income or stamina boosts", reason: "Boosts help only after your capture loop works.", action: "Add multipliers or stamina when they clearly improve your repeatable route." },
+  { stage: "4", title: "New slots or zones", reason: "Expansion is best after base progress is stable.", action: "Open new paths when earlier routes already fund your next attempts." },
 ];
 
 const pageDescription =
-  "Use this Cowboy Safari Sky Zoo upgrade guide to prioritize habitat capacity, coin multipliers, stamina boosts, new slots, and longer rare-animal routes.";
+  "Use this Cowboy Safari Sky Zoo planning guide to prioritize stable captures, capacity-style upgrades, income or stamina boosts, and safer expansion routes.";
 
 const upgradeGuides = [
   {
     title: "Fast answer: the best Sky Zoo upgrade order",
     paragraphs: [
-      "Upgrade habitat capacity first, then coin multipliers, then run stamina, and only then open new habitat slots. That order is boring but efficient. Capacity makes every captured animal more useful, multipliers shorten the time between purchases, stamina turns better control into longer routes, and new slots matter most after your existing habitats already pay back reliably.",
-      "The common beginner mistake is buying the most exciting visible upgrade instead of the upgrade that improves the next ten runs. Cowboy Safari rewards compounding income. A small capacity increase that pays every session can beat a flashy new slot that sits underfilled because you cannot yet capture enough animals to support it.",
+      "Start with stable captures, then capacity-style upgrades, then income or stamina boosts, and only then expand into new slots or harder routes. That order avoids pretending this fan hub knows every current economy value while still giving beginners a reliable decision model.",
+      "The common beginner mistake is buying the most exciting visible upgrade instead of the upgrade that improves the next ten runs. A small, repeatable improvement can beat a flashy new slot that sits underfilled because you cannot yet capture enough animals to support it.",
     ],
   },
   {
@@ -77,7 +77,7 @@ export default function SkyZooPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#b3471b]/80">Sky Zoo</p>
           <h1 className="mt-4 text-4xl font-semibold text-[#1f140c]">Cowboy Safari Sky Zoo upgrade order.</h1>
           <p className="mt-4 max-w-3xl text-base text-[#1f140c]/80">
-            Start with income stability, then push into longer runs. This page turns the homepage advice into a focused upgrade path so new players know what to buy before chasing rare animals.
+            Start with route stability, then push into longer runs. This page turns the homepage advice into a source-aware upgrade model so new players know what to improve before chasing rare animals.
           </p>
           <ol className="mt-10 space-y-5">
             {upgrades.map((upgrade) => (

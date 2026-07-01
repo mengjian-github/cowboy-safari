@@ -6,7 +6,7 @@ import { SiteFooter } from "@/components/site-footer";
 
 const siteTitle = "Play Cowboy Safari Online – Free Fullscreen Game, Controls & Sky Zoo Guide";
 const siteDescription =
-  "Play Cowboy Safari online free in fullscreen. Learn controls, animals, mounts, Sky Zoo upgrades, missions, and beginner routes. No ads, no signup.";
+  "Play Cowboy Safari online free in fullscreen. Learn controls, animals, mounts, Sky Zoo upgrade planning, and beginner routes. No ads, no signup.";
 
 
 export const metadata: Metadata = {
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     "Cowboy Safari animals",
     "Cowboy Safari Sky Zoo",
     "Cowboy Safari upgrades",
-    "Cowboy Safari missions",
+    "Cowboy Safari beginner route",
     "free online games",
     "lasso game",
     "zoo building game",
