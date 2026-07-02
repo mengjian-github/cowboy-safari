@@ -1,6 +1,6 @@
 "use client";
 
-import { trackGA4Event } from "@/lib/analytics";
+import { trackEvent } from "@/lib/analytics";
 
 export function TrackedEmailLink({
   location,
@@ -18,7 +18,7 @@ export function TrackedEmailLink({
       href="/support"
       className={className}
       onClick={() =>
-        trackGA4Event("support_click", {
+        trackEvent("support_click", {
           page,
           location,
         })

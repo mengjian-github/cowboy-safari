@@ -51,7 +51,7 @@ export function HeroPlayPanel() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && !hasTrackedView) {
-            trackGA4Event("hero_iframe_visible", { game: siteConfig.shortName, source: "azgames.io", trigger: "intersection" });
+            trackEvent("hero_iframe_visible", { game: siteConfig.shortName, source: "azgames.io", trigger: "intersection" });
             setHasTrackedView(true);
           }
         });
@@ -73,6 +73,8 @@ export function HeroPlayPanel() {
     const node = iframeRef.current;
     if (!node) return;
 
+    trackEvent("fullscreen_click", { page: "home", location: "hero_iframe_overlay", game: siteConfig.shortName });
+
     const requestFullscreen =
       node.requestFullscreen ||
       // @ts-expect-error vendor prefixed
@@ -82,7 +84,6 @@ export function HeroPlayPanel() {
 
     if (requestFullscreen) {
       requestFullscreen.call(node);
-      trackGA4Event("fullscreen_click", { page: "home", location: "hero_iframe_overlay", game: siteConfig.shortName });
     } else {
       setToast("Your browser blocked fullscreen. Try manual controls (F11).");
     }
@@ -95,6 +96,8 @@ export function HeroPlayPanel() {
       url: siteConfig.baseUrl,
     };
 
+    trackEvent("share_click", { page: "home", location: "hero_iframe_overlay", method: "share" in navigator ? "native" : "clipboard" });
+
     try {
       if (navigator.share) {
         await navigator.share(shareData);
@@ -104,7 +107,6 @@ export function HeroPlayPanel() {
       } else {
         setToast("Copy this link manually: " + siteConfig.baseUrl);
       }
-      trackGA4Event("share_click", { page: "home", location: "hero_iframe_overlay", method: "share" in navigator ? "native" : "clipboard" });
     } catch {
       setToast("Sharing was canceled.");
     }
@@ -143,7 +145,7 @@ export function HeroPlayPanel() {
               loading="lazy"
               allowFullScreen
               onLoad={() => {
-                trackGA4Event("iframe_loaded", { game: siteConfig.shortName, source: "azgames.io" });
+                trackEvent("iframe_loaded", { game: siteConfig.shortName, source: "azgames.io" });
               }}
               className="h-[560px] w-full rounded-[24px] border-0 bg-black sm:h-[640px] lg:h-[680px]"
             />
@@ -198,10 +200,6 @@ export function HeroPlayPanel() {
                   page: "home",
                   location: controlsOpen ? "close_controls" : "open_controls",
                 });
-                trackGA4Event("controls_open", {
-                  page: "home",
-                  location: controlsOpen ? "close_controls" : "open_controls",
-                });
                 setControlsOpen((prev) => !prev);
               }}
               className="rounded-2xl border border-[#1f140c]/15 px-4 py-3 text-sm font-semibold text-[#1f140c] transition hover:border-[#b3471b] hover:text-[#b3471b]"
@@ -212,7 +210,7 @@ export function HeroPlayPanel() {
               href="/guides"
               onClick={() => {
                 trackEvent("hero_cta_click", { page: "home", location: "hero_guides", destination: "/guides" });
-                trackGA4Event("guide_click", { page: "home", location: "hero_guides", destination: "/guides" });
+                trackEvent("guide_click", { page: "home", location: "hero_guides", destination: "/guides" });
               }}
               className="rounded-2xl border border-transparent bg-[#1f140c] px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-black"
             >
@@ -222,7 +220,7 @@ export function HeroPlayPanel() {
               href="/support"
               onClick={() => {
                 trackEvent("hero_cta_click", { page: "home", location: "hero_email_support", destination: "/support" });
-                trackGA4Event("support_click", { page: "home", location: "hero_email_support" });
+                trackEvent("support_click", { page: "home", location: "hero_email_support" });
               }}
               className="rounded-2xl border border-[#1f140c]/15 px-4 py-3 text-center text-sm font-semibold text-[#1f140c] transition hover:border-[#b3471b] hover:text-[#b3471b]"
             >
@@ -232,7 +230,7 @@ export function HeroPlayPanel() {
               href="/guides#animals-mounts"
               onClick={() => {
                 trackEvent("hero_cta_click", { page: "home", location: "hero_animals_guide", destination: "/guides#animals-mounts" });
-                trackGA4Event("guide_click", { page: "home", location: "hero_animals_guide", destination: "/guides#animals-mounts" });
+                trackEvent("guide_click", { page: "home", location: "hero_animals_guide", destination: "/guides#animals-mounts" });
               }}
               className="rounded-2xl border border-[#1f140c]/15 px-4 py-3 text-center text-sm font-semibold text-[#1f140c] transition hover:border-[#b3471b] hover:text-[#b3471b]"
             >
@@ -246,7 +244,6 @@ export function HeroPlayPanel() {
                 className="text-xs font-semibold uppercase tracking-wide text-[#b3471b] md:hidden"
                 onClick={() => {
                   trackEvent("controls_close", { page: "home", location: "close_controls_panel" });
-                  trackGA4Event("controls_close", { page: "home", location: "close_controls_panel" });
                   setControlsOpen(false);
                 }}
               >
@@ -271,7 +268,6 @@ export function HeroPlayPanel() {
                   setToast("Copy manually from the list above.");
                 }
                 trackEvent("controls_copy", { page: "home", location: "controls_panel" });
-                trackGA4Event("controls_copy", { page: "home", location: "controls_panel" });
               }}
               className="mt-3 w-full rounded-xl border border-[#1f140c]/15 px-3 py-2 text-sm font-semibold text-[#1f140c] transition hover:border-[#b3471b] hover:text-[#b3471b]"
             >
@@ -328,7 +324,7 @@ export function HeroPlayPanel() {
                     href={pill.href}
                     onClick={() => {
                       if (pill.label === "Contact") {
-                        trackGA4Event("support_click", { page: "home", location: "info_pill_contact" });
+                        trackEvent("support_click", { page: "home", location: "info_pill_contact" });
                       }
                     }}
                     className="mt-1 inline-flex font-semibold text-[#b3471b] underline-offset-4 hover:underline"
@@ -352,7 +348,7 @@ export function HeroPlayPanel() {
             <a
               href="/support"
               onClick={() => {
-                trackGA4Event("support_click", { page: "home", location: "footer_support_copy" });
+                trackEvent("support_click", { page: "home", location: "footer_support_copy" });
               }}
               className="font-semibold text-[#b3471b]"
             >

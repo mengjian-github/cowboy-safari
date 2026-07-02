@@ -97,6 +97,33 @@ const foldSections = [
   },
 ];
 
+const searchIntentCards = [
+  {
+    question: "Can I play Cowboy Safari online free?",
+    answer:
+      "Yes. Use the play panel above to load the secure azgames.io iframe. This fan hub does not add a signup wall, download prompt, or extra in-page ad layer.",
+    href: "#play",
+  },
+  {
+    question: "What are the Cowboy Safari controls?",
+    answer:
+      "Desktop players use WASD or Arrow Keys, Space to jump or dismount, and mouse input for lasso timing. Mobile players use short taps, tap-and-hold aim, and swipe-style dismount habits.",
+    href: "/controls",
+  },
+  {
+    question: "Which Cowboy Safari animals should beginners chase?",
+    answer:
+      "Start with stable early mounts before faster animals. The animals page explains Horse, Buffalo, Zebra, Jungle mounts, and later-route labels as planning categories rather than official spawn data.",
+    href: "/animals",
+  },
+  {
+    question: "How should I upgrade the Sky Zoo?",
+    answer:
+      "Prioritize reliable captures, capacity-style upgrades, then income or stamina boosts when your current build exposes them. Expand into new slots only after the base loop feels repeatable.",
+    href: "/sky-zoo",
+  },
+];
+
 const faqItems = [
   {
     question: "How do I play Cowboy Safari in fullscreen?",
@@ -131,6 +158,12 @@ const faqItems = [
 ];
 
 const timelineEvents = [
+  {
+    version: "2026-07-02 – Search intent and event routing refresh",
+    date: "2026-07-02",
+    notes:
+      "Added answer-first search cards for play, controls, animals, and Sky Zoo intent; routed key CTA and iframe events through both Plausible and GA4 where available.",
+  },
   {
     version: "2026-07-01 – Fan hub source-safety refresh",
     date: "2026-07-01",
@@ -265,6 +298,35 @@ export default function Home() {
               ))}
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="border-y border-[#1f140c]/10 bg-[#fffaf2]">
+        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.4em] text-[#b3471b]/80">
+              Fast Answers
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold text-[#1f140c]">
+              Cowboy Safari search answers before you start a run.
+            </h2>
+            <p className="mt-4 text-base text-[#1f140c]/80">
+              These answer-first cards target the questions players ask most often: play access, controls, animals, and Sky Zoo upgrades. Each answer links to a deeper internal page so new visitors can choose the right next step instead of bouncing back to search.
+            </p>
+          </div>
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            {searchIntentCards.map((card) => (
+              <a
+                key={card.question}
+                href={card.href}
+                className="rounded-3xl border border-[#1f140c]/10 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-[#b3471b]/40"
+              >
+                <h3 className="text-lg font-semibold text-[#1f140c]">{card.question}</h3>
+                <p className="mt-3 text-sm leading-7 text-[#1f140c]/80">{card.answer}</p>
+                <span className="mt-4 inline-flex text-sm font-semibold text-[#b3471b]">Read the full route →</span>
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 

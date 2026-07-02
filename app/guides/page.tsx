@@ -30,21 +30,21 @@ const guides = [
   },
   {
     slug: "resource-upgrades",
-    title: "Cowboy Safari Resource & Upgrade Planner",
-    focus: "Economy & crafting",
+    title: "Cowboy Safari Upgrade Planning Without Guesswork",
+    focus: "Economy & route planning",
     readingTime: "7 min read",
     difficulty: "All skill levels",
     summary:
-      "Balance fuel, ammo, and gadget parts with a three-pouch rotation so you never stall during deep expeditions or score pushes.",
+      "Use a source-aware upgrade checklist that prioritizes repeatable captures, capacity, and stamina only when your current iframe build exposes comparable choices.",
     keyTakeaways: [
-      "Follow the 50/35/15 pouch split for fuel, gadgets, and luxuries",
-      "Recycle common pelts every third run to trigger vendor discounts",
-      "Invest in wind-restored turbines before cosmetic unlocks",
+      "Do not follow exact coin or vendor claims from unofficial pages",
+      "Spend first on upgrades that make the next ten runs more stable",
+      "Treat this page as a decision model, not an official economy table",
     ],
     body: [
-      "The most common Cowboy Safari mistake is hoarding every collectible until your inventory clogs. Adopt a 50/35/15 split across supplies: half your pouch stays devoted to fuel, thirty-five percent to gadgets, and the remainder to luxuries like vista filters. Whenever Cowboy Safari spawns a limited caravan vendor, dump your luxury stack for credits and reinvest those credits in capacity boosts instead of skins.",
-      "Resource droughts usually signal that you are ignoring recycling kiosks. Cowboy Safari merchants refresh their discounts every third run, so sell three common pelts after hunt number two and again after hunt number five. Doing so unlocks turbine upgrades that refill stamina faster than any consumable, making long-score attempts possible without draining your wallet.",
-      "Finally, keep a simple notes sheet for duplicate blueprints and upgrade materials. Treat extra schematics as trade-in value rather than clutter. Spend those materials on wind-restored turbines or holster stabilizers before cosmetic gear; the stat boost shaves entire minutes off resource farming routes.",
+      "The safest Cowboy Safari upgrade plan starts with evidence you can see inside the iframe. If the current build shows habitat capacity, income, stamina, or new slots, rank those choices by whether they improve your next repeatable route. If a value is not visible, do not copy exact prices, vendor timers, or material names from unofficial pages.",
+      "A practical order is capacity first, then income or stamina after you can bring animals back consistently, then expansion when earlier routes fund the next attempt. This keeps the guide useful even if the source provider changes economy labels, reward timing, or upgrade names.",
+      "Use a short notes sheet after each run: which animal you caught, whether the route felt controlled, what upgrade was visible, and whether the purchase made the next run easier. That record beats memorizing stale item lists because it reflects the Cowboy Safari build you are actually playing today.",
     ],
   },
   {
@@ -54,7 +54,7 @@ const guides = [
     readingTime: "8 min read",
     difficulty: "Advanced",
     summary:
-      "Layer multiplier science, perfect dodge timing, and social boosts to sustain 4x combos across every stage of a bounty marathon.",
+      "Improve score attempts with pacing, iframe focus checks, and stable route choices before chasing harder animals.",
     keyTakeaways: [
       "Stabilize steering before chasing a high-score route",
       "Use bonuses only when your current iframe build clearly exposes them",
