@@ -124,6 +124,27 @@ const searchIntentCards = [
   },
 ];
 
+const serpDifferentiators = [
+  {
+    title: "Aggregator pages",
+    gap: "Usually open with a generic play tile and thin copy.",
+    answer:
+      "This hub puts the playable iframe, controls, source note, support path, and beginner route links above the fold so search visitors get a complete answer before they leave.",
+  },
+  {
+    title: "Store or fandom pages",
+    gap: "Useful for availability or lore, but often far from the browser-play task.",
+    answer:
+      "Our pages stay focused on the web session: keyboard focus, fullscreen, lasso timing, animals by role, Sky Zoo upgrade order, and iframe troubleshooting.",
+  },
+  {
+    title: "Unsupported exact-stat guides",
+    gap: "Exact spawn, coin, or patch claims become stale quickly.",
+    answer:
+      "We label uncertain mechanics, avoid fake official claims, and update the visible freshness log when evidence changes. The source provider remains authoritative.",
+  },
+];
+
 const faqItems = [
   {
     question: "How do I play Cowboy Safari in fullscreen?",
@@ -325,6 +346,31 @@ export default function Home() {
                 <p className="mt-3 text-sm leading-7 text-[#1f140c]/80">{card.answer}</p>
                 <span className="mt-4 inline-flex text-sm font-semibold text-[#b3471b]">Read the full route →</span>
               </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-[#1f140c]/10 bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.4em] text-[#b3471b]/80">
+              SERP Difference
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold text-[#1f140c]">
+              Why this Cowboy Safari page is not another thin play mirror.
+            </h2>
+            <p className="mt-4 text-base text-[#1f140c]/80">
+              Current search results are dominated by generic aggregators, app-store style pages, and broad wiki content. This page answers the actual browser-player task: play now, understand controls, choose animals, plan Sky Zoo upgrades, and know what this fan hub can verify.
+            </p>
+          </div>
+          <div className="mt-8 grid gap-4 lg:grid-cols-3">
+            {serpDifferentiators.map((item) => (
+              <article key={item.title} className="rounded-3xl border border-[#1f140c]/10 bg-[#fff8ef] p-5 shadow-sm">
+                <h3 className="text-xl font-semibold text-[#1f140c]">{item.title}</h3>
+                <p className="mt-3 text-sm font-semibold text-[#b3471b]">Gap: {item.gap}</p>
+                <p className="mt-3 text-sm leading-7 text-[#1f140c]/80">{item.answer}</p>
+              </article>
             ))}
           </div>
         </div>

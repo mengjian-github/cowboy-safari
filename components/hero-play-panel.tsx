@@ -52,6 +52,7 @@ export function HeroPlayPanel() {
         entries.forEach((entry) => {
           if (entry.isIntersecting && !hasTrackedView) {
             trackEvent("hero_iframe_visible", { game: siteConfig.shortName, source: "azgames.io", trigger: "intersection" });
+            trackEvent("tool_start", { page: "home", location: "hero_iframe", tool: "cowboy_safari_iframe", source: "azgames.io" });
             setHasTrackedView(true);
           }
         });
@@ -146,6 +147,7 @@ export function HeroPlayPanel() {
               allowFullScreen
               onLoad={() => {
                 trackEvent("iframe_loaded", { game: siteConfig.shortName, source: "azgames.io" });
+                trackEvent("tool_result", { page: "home", location: "hero_iframe", tool: "cowboy_safari_iframe", result: "iframe_loaded", source: "azgames.io" });
               }}
               className="h-[560px] w-full rounded-[24px] border-0 bg-black sm:h-[640px] lg:h-[680px]"
             />

@@ -11,6 +11,7 @@ const footerLinks = [
   { label: "Guides", href: "/guides" },
   { label: "Support", href: "/support" },
   { label: "Privacy", href: "/privacy" },
+  { label: "Terms", href: "/terms" },
 ];
 
 const friendLinks = [

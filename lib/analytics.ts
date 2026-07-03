@@ -5,14 +5,26 @@ declare global {
   }
 }
 
+export const eventSchemaVersion = "20260703";
+
+function withEventDefaults(properties?: Record<string, string | number>) {
+  return {
+    event_schema_version: eventSchemaVersion,
+    site: "cowboysafari",
+    ...properties,
+  };
+}
+
 /** Generic tracker: sends to both Plausible and GA4. Use for product-level events. */
 export function trackEvent(eventName: string, properties?: Record<string, string | number>) {
+  const enrichedProperties = withEventDefaults(properties);
+
   if (typeof window !== "undefined" && window.plausible) {
-    window.plausible(eventName, { props: properties });
+    window.plausible(eventName, { props: enrichedProperties });
   }
 
   if (typeof window !== "undefined" && window.gtag) {
-    window.gtag("event", eventName, properties);
+    window.gtag("event", eventName, enrichedProperties);
   }
 }
 
@@ -33,10 +45,12 @@ export function trackGA4Event(
     | "outbound_app_store"
     | "outbound_click"
     | "navigation_click"
-    | "guide_expand",
+    | "guide_expand"
+    | "tool_start"
+    | "tool_result",
   properties?: Record<string, string | number>
 ) {
   if (typeof window !== "undefined" && window.gtag) {
-    window.gtag("event", eventName, properties);
+    window.gtag("event", eventName, withEventDefaults(properties));
   }
 }
