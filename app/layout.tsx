@@ -73,7 +73,7 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://azgames.io" />
         <link rel="image_src" href={`${siteConfig.baseUrl}/og-image.png`} />
-        <meta name="cowboysafari:event_schema_version" content="20260703" />
+        <meta name="cowboysafari:event_schema_version" content="20260704" />
         {/* Google tag (gtag.js) */}
         <script
           async
