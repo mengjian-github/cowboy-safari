@@ -37,7 +37,7 @@ const downloadCards: Array<{
 
 export function HeroPlayPanel() {
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
-  const [controlsOpen, setControlsOpen] = useState(false);
+  const [controlsOpen, setControlsOpen] = useState(true);
   const [toast, setToast] = useState<string | null>(null);
   const [hasTrackedView, setHasTrackedView] = useState(false);
 
@@ -151,7 +151,7 @@ export function HeroPlayPanel() {
               }}
               className="h-[560px] w-full rounded-[24px] border-0 bg-black sm:h-[640px] lg:h-[680px]"
             />
-            <div className="absolute bottom-6 right-6 flex flex-col items-center gap-3">
+            <div className="absolute bottom-6 right-6 hidden flex-col items-center gap-3 sm:flex">
               <button
                 onClick={handleShare}
                 aria-label="Share Cowboy Safari session"
@@ -181,6 +181,20 @@ export function HeroPlayPanel() {
             <p className="mt-3 text-xs text-[#1f140c]/60">
               The Cowboy Safari game streams directly from azgames.io via secure HTTPS. No overlays or ad units are added by this page.
             </p>
+            <div className="mt-4 grid gap-2 sm:hidden">
+              <button
+                onClick={handleFullscreen}
+                className="rounded-2xl bg-[#1f140c] px-4 py-3 text-sm font-semibold text-white"
+              >
+                Fullscreen game
+              </button>
+              <button
+                onClick={handleShare}
+                className="rounded-2xl border border-[#1f140c]/15 px-4 py-3 text-sm font-semibold text-[#1f140c]"
+              >
+                Share or copy link
+              </button>
+            </div>
           </div>
         </div>
         <div className="flex flex-col gap-6 rounded-[28px] border border-[#1f140c]/10 bg-white/80 p-6 shadow-xl">
@@ -239,6 +253,7 @@ export function HeroPlayPanel() {
               Animals & Zoo
             </a>
           </div>
+          {controlsOpen && (
           <div className="rounded-2xl border border-[#1f140c]/10 bg-[#fff8ef] p-4">
             <div className="flex items-center justify-between">
               <p className="text-sm font-semibold text-[#1f140c]">Controls & keyboard layout</p>
@@ -275,6 +290,29 @@ export function HeroPlayPanel() {
             >
               Copy all controls
             </button>
+          </div>
+          )}
+          <div className="rounded-2xl border border-[#1f140c]/10 bg-[#fffaf2] px-4 py-3 text-sm">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#b3471b]/80">Iframe help</p>
+            <p className="mt-1 text-[#1f140c]/80">
+              If keys scroll the page instead of steering, click once inside the game frame. If the frame stays blank, open Support for browser fixes or jump to the Controls guide before retrying.
+            </p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              <a
+                href="/controls"
+                onClick={() => trackEvent("guide_click", { page: "home", location: "iframe_help_controls", destination: "/controls" })}
+                className="rounded-full bg-white px-3 py-2 text-xs font-semibold text-[#1f140c]"
+              >
+                Controls guide
+              </a>
+              <a
+                href="/support"
+                onClick={() => trackEvent("support_click", { page: "home", location: "iframe_help_support" })}
+                className="rounded-full bg-white px-3 py-2 text-xs font-semibold text-[#1f140c]"
+              >
+                Iframe support
+              </a>
+            </div>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             {downloadCards.map((card) => (

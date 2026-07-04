@@ -59,6 +59,20 @@ export function SiteHeader() {
           </Link>
         </div>
       </div>
+      <nav className="border-t border-[#dfc8a7]/50 bg-white/60 px-3 py-2 md:hidden" aria-label="Mobile quick navigation">
+        <div className="mx-auto grid max-w-6xl grid-cols-4 gap-2 text-center text-xs font-semibold text-[#1f140c]/80">
+          {siteConfig.nav.slice(1, 5).map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={() => trackGA4Event("navigation_click", { page: "global_mobile_nav", destination: item.href, label: item.label })}
+              className="rounded-full border border-[#1f140c]/10 bg-[#fff8ef] px-2 py-2 transition hover:border-[#b3471b] hover:text-[#b3471b]"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+      </nav>
     </header>
   );
 }
