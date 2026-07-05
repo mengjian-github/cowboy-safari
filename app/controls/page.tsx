@@ -51,17 +51,47 @@ const controlLessons = [
   },
 ];
 
+const controlFaq = [
+  {
+    question: "Why do Cowboy Safari controls scroll the page instead of moving?",
+    answer:
+      "The iframe has probably lost focus. Click inside the game frame once, use the Focus game helper on the homepage, then try WASD, arrows, or Space again before refreshing the page.",
+  },
+  {
+    question: "What is the best Cowboy Safari control setup for beginners?",
+    answer:
+      "Use keyboard steering plus mouse lasso on desktop, or short tap steering plus tap-and-hold lasso on mobile. Keep inputs small and dismount early so the next target is already selected.",
+  },
+  {
+    question: "Should I use fullscreen for Cowboy Safari?",
+    answer:
+      "Fullscreen is helpful when browser chrome or mobile UI hides the iframe. Load the game first, then use the fullscreen button or F11 so the frame receives input cleanly.",
+  },
+];
+
 const controlsJsonLd = {
   "@context": "https://schema.org",
-  "@type": "HowTo",
-  name: "Cowboy Safari Controls",
-  description: pageDescription,
-  step: controls.map((item, index) => ({
-    "@type": "HowToStep",
-    position: index + 1,
-    name: item.action,
-    text: `${item.desktop} on desktop. ${item.mobile} on mobile. ${item.note}`,
-  })),
+  "@graph": [
+    {
+      "@type": "HowTo",
+      name: "Cowboy Safari Controls",
+      description: pageDescription,
+      step: controls.map((item, index) => ({
+        "@type": "HowToStep",
+        position: index + 1,
+        name: item.action,
+        text: `${item.desktop} on desktop. ${item.mobile} on mobile. ${item.note}`,
+      })),
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: controlFaq.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: { "@type": "Answer", text: faq.answer },
+      })),
+    },
+  ],
 };
 
 export const metadata: Metadata = buildPageMetadata({
@@ -107,6 +137,18 @@ export default function ControlsPage() {
                 </div>
               </article>
             ))}
+          </div>
+
+          <div className="mt-10 rounded-3xl border border-[#1f140c]/10 bg-white p-6 shadow-sm">
+            <h2 className="text-2xl font-semibold text-[#1f140c]">Cowboy Safari controls FAQ</h2>
+            <div className="mt-5 grid gap-4">
+              {controlFaq.map((faq) => (
+                <article key={faq.question} className="rounded-2xl bg-[#fff8ef] p-4 text-sm leading-7 text-[#1f140c]/85">
+                  <h3 className="text-base font-semibold text-[#1f140c]">{faq.question}</h3>
+                  <p className="mt-2">{faq.answer}</p>
+                </article>
+              ))}
+            </div>
           </div>
 
           <div className="mt-10 rounded-3xl border border-[#1f140c]/10 bg-white p-6 shadow-sm">

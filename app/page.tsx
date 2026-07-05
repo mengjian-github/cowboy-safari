@@ -180,6 +180,12 @@ const faqItems = [
 
 const timelineEvents = [
   {
+    version: "2026-07-05 – SEO and iframe-friction refresh",
+    date: "2026-07-05",
+    notes:
+      "Updated the event schema marker, added a focus-rescue action below the iframe, and expanded Controls, Animals, and Sky Zoo FAQ schema so search visitors can find exact answers faster.",
+  },
+  {
     version: "2026-07-02 – Search intent and event routing refresh",
     date: "2026-07-02",
     notes:

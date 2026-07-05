@@ -50,17 +50,47 @@ const upgradeGuides = [
   },
 ];
 
+const skyZooFaq = [
+  {
+    question: "What should I upgrade first in Cowboy Safari Sky Zoo?",
+    answer:
+      "Start with stable captures and capacity-style upgrades. Capacity makes ordinary runs valuable before you spend heavily on multipliers, stamina, or new slots.",
+  },
+  {
+    question: "When should I buy stamina upgrades?",
+    answer:
+      "Buy stamina after controls are stable. If you cannot chain three mounts reliably, capacity and income upgrades usually help more than a longer chaotic run.",
+  },
+  {
+    question: "Should I chase rare animals before upgrading habitats?",
+    answer:
+      "No. Rare animals are only useful if you can bank them. Build a repeatable Plains or Jungle loop first, then use upgraded capacity and income to support harder routes.",
+  },
+];
+
 const skyZooJsonLd = {
   "@context": "https://schema.org",
-  "@type": "HowTo",
-  name: "Cowboy Safari Sky Zoo upgrade order",
-  description: pageDescription,
-  step: upgrades.map((upgrade) => ({
-    "@type": "HowToStep",
-    position: Number(upgrade.stage),
-    name: upgrade.title,
-    text: `${upgrade.reason} ${upgrade.action}`,
-  })),
+  "@graph": [
+    {
+      "@type": "HowTo",
+      name: "Cowboy Safari Sky Zoo upgrade order",
+      description: pageDescription,
+      step: upgrades.map((upgrade) => ({
+        "@type": "HowToStep",
+        position: Number(upgrade.stage),
+        name: upgrade.title,
+        text: `${upgrade.reason} ${upgrade.action}`,
+      })),
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: skyZooFaq.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: { "@type": "Answer", text: faq.answer },
+      })),
+    },
+  ],
 };
 
 export const metadata: Metadata = buildPageMetadata({
@@ -109,6 +139,18 @@ export default function SkyZooPage() {
                 </div>
               </article>
             ))}
+          </div>
+
+          <div className="mt-10 rounded-3xl border border-[#1f140c]/10 bg-white p-6 shadow-sm">
+            <h2 className="text-2xl font-semibold text-[#1f140c]">Cowboy Safari Sky Zoo FAQ</h2>
+            <div className="mt-5 grid gap-4">
+              {skyZooFaq.map((faq) => (
+                <article key={faq.question} className="rounded-2xl bg-[#fff8ef] p-4 text-sm leading-7 text-[#1f140c]/85">
+                  <h3 className="text-base font-semibold text-[#1f140c]">{faq.question}</h3>
+                  <p className="mt-2">{faq.answer}</p>
+                </article>
+              ))}
+            </div>
           </div>
 
           <div className="mt-10 rounded-3xl border border-[#1f140c]/10 bg-white p-6 shadow-sm">

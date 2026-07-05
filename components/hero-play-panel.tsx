@@ -113,6 +113,13 @@ export function HeroPlayPanel() {
     }
   };
 
+  const handleFocusHelp = () => {
+    iframeRef.current?.focus();
+    setToast("Game frame focused. Try WASD, arrows, or Space again.");
+    trackEvent("iframe_focus_help", { page: "home", location: "hero_iframe_help", action: "focus_frame" });
+    trackEvent("dead_click_rescue_click", { page: "home", location: "hero_iframe_help", action: "focus_frame" });
+  };
+
   return (
     <section id="play" className="relative overflow-hidden bg-transparent lg:min-h-[100vh]">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-8 sm:px-6 lg:grid-cols-[minmax(0,1fr),340px] lg:px-8">
@@ -181,6 +188,25 @@ export function HeroPlayPanel() {
             <p className="mt-3 text-xs text-[#1f140c]/60">
               The Cowboy Safari game streams directly from azgames.io via secure HTTPS. No overlays or ad units are added by this page.
             </p>
+            <div className="mt-3 grid gap-2 rounded-2xl border border-[#b3471b]/20 bg-[#fff8ef] p-3 text-sm text-[#1f140c]/80 sm:grid-cols-[1fr_auto_auto] sm:items-center">
+              <p>
+                Keys scrolling the page or the first click doing nothing? Focus the iframe once, then retry the lasso controls.
+              </p>
+              <button
+                type="button"
+                onClick={handleFocusHelp}
+                className="rounded-xl bg-[#b3471b] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#8f3716]"
+              >
+                Focus game
+              </button>
+              <a
+                href="/support"
+                onClick={() => trackEvent("support_click", { page: "home", location: "iframe_rescue_bar", destination: "/support" })}
+                className="rounded-xl border border-[#1f140c]/15 px-4 py-2 text-center text-sm font-semibold text-[#1f140c] transition hover:border-[#b3471b] hover:text-[#b3471b]"
+              >
+                Fix loading
+              </a>
+            </div>
             <div className="mt-4 grid gap-2 sm:hidden">
               <button
                 onClick={handleFullscreen}

@@ -55,16 +55,46 @@ const animalGuides = [
   },
 ];
 
+const animalsFaq = [
+  {
+    question: "What is the best Cowboy Safari animal for beginners?",
+    answer:
+      "Buffalo is the safest beginner label because it is slower and gives players more time to aim. Use Horse for baseline movement, then move to Zebra only after lasso timing is stable.",
+  },
+  {
+    question: "Are these Cowboy Safari animal names official?",
+    answer:
+      "Treat them as fan planning labels. The embedded source game remains authoritative for current names, spawn behavior, unlock order, and any official patch changes.",
+  },
+  {
+    question: "How do animals affect Sky Zoo progress?",
+    answer:
+      "Stable repeat captures usually matter more than rare misses. Use common animals to fund capacity and income upgrades, then chase harder biome animals once your route is reliable.",
+  },
+];
+
 const animalsJsonLd = {
   "@context": "https://schema.org",
-  "@type": "ItemList",
-  name: "Cowboy Safari animals and mounts",
-  itemListElement: animals.map((animal, index) => ({
-    "@type": "ListItem",
-    position: index + 1,
-    name: animal.name,
-    description: `${animal.biome}: ${animal.role}. ${animal.tip}`,
-  })),
+  "@graph": [
+    {
+      "@type": "ItemList",
+      name: "Cowboy Safari animals and mounts",
+      itemListElement: animals.map((animal, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: animal.name,
+        description: `${animal.biome}: ${animal.role}. ${animal.tip}`,
+      })),
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: animalsFaq.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: { "@type": "Answer", text: faq.answer },
+      })),
+    },
+  ],
 };
 
 export const metadata: Metadata = buildPageMetadata({
@@ -109,6 +139,18 @@ export default function AnimalsPage() {
                 </div>
               </article>
             ))}
+          </div>
+
+          <div className="mt-10 rounded-3xl border border-[#1f140c]/10 bg-white p-6 shadow-sm">
+            <h2 className="text-2xl font-semibold text-[#1f140c]">Cowboy Safari animals FAQ</h2>
+            <div className="mt-5 grid gap-4">
+              {animalsFaq.map((faq) => (
+                <article key={faq.question} className="rounded-2xl bg-[#fff8ef] p-4 text-sm leading-7 text-[#1f140c]/85">
+                  <h3 className="text-base font-semibold text-[#1f140c]">{faq.question}</h3>
+                  <p className="mt-2">{faq.answer}</p>
+                </article>
+              ))}
+            </div>
           </div>
 
           <div className="mt-10 rounded-3xl border border-[#1f140c]/10 bg-white p-6 shadow-sm">
