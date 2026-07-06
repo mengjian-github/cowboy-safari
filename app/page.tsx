@@ -145,6 +145,33 @@ const serpDifferentiators = [
   },
 ];
 
+const rescueActions = [
+  {
+    title: "If you came to play",
+    action: "Use the play panel first, then Focus game if keyboard input scrolls the page.",
+    link: "#play",
+    cta: "Open the game panel",
+  },
+  {
+    title: "If you came for controls",
+    action: "Read the desktop/mobile table before chasing rare animals or score routes.",
+    link: "/controls",
+    cta: "Read controls",
+  },
+  {
+    title: "If you came for animals",
+    action: "Start with stable mounts, then use the Sky Zoo plan to decide when to expand.",
+    link: "/animals",
+    cta: "Compare animals",
+  },
+  {
+    title: "If the iframe fails",
+    action: "Use Support for blank-frame, blocker, school-network, or takedown paths instead of dead-clicking the embed.",
+    link: "/support",
+    cta: "Fix loading",
+  },
+];
+
 const faqItems = [
   {
     question: "How do I play Cowboy Safari in fullscreen?",
@@ -179,6 +206,12 @@ const faqItems = [
 ];
 
 const timelineEvents = [
+  {
+    version: "2026-07-06 – Search and dead-click rescue refresh",
+    date: "2026-07-06",
+    notes:
+      "Added a visible Focus game shortcut in the help rail, refreshed event schema to 20260706, and expanded answer-first routing for play, controls, animals, Sky Zoo, and support intent.",
+  },
   {
     version: "2026-07-05 – SEO and iframe-friction refresh",
     date: "2026-07-05",
@@ -377,6 +410,35 @@ export default function Home() {
                 <p className="mt-3 text-sm font-semibold text-[#b3471b]">Gap: {item.gap}</p>
                 <p className="mt-3 text-sm leading-7 text-[#1f140c]/80">{item.answer}</p>
               </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-[#1f140c]/10 bg-[#fff8ef]">
+        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.4em] text-[#b3471b]/80">
+              Search Rescue Path
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold text-[#1f140c]">
+              Choose the next Cowboy Safari answer without bouncing back to search.
+            </h2>
+            <p className="mt-4 text-base text-[#1f140c]/80">
+              The most common friction is not rage clicks; it is visitors landing on the wrong next step. Use these short paths to reach the iframe, controls, animal list, or support route with one click.
+            </p>
+          </div>
+          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {rescueActions.map((item) => (
+              <a
+                key={item.title}
+                href={item.link}
+                className="rounded-3xl border border-[#1f140c]/10 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-[#b3471b]/40"
+              >
+                <h3 className="text-lg font-semibold text-[#1f140c]">{item.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-[#1f140c]/80">{item.action}</p>
+                <span className="mt-4 inline-flex text-sm font-semibold text-[#b3471b]">{item.cta} →</span>
+              </a>
             ))}
           </div>
         </div>

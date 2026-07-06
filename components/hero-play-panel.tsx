@@ -53,6 +53,7 @@ export function HeroPlayPanel() {
           if (entry.isIntersecting && !hasTrackedView) {
             trackEvent("hero_iframe_visible", { game: siteConfig.shortName, source: "azgames.io", trigger: "intersection" });
             trackEvent("tool_start", { page: "home", location: "hero_iframe", tool: "cowboy_safari_iframe", source: "azgames.io" });
+            trackEvent("conversion_goal", { page: "home", location: "hero_iframe_visible", goal: "play_panel_reached", source: "azgames.io" });
             setHasTrackedView(true);
           }
         });
@@ -155,6 +156,7 @@ export function HeroPlayPanel() {
               onLoad={() => {
                 trackEvent("iframe_loaded", { game: siteConfig.shortName, source: "azgames.io" });
                 trackEvent("tool_result", { page: "home", location: "hero_iframe", tool: "cowboy_safari_iframe", result: "iframe_loaded", source: "azgames.io" });
+                trackEvent("conversion_goal", { page: "home", location: "hero_iframe", goal: "iframe_loaded", source: "azgames.io" });
               }}
               className="h-[560px] w-full rounded-[24px] border-0 bg-black sm:h-[640px] lg:h-[680px]"
             />
@@ -321,9 +323,16 @@ export function HeroPlayPanel() {
           <div className="rounded-2xl border border-[#1f140c]/10 bg-[#fffaf2] px-4 py-3 text-sm">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#b3471b]/80">Iframe help</p>
             <p className="mt-1 text-[#1f140c]/80">
-              If keys scroll the page instead of steering, click once inside the game frame. If the frame stays blank, open Support for browser fixes or jump to the Controls guide before retrying.
+              If keys scroll the page instead of steering, use Focus game, then click once inside the play area. If the frame stays blank, open Support for browser fixes or jump to the Controls guide before retrying.
             </p>
             <div className="mt-3 flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={handleFocusHelp}
+                className="rounded-full bg-[#b3471b] px-3 py-2 text-xs font-semibold text-white"
+              >
+                Focus game
+              </button>
               <a
                 href="/controls"
                 onClick={() => trackEvent("guide_click", { page: "home", location: "iframe_help_controls", destination: "/controls" })}
