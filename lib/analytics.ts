@@ -5,7 +5,7 @@ declare global {
   }
 }
 
-export const eventSchemaVersion = "20260706";
+export const eventSchemaVersion = "20260707";
 
 function withEventDefaults(properties?: Record<string, string | number>) {
   return {

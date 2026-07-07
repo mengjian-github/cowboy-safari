@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { HeroPlayPanel } from "@/components/hero-play-panel";
 import { RecommendationCard } from "@/components/recommendation-card";
+import { TrackedInternalLink } from "@/components/tracked-internal-link";
 import { relatedGames } from "@/data/recommendations";
 import { siteConfig } from "@/lib/site-config";
 import { buildPageMetadata } from "@/lib/seo";
@@ -172,6 +173,39 @@ const rescueActions = [
   },
 ];
 
+const longTailAnswerCards = [
+  {
+    query: "play Cowboy Safari online",
+    answer:
+      "Use the first-screen iframe and Launch Game shortcut. This hub keeps the play task above the fold, labels the azgames.io source, and avoids extra signup or download steps.",
+    href: "#play",
+  },
+  {
+    query: "Cowboy Safari controls not working",
+    answer:
+      "Click or tap inside the iframe once, then retry WASD, arrows, Space, or mobile tap-and-hold. The Focus game helper is designed for keyboard-scroll and first-click friction.",
+    href: "/controls",
+  },
+  {
+    query: "Cowboy Safari animals list",
+    answer:
+      "Start with stable Plains mounts, then compare Jungle, Outback, and Mountain labels by role. The animals route separates fan planning labels from official source-game data.",
+    href: "/animals",
+  },
+  {
+    query: "Cowboy Safari Sky Zoo upgrades",
+    answer:
+      "Prioritize repeatable captures, capacity-style upgrades, then income or stamina. The Sky Zoo page gives a safe upgrade order without inventing exact coin values.",
+    href: "/sky-zoo",
+  },
+  {
+    query: "Cowboy Safari blank screen or blocked iframe",
+    answer:
+      "Open Support for blank-frame, blocker, school-network, or takedown paths. It explains what this fan hub can fix and when the source provider remains authoritative.",
+    href: "/support",
+  },
+];
+
 const faqItems = [
   {
     question: "How do I play Cowboy Safari in fullscreen?",
@@ -206,6 +240,12 @@ const faqItems = [
 ];
 
 const timelineEvents = [
+  {
+    version: "2026-07-07 – Long-tail rescue and event schema refresh",
+    date: "2026-07-07",
+    notes:
+      "Added a query-specific answer hub for play, controls, animals, Sky Zoo, and iframe-loading intent; routed answer/rescue clicks through the 20260707 event schema for post-fix CRO review.",
+  },
   {
     version: "2026-07-06 – Search and dead-click rescue refresh",
     date: "2026-07-06",
@@ -376,15 +416,18 @@ export default function Home() {
           </div>
           <div className="mt-8 grid gap-4 md:grid-cols-2">
             {searchIntentCards.map((card) => (
-              <a
+              <TrackedInternalLink
                 key={card.question}
                 href={card.href}
+                page="home"
+                location="fast_answer_cards"
+                label={card.question}
                 className="rounded-3xl border border-[#1f140c]/10 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-[#b3471b]/40"
               >
                 <h3 className="text-lg font-semibold text-[#1f140c]">{card.question}</h3>
                 <p className="mt-3 text-sm leading-7 text-[#1f140c]/80">{card.answer}</p>
                 <span className="mt-4 inline-flex text-sm font-semibold text-[#b3471b]">Read the full route →</span>
-              </a>
+              </TrackedInternalLink>
             ))}
           </div>
         </div>
@@ -415,6 +458,40 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="border-y border-[#1f140c]/10 bg-[#fffaf2]">
+        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.4em] text-[#b3471b]/80">
+              Query Rescue Hub
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold text-[#1f140c]">
+              Direct answers for Cowboy Safari searches that were still ranking too deep.
+            </h2>
+            <p className="mt-4 text-base text-[#1f140c]/80">
+              Google impressions are still early, so this section maps exact long-tail search intent to the fastest internal route. It gives crawlers and visitors stronger answer blocks for play access, controls, animals, Sky Zoo planning, and iframe troubleshooting.
+            </p>
+          </div>
+          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+            {longTailAnswerCards.map((card) => (
+              <TrackedInternalLink
+                key={card.query}
+                href={card.href}
+                eventName="long_tail_answer_click"
+                page="home"
+                location="query_rescue_hub"
+                label={card.query}
+                className="rounded-3xl border border-[#1f140c]/10 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-[#b3471b]/40"
+              >
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#b3471b]/80">Search intent</p>
+                <h3 className="mt-3 text-lg font-semibold text-[#1f140c]">{card.query}</h3>
+                <p className="mt-3 text-sm leading-7 text-[#1f140c]/80">{card.answer}</p>
+                <span className="mt-4 inline-flex text-sm font-semibold text-[#b3471b]">Open answer →</span>
+              </TrackedInternalLink>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="border-y border-[#1f140c]/10 bg-[#fff8ef]">
         <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
@@ -430,15 +507,19 @@ export default function Home() {
           </div>
           <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {rescueActions.map((item) => (
-              <a
+              <TrackedInternalLink
                 key={item.title}
                 href={item.link}
+                eventName="dead_click_rescue_click"
+                page="home"
+                location="search_rescue_path"
+                label={item.title}
                 className="rounded-3xl border border-[#1f140c]/10 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-[#b3471b]/40"
               >
                 <h3 className="text-lg font-semibold text-[#1f140c]">{item.title}</h3>
                 <p className="mt-3 text-sm leading-7 text-[#1f140c]/80">{item.action}</p>
                 <span className="mt-4 inline-flex text-sm font-semibold text-[#b3471b]">{item.cta} →</span>
-              </a>
+              </TrackedInternalLink>
             ))}
           </div>
         </div>
