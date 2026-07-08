@@ -204,6 +204,42 @@ const longTailAnswerCards = [
       "Open Support for blank-frame, blocker, school-network, or takedown paths. It explains what this fan hub can fix and when the source provider remains authoritative.",
     href: "/support",
   },
+  {
+    query: "Cowboy Safari unblocked browser play",
+    answer:
+      "Use the no-download play panel first, then check Support if a school, office, or content blocker prevents the azgames.io iframe from loading.",
+    href: "/support",
+  },
+  {
+    query: "Azgames Cowboy Safari controls",
+    answer:
+      "The iframe source is azgames.io, while this fan hub keeps the controls, fullscreen, focus, and lasso timing guidance one click away.",
+    href: "/controls",
+  },
+];
+
+const reviewActionCards = [
+  {
+    title: "Play access answer",
+    metric: "Search issue: deep primary rank",
+    action: "Keep the iframe, source note, no-signup proof, and play shortcut visible above the fold.",
+    href: "#play",
+    label: "review_play_access",
+  },
+  {
+    title: "Long-tail rescue",
+    metric: "Search issue: 0 clicks / low impressions",
+    action: "Route unblocked, controls, animals, Sky Zoo, and blank-screen intent into specific indexable pages.",
+    href: "#query-rescue",
+    label: "review_long_tail_rescue",
+  },
+  {
+    title: "Behavior sample marker",
+    metric: "CRO issue: post-fix sample low",
+    action: "Mark 20260708 review clicks separately so the next 100-session review can compare answer/rescue distribution.",
+    href: "/guides",
+    label: "review_behavior_marker",
+  },
 ];
 
 const faqItems = [
@@ -240,6 +276,12 @@ const faqItems = [
 ];
 
 const timelineEvents = [
+  {
+    version: "2026-07-08 – Full-cycle review action and GEO entry",
+    date: "2026-07-08",
+    notes:
+      "Added /llms.txt, refreshed the event schema to 20260708, widened long-tail rescue coverage for unblocked and azgames controls intent, and added review_action_click cards for the next post-fix sample review.",
+  },
   {
     version: "2026-07-07 – Long-tail rescue and event schema refresh",
     date: "2026-07-07",
@@ -458,7 +500,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-[#1f140c]/10 bg-[#fffaf2]">
+      <section id="query-rescue" className="border-y border-[#1f140c]/10 bg-[#fffaf2]">
         <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <p className="text-xs font-semibold uppercase tracking-[0.4em] text-[#b3471b]/80">
@@ -471,7 +513,7 @@ export default function Home() {
               Google impressions are still early, so this section maps exact long-tail search intent to the fastest internal route. It gives crawlers and visitors stronger answer blocks for play access, controls, animals, Sky Zoo planning, and iframe troubleshooting.
             </p>
           </div>
-          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {longTailAnswerCards.map((card) => (
               <TrackedInternalLink
                 key={card.query}
@@ -486,6 +528,40 @@ export default function Home() {
                 <h3 className="mt-3 text-lg font-semibold text-[#1f140c]">{card.query}</h3>
                 <p className="mt-3 text-sm leading-7 text-[#1f140c]/80">{card.answer}</p>
                 <span className="mt-4 inline-flex text-sm font-semibold text-[#b3471b]">Open answer →</span>
+              </TrackedInternalLink>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-[#1f140c]/10 bg-[#1f140c] text-white">
+        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.4em] text-[#ffbd80]">
+              2026-07-08 Review Actions
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold">
+              What changed after the latest full-cycle review.
+            </h2>
+            <p className="mt-4 text-base text-white/75">
+              The current review found no P0 production break, but primary-query ranking and post-fix behavior samples are still weak. These cards expose the internal fixes to users and send a dedicated event for the next CRO read.
+            </p>
+          </div>
+          <div className="mt-8 grid gap-4 lg:grid-cols-3">
+            {reviewActionCards.map((card) => (
+              <TrackedInternalLink
+                key={card.title}
+                href={card.href}
+                eventName="review_action_click"
+                page="home"
+                location="fullcycle_review_20260708"
+                label={card.label}
+                className="rounded-3xl border border-white/10 bg-white/10 p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-[#ffbd80]/60"
+              >
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#ffbd80]">{card.metric}</p>
+                <h3 className="mt-3 text-lg font-semibold text-white">{card.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-white/75">{card.action}</p>
+                <span className="mt-4 inline-flex text-sm font-semibold text-[#ffbd80]">Open fix path →</span>
               </TrackedInternalLink>
             ))}
           </div>

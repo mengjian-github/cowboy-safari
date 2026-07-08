@@ -5,7 +5,7 @@ declare global {
   }
 }
 
-export const eventSchemaVersion = "20260707";
+export const eventSchemaVersion = "20260708";
 
 function withEventDefaults(properties?: Record<string, string | number>) {
   return {
@@ -50,7 +50,8 @@ export function trackGA4Event(
     | "tool_result"
     | "conversion_goal"
     | "iframe_focus_help"
-    | "dead_click_rescue_click",
+    | "dead_click_rescue_click"
+    | "review_action_click",
   properties?: Record<string, string | number>
 ) {
   if (typeof window !== "undefined" && window.gtag) {
