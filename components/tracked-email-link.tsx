@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { trackEvent } from "@/lib/analytics";
 
 export function TrackedEmailLink({
@@ -14,7 +15,7 @@ export function TrackedEmailLink({
   children: React.ReactNode;
 }) {
   return (
-    <a
+    <Link
       href="/support"
       className={className}
       onClick={() =>
@@ -25,6 +26,6 @@ export function TrackedEmailLink({
       }
     >
       {children}
-    </a>
+    </Link>
   );
 }

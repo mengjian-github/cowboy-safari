@@ -1,9 +1,10 @@
 export const dynamic = "force-static";
 
 import type { MetadataRoute } from "next";
+import { longTailRoutes } from "@/data/long-tail-pages";
 import { siteConfig } from "@/lib/site-config";
 
-const routes = ["/", "/controls", "/animals", "/sky-zoo", "/guides", "/support", "/privacy", "/terms"];
+const routes = ["/", "/controls", "/animals", "/sky-zoo", "/guides", "/support", "/privacy", "/terms", ...longTailRoutes];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((path) => ({

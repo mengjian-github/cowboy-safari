@@ -10,6 +10,9 @@ const footerLinks = [
   { label: "Sky Zoo", href: "/sky-zoo" },
   { label: "Guides", href: "/guides" },
   { label: "Support", href: "/support" },
+  { label: "Play Online", href: "/play-online" },
+  { label: "Controls Fix", href: "/controls-not-working" },
+  { label: "Blank Screen", href: "/blank-screen" },
   { label: "Privacy", href: "/privacy" },
   { label: "Terms", href: "/terms" },
 ];
@@ -36,7 +39,7 @@ export function SiteFooter() {
             <p className="mt-2 text-sm text-[#1f140c]/70 max-w-prose pr-4">
               Fan-built, non-commercial and transparent about the azgames.io iframe source. Reach us
               on the{" "}
-              <a
+              <Link
                 href="/support"
                 className="font-semibold text-[#b3471b]"
                 onClick={() => {
@@ -44,7 +47,7 @@ export function SiteFooter() {
                 }}
               >
                 Support page
-              </a>
+              </Link>
               .
             </p>
           </div>

@@ -178,43 +178,43 @@ const longTailAnswerCards = [
     query: "play Cowboy Safari online",
     answer:
       "Use the first-screen iframe and Launch Game shortcut. This hub keeps the play task above the fold, labels the azgames.io source, and avoids extra signup or download steps.",
-    href: "#play",
+    href: "/play-online",
   },
   {
     query: "Cowboy Safari controls not working",
     answer:
       "Click or tap inside the iframe once, then retry WASD, arrows, Space, or mobile tap-and-hold. The Focus game helper is designed for keyboard-scroll and first-click friction.",
-    href: "/controls",
+    href: "/controls-not-working",
   },
   {
     query: "Cowboy Safari animals list",
     answer:
       "Start with stable Plains mounts, then compare Jungle, Outback, and Mountain labels by role. The animals route separates fan planning labels from official source-game data.",
-    href: "/animals",
+    href: "/animals-list",
   },
   {
     query: "Cowboy Safari Sky Zoo upgrades",
     answer:
       "Prioritize repeatable captures, capacity-style upgrades, then income or stamina. The Sky Zoo page gives a safe upgrade order without inventing exact coin values.",
-    href: "/sky-zoo",
+    href: "/sky-zoo-upgrades",
   },
   {
     query: "Cowboy Safari blank screen or blocked iframe",
     answer:
       "Open Support for blank-frame, blocker, school-network, or takedown paths. It explains what this fan hub can fix and when the source provider remains authoritative.",
-    href: "/support",
+    href: "/blank-screen",
   },
   {
     query: "Cowboy Safari unblocked browser play",
     answer:
       "Use the no-download play panel first, then check Support if a school, office, or content blocker prevents the azgames.io iframe from loading.",
-    href: "/support",
+    href: "/unblocked",
   },
   {
     query: "Azgames Cowboy Safari controls",
     answer:
       "The iframe source is azgames.io, while this fan hub keeps the controls, fullscreen, focus, and lasso timing guidance one click away.",
-    href: "/controls",
+    href: "/controls-not-working",
   },
 ];
 
@@ -276,6 +276,12 @@ const faqItems = [
 ];
 
 const timelineEvents = [
+  {
+    version: "2026-07-09 – Indexable long-tail answer routes",
+    date: "2026-07-09",
+    notes:
+      "Added six focused answer routes for play online, controls not working, animals list, Sky Zoo upgrades, blank-screen loading, and unblocked browser intent; refreshed sitemap lastmod and event schema to 20260709.",
+  },
   {
     version: "2026-07-08 – Full-cycle review action and GEO entry",
     date: "2026-07-08",

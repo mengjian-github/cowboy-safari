@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { siteConfig } from "@/lib/site-config";
 import { trackEvent, trackGA4Event } from "@/lib/analytics";
@@ -201,13 +202,13 @@ export function HeroPlayPanel() {
               >
                 Focus game
               </button>
-              <a
+              <Link
                 href="/support"
                 onClick={() => trackEvent("support_click", { page: "home", location: "iframe_rescue_bar", destination: "/support" })}
                 className="rounded-xl border border-[#1f140c]/15 px-4 py-2 text-center text-sm font-semibold text-[#1f140c] transition hover:border-[#b3471b] hover:text-[#b3471b]"
               >
                 Fix loading
-              </a>
+              </Link>
             </div>
             <div className="mt-4 grid gap-2 sm:hidden">
               <button
@@ -250,7 +251,7 @@ export function HeroPlayPanel() {
             >
               {controlsOpen ? "Hide Controls" : "Show Controls"}
             </button>
-            <a
+            <Link
               href="/guides"
               onClick={() => {
                 trackEvent("hero_cta_click", { page: "home", location: "hero_guides", destination: "/guides" });
@@ -259,8 +260,8 @@ export function HeroPlayPanel() {
               className="rounded-2xl border border-transparent bg-[#1f140c] px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-black"
             >
               Browse Guides
-            </a>
-            <a
+            </Link>
+            <Link
               href="/support"
               onClick={() => {
                 trackEvent("hero_cta_click", { page: "home", location: "hero_email_support", destination: "/support" });
@@ -269,8 +270,8 @@ export function HeroPlayPanel() {
               className="rounded-2xl border border-[#1f140c]/15 px-4 py-3 text-center text-sm font-semibold text-[#1f140c] transition hover:border-[#b3471b] hover:text-[#b3471b]"
             >
               Contact Support
-            </a>
-            <a
+            </Link>
+            <Link
               href="/guides#animals-mounts"
               onClick={() => {
                 trackEvent("hero_cta_click", { page: "home", location: "hero_animals_guide", destination: "/guides#animals-mounts" });
@@ -279,7 +280,7 @@ export function HeroPlayPanel() {
               className="rounded-2xl border border-[#1f140c]/15 px-4 py-3 text-center text-sm font-semibold text-[#1f140c] transition hover:border-[#b3471b] hover:text-[#b3471b]"
             >
               Animals & Zoo
-            </a>
+            </Link>
           </div>
           {controlsOpen && (
           <div className="rounded-2xl border border-[#1f140c]/10 bg-[#fff8ef] p-4">
@@ -333,20 +334,20 @@ export function HeroPlayPanel() {
               >
                 Focus game
               </button>
-              <a
+              <Link
                 href="/controls"
                 onClick={() => trackEvent("guide_click", { page: "home", location: "iframe_help_controls", destination: "/controls" })}
                 className="rounded-full bg-white px-3 py-2 text-xs font-semibold text-[#1f140c]"
               >
                 Controls guide
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/support"
                 onClick={() => trackEvent("support_click", { page: "home", location: "iframe_help_support" })}
                 className="rounded-full bg-white px-3 py-2 text-xs font-semibold text-[#1f140c]"
               >
                 Iframe support
-              </a>
+              </Link>
             </div>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
@@ -395,7 +396,7 @@ export function HeroPlayPanel() {
                   {pill.label}
                 </p>
                 {pill.href ? (
-                  <a
+                  <Link
                     href={pill.href}
                     onClick={() => {
                       if (pill.label === "Contact") {
@@ -405,7 +406,7 @@ export function HeroPlayPanel() {
                     className="mt-1 inline-flex font-semibold text-[#b3471b] underline-offset-4 hover:underline"
                   >
                     {pill.value}
-                  </a>
+                  </Link>
                 ) : (
                   <p className="mt-1 font-semibold text-[#1f140c]">{pill.value}</p>
                 )}
@@ -420,7 +421,7 @@ export function HeroPlayPanel() {
           </div>
           <p className="text-sm text-[#1f140c]/80">
             Play Cowboy Safari free in your browser. The iframe stays untouched so controls and game state remain with the source provider. Visit our{" "}
-            <a
+            <Link
               href="/support"
               onClick={() => {
                 trackEvent("support_click", { page: "home", location: "footer_support_copy" });
@@ -428,7 +429,7 @@ export function HeroPlayPanel() {
               className="font-semibold text-[#b3471b]"
             >
               Support page
-            </a>
+            </Link>
             {" "}for takedowns or latency reports.
           </p>
         </div>
