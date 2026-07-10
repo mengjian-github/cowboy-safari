@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { TrackedInternalLink } from "@/components/tracked-internal-link";
 import { getLongTailPage, longTailPages } from "@/data/long-tail-pages";
 import { siteConfig } from "@/lib/site-config";
 import { buildPageMetadata } from "@/lib/seo";
@@ -105,12 +106,26 @@ export default async function LongTailIntentPage({ params }: IntentPageProps) {
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#b3471b]/80">Fast answer</p>
               <p className="mt-3 text-lg leading-8 text-[#1f140c]">{page.quickAnswer}</p>
               <div className="mt-6 flex flex-wrap gap-3">
-                <Link href={page.primaryCta.href} className="rounded-full bg-[#b3471b] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#b3471b]/25">
+                <TrackedInternalLink
+                  href={page.primaryCta.href}
+                  eventName="long_tail_cta_click"
+                  page={page.slug}
+                  location="fast_answer_primary"
+                  label={page.primaryCta.label}
+                  className="rounded-full bg-[#b3471b] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#b3471b]/25"
+                >
                   {page.primaryCta.label}
-                </Link>
-                <Link href={page.secondaryCta.href} className="rounded-full border border-[#1f140c]/15 px-5 py-3 text-sm font-semibold text-[#1f140c]">
+                </TrackedInternalLink>
+                <TrackedInternalLink
+                  href={page.secondaryCta.href}
+                  eventName="dead_click_rescue_click"
+                  page={page.slug}
+                  location="fast_answer_secondary"
+                  label={page.secondaryCta.label}
+                  className="rounded-full border border-[#1f140c]/15 px-5 py-3 text-sm font-semibold text-[#1f140c]"
+                >
                   {page.secondaryCta.label}
-                </Link>
+                </TrackedInternalLink>
               </div>
             </article>
 
@@ -149,6 +164,26 @@ export default async function LongTailIntentPage({ params }: IntentPageProps) {
                 </article>
               ))}
             </div>
+          </div>
+
+          <div className="mt-10 flex flex-col gap-4 rounded-3xl border border-[#b3471b]/25 bg-[#fff2e0] p-6 shadow-sm sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#b3471b]/80">Return to game</p>
+              <h2 className="mt-2 text-2xl font-semibold text-[#1f140c]">Ready to test the answer in the iframe?</h2>
+              <p className="mt-2 text-sm leading-6 text-[#1f140c]/80">
+                Go back to the play panel after reading this answer. This recovery path is tracked separately from browsing links so the next CRO review can see whether long-tail visitors return to play.
+              </p>
+            </div>
+            <TrackedInternalLink
+              href="/#play"
+              eventName="return_to_game_click"
+              page={page.slug}
+              location="long_tail_return_panel"
+              label="Return to Cowboy Safari iframe"
+              className="shrink-0 rounded-full bg-[#b3471b] px-5 py-3 text-center text-sm font-semibold text-white shadow-lg shadow-[#b3471b]/25"
+            >
+              Return to game →
+            </TrackedInternalLink>
           </div>
 
           <div className="mt-10 rounded-3xl border border-[#1f140c]/10 bg-white p-6 shadow-sm">

@@ -236,9 +236,16 @@ const reviewActionCards = [
   {
     title: "Behavior sample marker",
     metric: "CRO issue: post-fix sample low",
-    action: "Mark 20260708 review clicks separately so the next 100-session review can compare answer/rescue distribution.",
+    action: "Mark 20260710 review clicks separately so the next 100-session review can compare answer/rescue distribution.",
     href: "/guides",
     label: "review_behavior_marker",
+  },
+  {
+    title: "Return-to-game path",
+    metric: "Dead-click issue: iframe and long-tail CTA closure",
+    action: "Use fixed return-to-game CTAs from every long-tail answer page so visitors can recover to the iframe instead of dead-clicking empty states.",
+    href: "/play-online",
+    label: "review_return_to_game_path",
   },
 ];
 
@@ -276,6 +283,12 @@ const faqItems = [
 ];
 
 const timelineEvents = [
+  {
+    version: "2026-07-10 – CRO return-to-game and referral event refresh",
+    date: "2026-07-10",
+    notes:
+      "Added fixed return-to-game CTA paths across long-tail pages, refreshed event schema to 20260710, and separated referral/outbound events so the next review can distinguish play recovery from external exits.",
+  },
   {
     version: "2026-07-09 – Indexable long-tail answer routes",
     date: "2026-07-09",
@@ -544,23 +557,23 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <p className="text-xs font-semibold uppercase tracking-[0.4em] text-[#ffbd80]">
-              2026-07-08 Review Actions
+              2026-07-10 Review Actions
             </p>
             <h2 className="mt-3 text-3xl font-semibold">
               What changed after the latest full-cycle review.
             </h2>
             <p className="mt-4 text-base text-white/75">
-              The current review found no P0 production break, but primary-query ranking and post-fix behavior samples are still weak. These cards expose the internal fixes to users and send a dedicated event for the next CRO read.
+              The current review found no P0 production break, but primary-query ranking and post-fix behavior samples are still weak. These cards expose the internal fixes to users and send dedicated events for the next CRO read.
             </p>
           </div>
-          <div className="mt-8 grid gap-4 lg:grid-cols-3">
+          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {reviewActionCards.map((card) => (
               <TrackedInternalLink
                 key={card.title}
                 href={card.href}
                 eventName="review_action_click"
                 page="home"
-                location="fullcycle_review_20260708"
+                location="fullcycle_review_20260710"
                 label={card.label}
                 className="rounded-3xl border border-white/10 bg-white/10 p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-[#ffbd80]/60"
               >

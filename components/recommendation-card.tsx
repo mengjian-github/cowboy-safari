@@ -35,6 +35,7 @@ export function RecommendationCard({ game }: { game: RelatedGame }) {
           onClick={() => {
             trackEvent("outbound_click", { page: "home", location: "recommended_game", destination: game.playUrl, label: game.name });
             trackGA4Event("outbound_click", { page: "home", location: "recommended_game", destination: game.playUrl, label: game.name });
+            trackEvent("referral_outbound_click", { page: "home", location: "recommended_game", destination: game.playUrl, label: game.name, source: "curated_alternatives" });
           }}
           className="inline-flex items-center gap-1 text-[#b3471b] underline-offset-4 transition hover:underline"
         >

@@ -69,7 +69,10 @@ export function SiteFooter() {
               <a
                 key={item.href}
                 href={item.href}
-                onClick={() => trackGA4Event("outbound_click", { page: "global_footer", destination: item.href, label: item.label })}
+                onClick={() => {
+                  trackGA4Event("outbound_click", { page: "global_footer", destination: item.href, label: item.label });
+                  trackGA4Event("referral_outbound_click", { page: "global_footer", destination: item.href, label: item.label, source: "footer_recommended_sites" });
+                }}
                 className="block font-medium text-[#1f140c] transition hover:text-[#b3471b]"
               >
                 {item.label}

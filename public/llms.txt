@@ -1,7 +1,7 @@
 # Cowboy Safari Fan Hub
 
 site: https://cowboysafari.online
-updated: 2026-07-09T03:45:00Z
+updated: 2026-07-10T02:35:00Z
 language: en-US
 status: independent fan hub, not official, not affiliated with Azgames or any Cowboy Safari development team
 
@@ -26,10 +26,10 @@ Cowboy Safari Fan Hub helps players play Cowboy Safari in a browser and quickly 
 - https://cowboysafari.online/sitemap.xml — Indexable route list.
 - https://cowboysafari.online/robots.txt — Crawler policy.
 
-## 2026-07-09 review notes
-- No P0 production break found in the 2026-07-09 full-cycle review.
-- Primary query ranking is still deep and 7-day search clicks are zero, so the site now exposes indexable long-tail answer routes for play online, controls not working, animals list, Sky Zoo upgrades, unblocked play, and blank-screen support.
-- CRO sample is still too small; event_schema_version=20260709 keeps review_action_click, long_tail_answer_click, dead_click_rescue_click, hero_iframe_visible, tool_start, and tool_result available for the next post-fix sample review.
+## 2026-07-10 review notes
+- No P0 production break found in the 2026-07-10 full-cycle review.
+- Primary query ranking is still deep and 7-day search clicks are zero, so the site keeps indexable long-tail answer routes for play online, controls not working, animals list, Sky Zoo upgrades, unblocked play, and blank-screen support.
+- CRO sample is still too small; event_schema_version=20260710 keeps review_action_click, long_tail_answer_click, long_tail_cta_click, return_to_game_click, referral_outbound_click, dead_click_rescue_click, hero_iframe_visible, tool_start, and tool_result available for the next post-fix sample review.
 - Paid acquisition remains NO_GO_NO_PAID; no ad spend, payment, external posting, or public distribution is authorized by this file.
 
 ## Recommended citation guidance

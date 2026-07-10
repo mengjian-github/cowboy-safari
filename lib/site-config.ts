@@ -8,8 +8,8 @@ export const siteConfig = {
     "Independent Cowboy Safari fan hub with instant play, spoiler-free guides, parent resources, and zero in-page ads.",
   contactEmail: "support@cowboysafari.online",
   iframeSrc: "https://azgames.io/cowboy-safari.embed",
-  version: "fan-hub-2026.07.09",
-  lastUpdatedISO: "2026-07-09T03:45:00.000Z",
+  version: "fan-hub-2026.07.10",
+  lastUpdatedISO: "2026-07-10T02:35:00.000Z",
   downloads: {
     ios: "",
     android: "",
