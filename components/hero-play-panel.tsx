@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { siteConfig } from "@/lib/site-config";
-import { trackEvent, trackGA4Event } from "@/lib/analytics";
+import { trackEvent } from "@/lib/analytics";
 
 declare global {
   interface Window {
@@ -41,6 +41,7 @@ export function HeroPlayPanel() {
   const [controlsOpen, setControlsOpen] = useState(true);
   const [toast, setToast] = useState<string | null>(null);
   const [hasTrackedView, setHasTrackedView] = useState(false);
+  const hasTrackedStartRef = useRef(false);
 
   useEffect(() => {
     const iframeEl = iframeRef.current;
@@ -52,9 +53,8 @@ export function HeroPlayPanel() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && !hasTrackedView) {
-            trackEvent("hero_iframe_visible", { game: siteConfig.shortName, source: "azgames.io", trigger: "intersection" });
-            trackEvent("tool_start", { page: "home", location: "hero_iframe", tool: "cowboy_safari_iframe", source: "azgames.io" });
-            trackEvent("conversion_goal", { page: "home", location: "hero_iframe_visible", goal: "play_panel_reached", source: "azgames.io" });
+            trackEvent("hero_iframe_visible", { game: siteConfig.shortName, source_provider: "azgames.io", trigger: "intersection" });
+            trackEvent("conversion_goal", { page: "home", location: "hero_iframe_visible", goal: "play_panel_reached", source_provider: "azgames.io" });
             setHasTrackedView(true);
           }
         });
@@ -67,15 +67,35 @@ export function HeroPlayPanel() {
   }, [hasTrackedView]);
 
   useEffect(() => {
+    const iframeEl = iframeRef.current;
+    if (iframeEl && iframeEl.src !== siteConfig.iframeSrc) {
+      iframeEl.src = siteConfig.iframeSrc;
+    }
+  }, []);
+
+  useEffect(() => {
     if (!toast) return;
     const timer = window.setTimeout(() => setToast(null), 3200);
     return () => window.clearTimeout(timer);
   }, [toast]);
 
+  const trackToolStart = (trigger: "iframe_focus" | "focus_help" | "fullscreen") => {
+    if (hasTrackedStartRef.current) return;
+    hasTrackedStartRef.current = true;
+    trackEvent("tool_start", {
+      page: "home",
+      location: "hero_iframe",
+      tool: "cowboy_safari_iframe",
+      source_provider: "azgames.io",
+      trigger,
+    });
+  };
+
   const handleFullscreen = () => {
     const node = iframeRef.current;
     if (!node) return;
 
+    trackToolStart("fullscreen");
     trackEvent("fullscreen_click", { page: "home", location: "hero_iframe_overlay", game: siteConfig.shortName });
 
     const requestFullscreen =
@@ -118,6 +138,7 @@ export function HeroPlayPanel() {
   const handleFocusHelp = () => {
     iframeRef.current?.focus();
     setToast("Game frame focused. Try WASD, arrows, or Space again.");
+    trackToolStart("focus_help");
     trackEvent("iframe_focus_help", { page: "home", location: "hero_iframe_help", action: "focus_frame" });
     trackEvent("dead_click_rescue_click", { page: "home", location: "hero_iframe_help", action: "focus_frame" });
   };
@@ -151,13 +172,15 @@ export function HeroPlayPanel() {
               ref={iframeRef}
               id="cowboy-safari-iframe"
               title="Play Cowboy Safari online"
-              src={siteConfig.iframeSrc}
+              data-source={siteConfig.iframeSrc}
               loading="lazy"
               allowFullScreen
+              onFocus={() => trackToolStart("iframe_focus")}
               onLoad={() => {
-                trackEvent("iframe_loaded", { game: siteConfig.shortName, source: "azgames.io" });
-                trackEvent("tool_result", { page: "home", location: "hero_iframe", tool: "cowboy_safari_iframe", result: "iframe_loaded", source: "azgames.io" });
-                trackEvent("conversion_goal", { page: "home", location: "hero_iframe", goal: "iframe_loaded", source: "azgames.io" });
+                if (iframeRef.current?.src !== siteConfig.iframeSrc) return;
+                trackEvent("iframe_loaded", { game: siteConfig.shortName, source_provider: "azgames.io" });
+                trackEvent("tool_result", { page: "home", location: "hero_iframe", tool: "cowboy_safari_iframe", result: "embed_ready", source_provider: "azgames.io" });
+                trackEvent("conversion_goal", { page: "home", location: "hero_iframe", goal: "iframe_loaded", source_provider: "azgames.io" });
               }}
               className="h-[560px] w-full rounded-[24px] border-0 bg-black sm:h-[640px] lg:h-[680px]"
             />
@@ -358,7 +381,7 @@ export function HeroPlayPanel() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => {
-                  trackGA4Event("outbound_app_store", { page: "home", location: "download_card", platform: card.platform, destination: card.url });
+                  trackEvent("outbound_app_store", { page: "home", location: "download_card", platform: card.platform, destination: card.url });
                 }}
                 className="group rounded-3xl border border-[#1f140c]/10 bg-white/90 p-4 text-left shadow-sm"
               >

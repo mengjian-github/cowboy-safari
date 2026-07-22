@@ -127,19 +127,19 @@ const searchIntentCards = [
 
 const serpDifferentiators = [
   {
-    title: "Aggregator pages",
-    gap: "Usually open with a generic play tile and thin copy.",
+    title: "Play-only mirrors",
+    gap: "A game frame without focus, control, or recovery help leaves the task unfinished.",
     answer:
       "This hub puts the playable iframe, controls, source note, support path, and beginner route links above the fold so search visitors get a complete answer before they leave.",
   },
   {
-    title: "Store or fandom pages",
-    gap: "Useful for availability or lore, but often far from the browser-play task.",
+    title: "Store or fandom references",
+    gap: "Availability and lore do not always answer a browser-session problem.",
     answer:
       "Our pages stay focused on the web session: keyboard focus, fullscreen, lasso timing, animals by role, Sky Zoo upgrade order, and iframe troubleshooting.",
   },
   {
-    title: "Unsupported exact-stat guides",
+    title: "Exact-stat lists",
     gap: "Exact spawn, coin, or patch claims become stale quickly.",
     answer:
       "We label uncertain mechanics, avoid fake official claims, and update the visible freshness log when evidence changes. The source provider remains authoritative.",
@@ -221,29 +221,29 @@ const longTailAnswerCards = [
 const reviewActionCards = [
   {
     title: "Play access answer",
-    metric: "Search issue: deep primary rank",
-    action: "Keep the iframe, source note, no-signup proof, and play shortcut visible above the fold.",
+    metric: "Direct browser play",
+    action: "Open the iframe with the source note, no-signup proof, controls, and loading help in one route.",
     href: "#play",
     label: "review_play_access",
   },
   {
     title: "Long-tail rescue",
-    metric: "Search issue: 0 clicks / low impressions",
-    action: "Route unblocked, controls, animals, Sky Zoo, and blank-screen intent into specific indexable pages.",
+    metric: "Intent-based guides",
+    action: "Route controls, animals, Sky Zoo, blank-screen, and safe-access questions into specific answers.",
     href: "#query-rescue",
     label: "review_long_tail_rescue",
   },
   {
     title: "Behavior sample marker",
-    metric: "CRO issue: post-fix sample low",
-    action: "Mark 20260710 review clicks separately so the next 100-session review can compare answer/rescue distribution.",
+    metric: "Consistent event labels",
+    action: "Separate iframe visibility, actual game focus, embed readiness, return-to-game, and referral actions.",
     href: "/guides",
     label: "review_behavior_marker",
   },
   {
     title: "Return-to-game path",
-    metric: "Dead-click issue: iframe and long-tail CTA closure",
-    action: "Use fixed return-to-game CTAs from every long-tail answer page so visitors can recover to the iframe instead of dead-clicking empty states.",
+    metric: "Long-tail recovery",
+    action: "Use a fixed return-to-game action plus route-specific decision guides instead of generic dead ends.",
     href: "/play-online",
     label: "review_return_to_game_path",
   },
@@ -283,6 +283,12 @@ const faqItems = [
 ];
 
 const timelineEvents = [
+  {
+    version: "2026-07-22 – Decision guides and measurable play funnel",
+    date: "2026-07-22",
+    notes:
+      "Added route-specific decision guides and contextual internal links, separated iframe visibility from actual game focus, and aligned core Plausible/GA4 event names with route, source, and device properties.",
+  },
   {
     version: "2026-07-10 – CRO return-to-game and referral event refresh",
     date: "2026-07-10",
@@ -501,10 +507,10 @@ export default function Home() {
               SERP Difference
             </p>
             <h2 className="mt-3 text-3xl font-semibold text-[#1f140c]">
-              Why this Cowboy Safari page is not another thin play mirror.
+              What this Cowboy Safari hub adds beyond a thin play mirror.
             </h2>
             <p className="mt-4 text-base text-[#1f140c]/80">
-              Current search results are dominated by generic aggregators, app-store style pages, and broad wiki content. This page answers the actual browser-player task: play now, understand controls, choose animals, plan Sky Zoo upgrades, and know what this fan hub can verify.
+              A useful browser guide should finish the actual player task: play now, understand controls, choose animals, plan Sky Zoo upgrades, recover from iframe problems, and know what this fan hub can verify.
             </p>
           </div>
           <div className="mt-8 grid gap-4 lg:grid-cols-3">
@@ -526,10 +532,10 @@ export default function Home() {
               Query Rescue Hub
             </p>
             <h2 className="mt-3 text-3xl font-semibold text-[#1f140c]">
-              Direct answers for Cowboy Safari searches that were still ranking too deep.
+              Direct answers for specific Cowboy Safari browser-play questions.
             </h2>
             <p className="mt-4 text-base text-[#1f140c]/80">
-              Google impressions are still early, so this section maps exact long-tail search intent to the fastest internal route. It gives crawlers and visitors stronger answer blocks for play access, controls, animals, Sky Zoo planning, and iframe troubleshooting.
+              This section maps each specific question to the fastest internal route for play access, controls, animals, Sky Zoo planning, safe access, and iframe troubleshooting.
             </p>
           </div>
           <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -557,13 +563,13 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <p className="text-xs font-semibold uppercase tracking-[0.4em] text-[#ffbd80]">
-              2026-07-10 Review Actions
+              2026-07-22 Player Experience Updates
             </p>
             <h2 className="mt-3 text-3xl font-semibold">
-              What changed after the latest full-cycle review.
+              What changed in the latest Cowboy Safari refresh.
             </h2>
             <p className="mt-4 text-base text-white/75">
-              The current review found no P0 production break, but primary-query ranking and post-fix behavior samples are still weak. These cards expose the internal fixes to users and send dedicated events for the next CRO read.
+              The play path now separates visibility, actual game focus, embed readiness, return-to-game, and referral actions. Long-tail pages also route each visible problem to one specific next step.
             </p>
           </div>
           <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -573,7 +579,7 @@ export default function Home() {
                 href={card.href}
                 eventName="review_action_click"
                 page="home"
-                location="fullcycle_review_20260710"
+                location="player_update_20260722"
                 label={card.label}
                 className="rounded-3xl border border-white/10 bg-white/10 p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-[#ffbd80]/60"
               >

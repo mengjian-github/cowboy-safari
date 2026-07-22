@@ -13,6 +13,20 @@ export const metadata: Metadata = buildPageMetadata({
   ogType: "article",
 });
 
+const privacyJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Privacy Policy – Cowboy Safari Fan Hub",
+  description: pageDescription,
+  url: `${siteConfig.baseUrl}/privacy`,
+  dateModified: siteConfig.lastUpdatedISO,
+  isPartOf: {
+    "@type": "WebSite",
+    name: siteConfig.name,
+    url: siteConfig.baseUrl,
+  },
+};
+
 export default function PrivacyPage() {
   return (
     <>
@@ -154,6 +168,11 @@ export default function PrivacyPage() {
           </div>
         </div>
       </section>
+      <script
+        id="privacy-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(privacyJsonLd) }}
+      />
     </>
   );
 }

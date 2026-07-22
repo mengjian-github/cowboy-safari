@@ -9,6 +9,13 @@ export type LongTailPage = {
   secondaryCta: { label: string; href: string };
   sections: { title: string; paragraphs: string[] }[];
   checklist: string[];
+  decisionGuide: {
+    signal: string;
+    check: string;
+    nextStep: string;
+    href: string;
+  }[];
+  relatedSlugs: string[];
   faqs: { question: string; answer: string }[];
 };
 
@@ -46,6 +53,27 @@ export const longTailPages: LongTailPage[] = [
       "Use Controls for lasso timing before chasing rare animals.",
       "Use Support or Blank Screen help if a blocker prevents loading.",
     ],
+    decisionGuide: [
+      {
+        signal: "The iframe loads, but keys scroll the page",
+        check: "Click inside the game once and retry movement before refreshing.",
+        nextStep: "Open the input-focus fix",
+        href: "/controls-not-working",
+      },
+      {
+        signal: "The game area stays blank",
+        check: "Test one clean browser profile, then compare another approved network.",
+        nextStep: "Run the blank-screen checklist",
+        href: "/blank-screen",
+      },
+      {
+        signal: "The first run opens normally",
+        check: "Learn steering, dismount, and lasso timing before chasing faster mounts.",
+        nextStep: "Read the controls route",
+        href: "/controls",
+      },
+    ],
+    relatedSlugs: ["controls-not-working", "blank-screen", "animals-list", "sky-zoo-upgrades"],
     faqs: [
       {
         question: "Is Cowboy Safari free to play online?",
@@ -92,6 +120,27 @@ export const longTailPages: LongTailPage[] = [
       "Exit and re-enter fullscreen after focus is restored.",
       "Disable aggressive blocker overlays if the frame never receives input.",
     ],
+    decisionGuide: [
+      {
+        signal: "WASD, arrows, or Space scroll the page",
+        check: "The outer page still has focus; click the iframe or use Focus game once.",
+        nextStep: "Return to the play panel",
+        href: "/#play",
+      },
+      {
+        signal: "Input stopped after fullscreen",
+        check: "Exit fullscreen, refocus the iframe, verify movement, then re-enter fullscreen.",
+        nextStep: "Review the browser-play setup",
+        href: "/play-online",
+      },
+      {
+        signal: "Mobile taps land inconsistently",
+        check: "Rotate to landscape and keep the full game frame visible above browser chrome.",
+        nextStep: "Compare mobile controls",
+        href: "/controls",
+      },
+    ],
+    relatedSlugs: ["play-online", "blank-screen", "unblocked", "animals-list"],
     faqs: [
       {
         question: "Why does Space scroll instead of jumping?",
@@ -138,6 +187,27 @@ export const longTailPages: LongTailPage[] = [
       "Treat later-biome labels as planning categories, not official patch data.",
       "Spend upgrades around repeat captures, not rare misses.",
     ],
+    decisionGuide: [
+      {
+        signal: "You are still learning the first route",
+        check: "Choose a stable mount role that leaves enough time to read the next target.",
+        nextStep: "Compare all mount roles",
+        href: "/animals",
+      },
+      {
+        signal: "Faster mounts cause repeated misses",
+        check: "Return to short steering inputs and earlier dismount timing before adding speed.",
+        nextStep: "Practice the control sequence",
+        href: "/controls",
+      },
+      {
+        signal: "Captures are not improving progression",
+        check: "Prefer repeatable captures and capacity-style upgrades over speculative rare hunts.",
+        nextStep: "Use the Sky Zoo order",
+        href: "/sky-zoo-upgrades",
+      },
+    ],
+    relatedSlugs: ["sky-zoo-upgrades", "controls-not-working", "play-online", "blank-screen"],
     faqs: [
       {
         question: "What Cowboy Safari animal is best for beginners?",
@@ -184,6 +254,27 @@ export const longTailPages: LongTailPage[] = [
       "Stamina after three-mount chains feel reliable.",
       "New slots only after earlier routes fund attempts.",
     ],
+    decisionGuide: [
+      {
+        signal: "The current habitat fills too quickly",
+        check: "Capacity can keep common captures useful before you buy a multiplier.",
+        nextStep: "Read the full Sky Zoo model",
+        href: "/sky-zoo",
+      },
+      {
+        signal: "Runs end before progress is banked",
+        check: "Stabilize a common-animal route before spending on expansion or rare attempts.",
+        nextStep: "Choose safer animal roles",
+        href: "/animals-list",
+      },
+      {
+        signal: "Three-mount chains are repeatable",
+        check: "Only then compare stamina or deeper-route upgrades exposed by the current build.",
+        nextStep: "Verify the control benchmark",
+        href: "/controls",
+      },
+    ],
+    relatedSlugs: ["animals-list", "controls-not-working", "play-online", "blank-screen"],
     faqs: [
       {
         question: "What should I upgrade first in Cowboy Safari Sky Zoo?",
@@ -230,6 +321,27 @@ export const longTailPages: LongTailPage[] = [
       "Switch networks if school or office filters block game embeds.",
       "Send Support the page URL, device, browser, and local time.",
     ],
+    decisionGuide: [
+      {
+        signal: "The site loads, but only the game area is blank",
+        check: "The third-party iframe may be blocked separately from this fan hub.",
+        nextStep: "Open support boundaries",
+        href: "/support",
+      },
+      {
+        signal: "The frame fails only on a school or office network",
+        check: "Do not bypass policy; compare an approved personal connection instead.",
+        nextStep: "Read the safe access notes",
+        href: "/unblocked",
+      },
+      {
+        signal: "The game appears, but controls do nothing",
+        check: "The frame loaded successfully and likely needs browser focus instead.",
+        nextStep: "Fix input focus",
+        href: "/controls-not-working",
+      },
+    ],
+    relatedSlugs: ["controls-not-working", "unblocked", "play-online", "animals-list"],
     faqs: [
       {
         question: "Why is Cowboy Safari showing a blank screen?",
@@ -276,6 +388,27 @@ export const longTailPages: LongTailPage[] = [
       "Use controls and guide pages if the iframe is blocked.",
       "Follow school, office, or guardian access rules.",
     ],
+    decisionGuide: [
+      {
+        signal: "Your network allows browser-game embeds",
+        check: "Use the source-labeled no-download route and avoid unknown mirror files.",
+        nextStep: "Open browser play",
+        href: "/play-online",
+      },
+      {
+        signal: "An institutional network blocks the iframe",
+        check: "Use an approved connection or ask the responsible administrator; do not bypass controls.",
+        nextStep: "Review support options",
+        href: "/support",
+      },
+      {
+        signal: "A mirror asks for an extension or executable",
+        check: "Leave that mirror and use the HTTPS iframe identified by this fan hub.",
+        nextStep: "Return to the source-labeled panel",
+        href: "/#play",
+      },
+    ],
+    relatedSlugs: ["blank-screen", "play-online", "controls-not-working", "animals-list"],
     faqs: [
       {
         question: "Does Cowboy Safari unblocked mean bypassing filters?",

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
-import { trackEvent, trackGA4Event } from "@/lib/analytics";
+import { trackEvent } from "@/lib/analytics";
 
 export function SiteHeader() {
   return (
@@ -30,7 +30,7 @@ export function SiteHeader() {
             <Link
               key={item.href}
               href={item.href}
-              onClick={() => trackGA4Event("navigation_click", { page: "global_header", destination: item.href, label: item.label })}
+              onClick={() => trackEvent("navigation_click", { page: "global_header", destination: item.href, label: item.label })}
               className="transition hover:text-[#b3471b]"
             >
               {item.label}
@@ -42,7 +42,7 @@ export function SiteHeader() {
             className="hidden rounded-full border border-[#1f140c]/15 px-4 py-2 text-sm font-semibold text-[#1f140c]/80 transition hover:border-[#b3471b] hover:text-[#b3471b] lg:inline-flex"
             href="/support"
             onClick={() => {
-              trackGA4Event("support_click", { page: "global_header", location: "contact_cta" });
+              trackEvent("support_click", { page: "global_header", location: "contact_cta" });
             }}
           >
             Contact
@@ -51,7 +51,6 @@ export function SiteHeader() {
             href="/#play"
             onClick={() => {
               trackEvent("hero_cta_click", { page: "home", location: "header_launch_game", destination: "#play" });
-              trackGA4Event("hero_cta_click", { page: "home", location: "header_launch_game", destination: "#play" });
             }}
             className="shrink-0 whitespace-nowrap rounded-full bg-[#b3471b] px-3 py-2 text-xs font-semibold text-white shadow-lg shadow-[#b3471b]/30 transition hover:-translate-y-0.5 sm:px-4 sm:text-sm"
           >
@@ -65,7 +64,7 @@ export function SiteHeader() {
             <Link
               key={item.href}
               href={item.href}
-              onClick={() => trackGA4Event("navigation_click", { page: "global_mobile_nav", destination: item.href, label: item.label })}
+              onClick={() => trackEvent("navigation_click", { page: "global_mobile_nav", destination: item.href, label: item.label })}
               className="rounded-full border border-[#1f140c]/10 bg-[#fff8ef] px-2 py-2 transition hover:border-[#b3471b] hover:text-[#b3471b]"
             >
               {item.label}

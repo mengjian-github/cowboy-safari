@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import type { RelatedGame } from "@/data/recommendations";
-import { trackEvent, trackGA4Event } from "@/lib/analytics";
+import { trackEvent } from "@/lib/analytics";
 
 export function RecommendationCard({ game }: { game: RelatedGame }) {
   return (
@@ -34,8 +34,7 @@ export function RecommendationCard({ game }: { game: RelatedGame }) {
           rel="noopener noreferrer"
           onClick={() => {
             trackEvent("outbound_click", { page: "home", location: "recommended_game", destination: game.playUrl, label: game.name });
-            trackGA4Event("outbound_click", { page: "home", location: "recommended_game", destination: game.playUrl, label: game.name });
-            trackEvent("referral_outbound_click", { page: "home", location: "recommended_game", destination: game.playUrl, label: game.name, source: "curated_alternatives" });
+            trackEvent("referral_outbound_click", { page: "home", location: "recommended_game", destination: game.playUrl, label: game.name, referral_group: "curated_alternatives" });
           }}
           className="inline-flex items-center gap-1 text-[#b3471b] underline-offset-4 transition hover:underline"
         >

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { TrackedInternalLink } from "@/components/tracked-internal-link";
 import { getLongTailPage, longTailPages } from "@/data/long-tail-pages";
@@ -63,6 +62,17 @@ function buildJsonLd(page: NonNullable<ReturnType<typeof getLongTailPage>>) {
         })),
       },
       {
+        "@type": "ItemList",
+        name: `${page.h1.replace(/\.$/, "")} decision guide`,
+        itemListElement: page.decisionGuide.map((item, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: item.signal,
+          description: `${item.check} ${item.nextStep}.`,
+          url: `${siteConfig.baseUrl}${item.href}`,
+        })),
+      },
+      {
         "@type": "BreadcrumbList",
         itemListElement: [
           {
@@ -91,7 +101,9 @@ export default async function LongTailIntentPage({ params }: IntentPageProps) {
     notFound();
   }
 
-  const relatedPages = longTailPages.filter((item) => item.slug !== page.slug).slice(0, 3);
+  const relatedPages = page.relatedSlugs
+    .map((slug) => getLongTailPage(slug))
+    .filter((item): item is NonNullable<typeof item> => Boolean(item));
 
   return (
     <>
@@ -154,6 +166,32 @@ export default async function LongTailIntentPage({ params }: IntentPageProps) {
             ))}
           </div>
 
+          <section className="mt-10 rounded-3xl border border-[#1f140c]/10 bg-white p-6 shadow-sm">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#b3471b]/80">Decision guide</p>
+            <h2 className="mt-2 text-2xl font-semibold text-[#1f140c]">Choose the next step from what you see.</h2>
+            <p className="mt-3 max-w-3xl text-sm leading-7 text-[#1f140c]/80">
+              Use the visible signal first, run one check, then open the most specific Cowboy Safari route. This keeps troubleshooting and planning paths distinct instead of repeating the same generic answer.
+            </p>
+            <div className="mt-5 grid gap-4 lg:grid-cols-3">
+              {page.decisionGuide.map((item) => (
+                <article key={item.signal} className="flex flex-col rounded-2xl border border-[#1f140c]/10 bg-[#fff8ef] p-4">
+                  <h3 className="text-base font-semibold text-[#1f140c]">{item.signal}</h3>
+                  <p className="mt-2 flex-1 text-sm leading-6 text-[#1f140c]/80">{item.check}</p>
+                  <TrackedInternalLink
+                    href={item.href}
+                    eventName="long_tail_decision_click"
+                    page={page.slug}
+                    location="decision_guide"
+                    label={item.signal}
+                    className="mt-4 inline-flex text-sm font-semibold text-[#b3471b]"
+                  >
+                    {item.nextStep} →
+                  </TrackedInternalLink>
+                </article>
+              ))}
+            </div>
+          </section>
+
           <div className="mt-10 rounded-3xl border border-[#1f140c]/10 bg-white p-6 shadow-sm">
             <h2 className="text-2xl font-semibold text-[#1f140c]">{page.h1.replace(/\.$/, "")} FAQ</h2>
             <div className="mt-5 grid gap-4">
@@ -188,11 +226,19 @@ export default async function LongTailIntentPage({ params }: IntentPageProps) {
 
           <div className="mt-10 rounded-3xl border border-[#1f140c]/10 bg-white p-6 shadow-sm">
             <h2 className="text-2xl font-semibold text-[#1f140c]">More Cowboy Safari answer pages</h2>
-            <div className="mt-5 grid gap-3 sm:grid-cols-3">
+            <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {relatedPages.map((related) => (
-                <Link key={related.slug} href={`/${related.slug}`} className="rounded-2xl border border-[#1f140c]/10 bg-[#fff8ef] p-4 text-sm font-semibold text-[#1f140c]">
+                <TrackedInternalLink
+                  key={related.slug}
+                  href={`/${related.slug}`}
+                  eventName="long_tail_related_click"
+                  page={page.slug}
+                  location="related_answer_pages"
+                  label={related.slug}
+                  className="rounded-2xl border border-[#1f140c]/10 bg-[#fff8ef] p-4 text-sm font-semibold text-[#1f140c]"
+                >
                   {related.h1.replace(/\.$/, "")}
-                </Link>
+                </TrackedInternalLink>
               ))}
             </div>
           </div>

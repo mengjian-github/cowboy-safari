@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
-import { trackGA4Event } from "@/lib/analytics";
+import { trackEvent } from "@/lib/analytics";
 
 const footerLinks = [
   { label: "Controls", href: "/controls" },
@@ -43,7 +43,7 @@ export function SiteFooter() {
                 href="/support"
                 className="font-semibold text-[#b3471b]"
                 onClick={() => {
-                  trackGA4Event("support_click", { page: "global_footer", location: "footer_copy" });
+                  trackEvent("support_click", { page: "global_footer", location: "footer_copy" });
                 }}
               >
                 Support page
@@ -70,8 +70,8 @@ export function SiteFooter() {
                 key={item.href}
                 href={item.href}
                 onClick={() => {
-                  trackGA4Event("outbound_click", { page: "global_footer", destination: item.href, label: item.label });
-                  trackGA4Event("referral_outbound_click", { page: "global_footer", destination: item.href, label: item.label, source: "footer_recommended_sites" });
+                  trackEvent("outbound_click", { page: "global_footer", destination: item.href, label: item.label });
+                  trackEvent("referral_outbound_click", { page: "global_footer", destination: item.href, label: item.label, referral_group: "footer_recommended_sites" });
                 }}
                 className="block font-medium text-[#1f140c] transition hover:text-[#b3471b]"
               >

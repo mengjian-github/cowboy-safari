@@ -5,19 +5,62 @@ declare global {
   }
 }
 
-export const eventSchemaVersion = "20260710";
+export const eventSchemaVersion = "20260722";
 
-function withEventDefaults(properties?: Record<string, string | number>) {
+type EventProperties = Record<string, string | number>;
+
+const funnelSteps: Record<string, string> = {
+  hero_iframe_visible: "01_iframe_visible",
+  tool_start: "02_game_focused",
+  tool_result: "03_embed_ready",
+  return_to_game_click: "04_return_to_game",
+  referral_outbound_click: "04_referral_outbound",
+};
+
+function getDeviceCategory() {
+  if (typeof window === "undefined") return "unknown";
+  if (window.matchMedia("(max-width: 767px)").matches) return "mobile";
+  if (window.matchMedia("(max-width: 1023px)").matches) return "tablet";
+  return "desktop";
+}
+
+function getTrafficSource() {
+  if (typeof document === "undefined" || !document.referrer) return "direct";
+
+  try {
+    const referrer = new URL(document.referrer);
+    if (referrer.hostname === window.location.hostname) return "internal";
+    if (/google|bing|duckduckgo|yahoo|baidu|yandex/i.test(referrer.hostname)) return "organic_search";
+    return "referral";
+  } catch {
+    return "unknown";
+  }
+}
+
+function withEventDefaults(eventName: string, properties?: EventProperties) {
+  const runtimeDefaults =
+    typeof window === "undefined"
+      ? { route: "unknown", device_category: "unknown", traffic_source: "unknown" }
+      : {
+          route: window.location.pathname,
+          device_category: getDeviceCategory(),
+          traffic_source: getTrafficSource(),
+        };
+
   return {
     event_schema_version: eventSchemaVersion,
     site: "cowboysafari",
+    ...runtimeDefaults,
+    ...(funnelSteps[eventName]
+      ? { funnel_name: "play_engagement", funnel_step: funnelSteps[eventName] }
+      : {}),
     ...properties,
   };
 }
 
 /** Generic tracker: sends to both Plausible and GA4. Use for product-level events. */
-export function trackEvent(eventName: string, properties?: Record<string, string | number>) {
-  const enrichedProperties = withEventDefaults(properties);
+export function trackEvent(eventName: string, properties?: EventProperties) {
+  const enrichedProperties = withEventDefaults(eventName, properties);
 
   if (typeof window !== "undefined" && window.plausible) {
     window.plausible(eventName, { props: enrichedProperties });
@@ -58,6 +101,6 @@ export function trackGA4Event(
   properties?: Record<string, string | number>
 ) {
   if (typeof window !== "undefined" && window.gtag) {
-    window.gtag("event", eventName, withEventDefaults(properties));
+    window.gtag("event", eventName, withEventDefaults(eventName, properties));
   }
 }
